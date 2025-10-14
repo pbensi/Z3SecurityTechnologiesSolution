@@ -1,6 +1,4 @@
-// Utility functions
 function initUtils() {
-    // Scroll to Top
     const scrollToTopBtn = document.querySelector('.scroll-to-top');
     
     if (scrollToTopBtn) {
@@ -20,7 +18,6 @@ function initUtils() {
         });
     }
 
-    // Smooth scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -45,7 +42,6 @@ function initUtils() {
         });
     });
 
-    // Header Scroll Effect
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
         if (header) {

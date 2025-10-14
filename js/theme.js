@@ -1,4 +1,3 @@
-// Theme management
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const mobileThemeToggle = document.getElementById('mobileThemeToggle');
