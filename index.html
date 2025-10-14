@@ -63,7 +63,10 @@
     <div id="toastContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
     <div class="mobile-nav">
         <ul>
-            <li>
+            <li style="display:flex;justify-content: space-between;">
+                <button class="mobile-theme-toggle" id="mobileThemeToggle">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
                 <button class="mobile-nav-close" aria-label="Close mobile menu">
                     <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
@@ -74,17 +77,12 @@
             <li><a href="#partners">Partners</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
-        <div class="mobile-nav-actions">
-            <button class="mobile-theme-toggle" id="mobileThemeToggle">
-                <i class="fas fa-moon" aria-hidden="true"></i> Toggle Theme
-            </button>
-        </div>
     </div>
 
     <div class="scroll-to-top" aria-label="Scroll to top">
         <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </div>
-    
+
     <section class="hero" id="home">
         <div class="hero-slider">
             <div class="slide"><img src="./img/d-1.jpg" alt="Slide 1" /></div>
@@ -100,7 +98,8 @@
             <div class="hero-badge">Trusted Businesses Since 2025</div>
             <h2>Enterprise-Grade Security Solutions for Your Business</h2>
             <p>
-                Z3 Security Technologies Solution delivers tailored, enterprise-grade security systems—CCTV, access control, fire
+                Z3 Security Technologies Solution delivers tailored, enterprise-grade security systems—CCTV, access
+                control, fire
                 alarms, and more—to safeguard your assets and ensure compliance.
             </p>
             <div class="hero-actions">
@@ -295,7 +294,8 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>About Z3 Security Technologies Solution</h3>
-                    <p>Z3 Security Technologies Solution is a leading provider of enterprise-grade security solutions in the
+                    <p>Z3 Security Technologies Solution is a leading provider of enterprise-grade security solutions in
+                        the
                         Philippines. Since 2025, we have been delivering innovative, reliable, and customized security
                         systems to businesses of all sizes.</p>
                     <div class="social-links">

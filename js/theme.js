@@ -28,6 +28,6 @@ function initTheme() {
     function updateThemeIcon(theme) {
         const icon = theme === 'light' ? 'fa-moon' : 'fa-sun';
         themeToggle.innerHTML = `<i class="fas ${icon}" aria-hidden="true"></i>`;
-        mobileThemeToggle.innerHTML = `<i class="fas ${icon}" aria-hidden="true"></i> Toggle Theme`;
+        mobileThemeToggle.innerHTML = `<i class="fas ${icon}" aria-hidden="true"></i>`;
     }
 }

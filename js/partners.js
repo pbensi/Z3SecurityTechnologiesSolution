@@ -1,7 +1,7 @@
 function initPartners() {
     const partners = [
         { name: 'Ajhua', logo: './img/ajhua-Logo.png' },
-        { name: 'Hikvision', logo: './img/Hikvision-Logo.png' },
+        { name: 'Hikvision', logo: './img/hikvision-Logo.png' },
         { name: 'Honeywell', logo: './img/honeywell-Logo.png' },
         { name: 'YearStar', logo: './img/yeastar-Logo.png' },
         { name: 'ZK Teco', logo: './img/zkteco-Logo.png' },
