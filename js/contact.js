@@ -1,33 +1,36 @@
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+      e.preventDefault();
 
-  const form = e.target;
-  const status = document.getElementById("statusMsg");
+      const form = e.target;
+      const status = document.getElementById("formSuccess");
+      status.textContent = "⏳ Sending...";
 
-  status.textContent = "⏳ Sending...";
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        company: form.company.value,
+        service: form.service.value,
+        message: form.message.value,
+        secret: "Z3 Security Technologies Solutions"
+      };
 
-  const formData = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    company: form.company.value,
-    service: form.service.value,
-    message: form.message.value,
-    secret: "Z3 Security Technologies Solutions" // must match your script
-  };
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyw2XqgPv0Kjsps_UPGIklihhEWzFWYr0s_keS9Y-Sxm2rK5NbRB5DsagI4l5jpaVZK/exec", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbxIfggoMZsYksmkJe8_z4MMGKqT9sfC53U6z0xCIu0QCR5zv_8nIxHIVLEe4QtQwCuT/exec", {
-      method: "POST",
-      mode: "no-cors", // prevents browser CORS errors
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
+        const data = await response.json();
+        if (data.success) {
+          status.textContent = "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          status.textContent = "⚠️ " + data.message;
+        }
+      } catch (error) {
+        console.error(error);
+        status.textContent = "⚠️ Failed to send message.";
+      }
     });
-
-    status.textContent = "✅ Message sent successfully!";
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    status.textContent = "⚠️ Failed to send message. Please try again.";
-  }
-});
