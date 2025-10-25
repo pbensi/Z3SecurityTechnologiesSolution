@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   background: linear-gradient(135deg, rgba(15, 26, 46, 0.85), rgba(30, 58, 95, 0.85)),
-    url('/assets/img/hero-section.jpg') center/cover no-repeat;
+    url('../../assets/img/hero-section.jpg') center/cover no-repeat;
   background-attachment: fixed;
   color: var(--white);
   text-align: center;
