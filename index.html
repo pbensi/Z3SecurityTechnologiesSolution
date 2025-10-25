@@ -4,182 +4,816 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z3 Security Technologies Solution</title>
-    <meta name="description"
-        content="Z3 Security Technologies Solution provides customized CCTV, access control, fire alarm, and structured cabling solutions for businesses in the Philippines.">
-    <meta property="og:title" content="Z3 Security Technologies Solution">
-    <meta property="og:description"
-        content="Enterprise-grade security solutions for your business. Customized CCTV, access control, fire alarm, and more.">
-    <meta property="og:image" content="./img/og-image.jpg">
-    <meta property="og:url" content="https://z3security.ph">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <title>SecureTech Solutions | Professional Security Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/hero.css">
-    <link rel="stylesheet" href="./css/services.css">
-    <link rel="stylesheet" href="./css/features.css">
-    <link rel="stylesheet" href="./css/partners.css">
-    <link rel="stylesheet" href="./css/contact.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <header>
-        <div class="container header-container">
-            <a href="#home" class="logo">
-                <img src="./img/s3-Logo.jpg" alt="Z3 Security Technologies Solution Logo" class="logo-img">
-                <span class="logo-text">Z3 <strong>Security</strong> Technologies Solution</span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon" aria-hidden="true"></i>
-                </button>
-                <button class="hamburger" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
-                </button>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="#home">
+                    <div class="navbar-logo">
+                        <img src="./assets/img/s3-Logo.jpg" alt="">
+                        <span>Z3 Security</span>
+                    </div>
+                    <div class="tagline">Technologies Solution</div>
+                </a>
             </div>
-        </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="navbar-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#capacity" class="nav-link">Expertise</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#clients" class="nav-link">Clients</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
     </header>
 
-    <div class="mobile-nav-overlay"></div>
-    <div id="toastContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-    <div class="mobile-nav">
-        <ul>
-            <li style="display:flex;justify-content: space-between;">
-                <button class="mobile-theme-toggle" id="mobileThemeToggle">
-                    <i class="fas fa-moon" aria-hidden="true"></i>
-                </button>
-                <button class="mobile-nav-close" aria-label="Close mobile menu">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </li>
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#partners">Partners</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-    </div>
-
-    <div class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
-    </div>
-
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
-        <div class="hero-slider">
-            <div class="slide"><img src="./img/d-1.jpg" alt="Slide 1" /></div>
-            <div class="slide"><img src="./img/d-2.jpg" alt="Slide 2" /></div>
-            <div class="slide"><img src="./img/d-3.jpg" alt="Slide 3" /></div>
-            <div class="slide"><img src="./img/d-4.jpg" alt="Slide 4" /></div>
-            <div class="slide"><img src="./img/d-5.jpg" alt="Slide 5" /></div>
-            <div class="slide"><img src="./img/d-6.jpg" alt="Slide 6" /></div>
-            <div class="slide"><img src="./img/d-7.jpg" alt="Slide 7" /></div>
-        </div>
-
-        <div class="container hero-content">
-            <div class="hero-badge">Trusted Businesses Since 2025</div>
-            <h2>Enterprise-Grade Security Solutions for Your Business</h2>
-            <p>
-                Z3 Security Technologies Solution delivers tailored, enterprise-grade security systems—CCTV, access
-                control, fire
-                alarms, and more—to safeguard your assets and ensure compliance.
-            </p>
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge experience-badge-js">
+                    <span>Trusted Since 2019</span>
+                </div>
+                <h1 class="hero-title">Complete Security &amp; Auxiliary Systems</h1>
+                <p class="hero-subtitle">Professional design, supply, installation, and maintenance of comprehensive
+                    security solutions with nationwide coverage.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Expert Engineers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Get Free Consultation</span>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Our Services</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- TRUST BADGES SECTION -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <i class="fas fa-award"></i>
+                    <span>PhilGEPS Registered</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Licensed & Insured</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-users"></i>
+                    <span>50+ Certified Engineers</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Nationwide Service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>We provide a complete range of security solutions tailored to your specific needs</p>
+            <div class="section-header">
+                <h2>Our Comprehensive Services</h2>
+                <p class="section-subtitle">Complete design, supply, installation, and maintenance solutions</p>
             </div>
-            <div class="services-grid">
 
+            <div class="services-categories">
+                <div class="category-nav">
+                    <button class="category-btn active" data-category="security">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security Systems</span>
+                    </button>
+                    <button class="category-btn" data-category="communication">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>Communication</span>
+                    </button>
+                    <button class="category-btn" data-category="business">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Business Systems</span>
+                    </button>
+                    <button class="category-btn" data-category="electrical">
+                        <i class="fas fa-bolt"></i>
+                        <span>Electrical & Power</span>
+                    </button>
+                    <button class="category-btn" data-category="maintenance">
+                        <i class="fas fa-tools"></i>
+                        <span>Maintenance</span>
+                    </button>
+                </div>
+
+                <div class="category-content">
+                    <div class="category-panel active" id="security-panel">
+                        <div class="services-grid">
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h4>CCTV Surveillance Systems</h4>
+                                <p>Analog and IP Camera systems with professional installation and monitoring.</p>
+                                <ul class="service-features">
+                                    <li>Design & Estimates</li>
+                                    <li>Supply & Installation</li>
+                                    <li>IP & Analog Systems</li>
+                                    <li>Remote Monitoring</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <h4>Burglar Alarm Systems</h4>
+                                <p>Comprehensive intrusion detection and alarm systems.</p>
+                                <ul class="service-features">
+                                    <li>Motion Detection</li>
+                                    <li>Door/Window Sensors</li>
+                                    <li>Remote Monitoring</li>
+                                    <li>Professional Installation</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-fire-extinguisher"></i>
+                                </div>
+                                <h4>Fire Alarm System (FDAS)</h4>
+                                <p>Professional fire detection and alarm systems.</p>
+                                <ul class="service-features">
+                                    <li>Smoke & Heat Detectors</li>
+                                    <li>Manual Call Points</li>
+                                    <li>Alarm Sounders</li>
+                                    <li>Signed & Sealed Documentation</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-fingerprint"></i>
+                                </div>
+                                <h4>Access Control Systems</h4>
+                                <p>Biometrics, time and attendance, and secure access solutions.</p>
+                                <ul class="service-features">
+                                    <li>Biometric Scanners</li>
+                                    <li>Time & Attendance</li>
+                                    <li>Card Access Systems</li>
+                                    <li>Visitor Management</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-door-closed"></i>
+                                </div>
+                                <h4>Hotel Door Locks</h4>
+                                <p>Electronic locking systems for hospitality security.</p>
+                                <ul class="service-features">
+                                    <li>RFID Card Access</li>
+                                    <li>Master Key Systems</li>
+                                    <li>Audit Trail</li>
+                                    <li>Professional Installation</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h4>Turnstile Systems</h4>
+                                <p>Access control turnstiles for high-security areas.</p>
+                                <ul class="service-features">
+                                    <li>Optical Turnstiles</li>
+                                    <li>Tripod Turnstiles</li>
+                                    <li>Full Height Systems</li>
+                                    <li>Access Control Integration</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>Guard Patrol System</h4>
+                                <p>Professional security guard monitoring and patrol systems.</p>
+                                <ul class="service-features">
+                                    <li>Patrol Point Monitoring</li>
+                                    <li>Real-time Tracking</li>
+                                    <li>Incident Reporting</li>
+                                    <li>Comprehensive Reporting</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-panel" id="communication-panel">
+                        <div class="services-grid">
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h4>PABX Telephone System</h4>
+                                <p>Professional business telephone systems.</p>
+                                <ul class="service-features">
+                                    <li>Design & Estimates</li>
+                                    <li>Supply & Installation</li>
+                                    <li>Multi-line Systems</li>
+                                    <li>VoIP Integration</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h4>Public Address System</h4>
+                                <p>Paging and public address solutions.</p>
+                                <ul class="service-features">
+                                    <li>Background Music</li>
+                                    <li>Emergency Announcements</li>
+                                    <li>Zone Paging</li>
+                                    <li>Professional Installation</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-walkie-talkie"></i>
+                                </div>
+                                <h4>Handheld Radio Systems</h4>
+                                <p>Reliable communication systems for staff.</p>
+                                <ul class="service-features">
+                                    <li>Long Range Communication</li>
+                                    <li>Multiple Channels</li>
+                                    <li>Group Calling</li>
+                                    <li>Emergency Alert</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-tv"></i>
+                                </div>
+                                <h4>CaTV System</h4>
+                                <p>Community antenna television systems.</p>
+                                <ul class="service-features">
+                                    <li>Signal Distribution</li>
+                                    <li>Multi-unit Setup</li>
+                                    <li>Professional Installation</li>
+                                    <li>Maintenance Services</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <h4>Nurse Call System</h4>
+                                <p>Emergency call systems for healthcare facilities.</p>
+                                <ul class="service-features">
+                                    <li>Bedside Stations</li>
+                                    <li>Staff Pagers</li>
+                                    <li>Emergency Pull Cords</li>
+                                    <li>Central Monitoring</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h4>Structured Cabling</h4>
+                                <p>Professional network cabling infrastructure.</p>
+                                <ul class="service-features">
+                                    <li>Ethernet Cabling</li>
+                                    <li>Fiber Optic Installation</li>
+                                    <li>Cable Management</li>
+                                    <li>Network Testing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-panel" id="business-panel">
+                        <div class="services-grid">
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-parking"></i>
+                                </div>
+                                <h4>Parking Systems</h4>
+                                <p>Barrier gate and automated parking management.</p>
+                                <ul class="service-features">
+                                    <li>Automatic Barrier Gates</li>
+                                    <li>Ticket Systems</li>
+                                    <li>Payment Integration</li>
+                                    <li>License Plate Recognition</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-cash-register"></i>
+                                </div>
+                                <h4>Point of Sales System</h4>
+                                <p>Retail POS systems for business operations.</p>
+                                <ul class="service-features">
+                                    <li>Inventory Management</li>
+                                    <li>Sales Reporting</li>
+                                    <li>Customer Management</li>
+                                    <li>Multi-store Support</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                                <h4>Inventory System</h4>
+                                <p>Stock management and inventory control.</p>
+                                <ul class="service-features">
+                                    <li>Stock Tracking</li>
+                                    <li>Automated Reordering</li>
+                                    <li>Barcode Integration</li>
+                                    <li>Real-time Updates</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>Accounting System</h4>
+                                <p>Financial management and accounting solutions.</p>
+                                <ul class="service-features">
+                                    <li>Financial Reporting</li>
+                                    <li>Accounts Management</li>
+                                    <li>Tax Compliance</li>
+                                    <li>Multi-user Access</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>Payroll System</h4>
+                                <p>Employee payroll management systems.</p>
+                                <ul class="service-features">
+                                    <li>Salary Computation</li>
+                                    <li>Tax Calculations</li>
+                                    <li>Benefits Management</li>
+                                    <li>Compliance Reporting</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h4>Queuing System</h4>
+                                <p>Customer flow management solutions.</p>
+                                <ul class="service-features">
+                                    <li>Digital Displays</li>
+                                    <li>Ticket Printing</li>
+                                    <li>Service Management</li>
+                                    <li>Performance Analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-panel" id="electrical-panel">
+                        <div class="services-grid">
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>Electrical Works</h4>
+                                <p>Complete electrical installation services.</p>
+                                <ul class="service-features">
+                                    <li>Wiring Installation</li>
+                                    <li>Electrical Panel Setup</li>
+                                    <li>Lighting Systems</li>
+                                    <li>Safety Compliance</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-file-signature"></i>
+                                </div>
+                                <h4>Signed and Sealed Electrical</h4>
+                                <p>Certified electrical designs and documentation.</p>
+                                <ul class="service-features">
+                                    <li>Professional Engineering</li>
+                                    <li>Code Compliance</li>
+                                    <li>Safety Certification</li>
+                                    <li>Documentation Services</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-solar-panel"></i>
+                                </div>
+                                <h4>Solar Power Systems</h4>
+                                <p>Renewable energy solutions.</p>
+                                <ul class="service-features">
+                                    <li>Solar Panel Installation</li>
+                                    <li>Battery Storage</li>
+                                    <li>Grid-tie Systems</li>
+                                    <li>Energy Monitoring</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4>Solar Street Lights</h4>
+                                <p>Energy-efficient solar lighting solutions.</p>
+                                <ul class="service-features">
+                                    <li>Automatic Operation</li>
+                                    <li>Weatherproof Design</li>
+                                    <li>Motion Sensors</li>
+                                    <li>Low Maintenance</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>Lightning Arrester</h4>
+                                <p>Lightning protection systems.</p>
+                                <ul class="service-features">
+                                    <li>Surge Protection</li>
+                                    <li>Grounding Systems</li>
+                                    <li>Equipment Protection</li>
+                                    <li>Safety Compliance</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <h4>Wireless Network Systems</h4>
+                                <p>Indoor/outdoor access points and Wi-Fi.</p>
+                                <ul class="service-features">
+                                    <li>High-Speed Connectivity</li>
+                                    <li>Multiple Access Points</li>
+                                    <li>Guest Network Setup</li>
+                                    <li>Network Security</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-panel" id="maintenance-panel">
+                        <div class="services-grid">
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Preventive Maintenance</h4>
+                                <p>Regular maintenance for all security systems.</p>
+                                <ul class="service-features">
+                                    <li>FDAS Maintenance</li>
+                                    <li>CCTV Systems</li>
+                                    <li>PABX Systems</li>
+                                    <li>All Security Systems</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <h4>Signed & Sealed Auxiliary Systems</h4>
+                                <p>Certified documentation for auxiliary systems.</p>
+                                <ul class="service-features">
+                                    <li>FDAS Documentation</li>
+                                    <li>PABX Systems</li>
+                                    <li>CCTV Systems</li>
+                                    <li>Compliance Certification</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h4>Auxiliary System Design</h4>
+                                <p>Complete auxiliary system design services.</p>
+                                <ul class="service-features">
+                                    <li>System Design</li>
+                                    <li>Technical Specifications</li>
+                                    <li>Implementation Planning</li>
+                                    <li>Project Management</li>
+                                </ul>
+                            </div>
+
+                            <div class="service-card shiny">
+                                <div class="service-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h4>System Integration</h4>
+                                <p>Professional integration of multiple systems.</p>
+                                <ul class="service-features">
+                                    <li>Multi-system Integration</li>
+                                    <li>Centralized Control</li>
+                                    <li>Compatibility Testing</li>
+                                    <li>Performance Optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <div class="cta-content">
+                    <h3>End-to-End Solutions</h3>
+                    <p>We provide complete services from design and estimates to supply, installation, and ongoing
+                        maintenance for all your security and auxiliary system needs.</p>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Get Comprehensive Quote</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="service-modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-            <div class="modal-header">
-                <div class="modal-icon">
-                    <i class="fas fa-video" aria-hidden="true"></i>
-                </div>
-                <h3>CCTV Surveillance System</h3>
-            </div>
-            <div class="modal-body">
-                <div class="modal-features">
-                    <h4>Key Features</h4>
-                    <ul>
-                    </ul>
-                </div>
-                <div class="modal-benefits">
-                    <h4>Benefits</h4>
-                    <ul>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-cta">
-                <a href="#contact" class="btn btn-primary">Contact Us</a>
-            </div>
-        </div>
-    </div>
-
-    <section class="features-section" id="features">
+    <!-- CAPACITY SECTION -->
+    <section class="capacity" id="capacity">
         <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Z3 Security Technologies Solution</h2>
-                <p>Our commitment to quality, innovation, and customer satisfaction sets us apart.</p>
+            <div class="section-header">
+                <h2>Our Business Capacity</h2>
+                <p class="section-subtitle">Leverage our technical expertise and design capabilities for your security
+                    needs</p>
             </div>
-            <div class="features-grid">
+            <div class="capacity-grid">
+                <div class="capacity-card fade-in shiny">
+                    <h3><i class="fas fa-tools"></i> Technical Engineer Skills</h3>
+                    <ul class="capacity-list">
+                        <li>Installer and programmer of Telephone System (PABX)</li>
+                        <li>CCTV Surveillance System specialist</li>
+                        <li>Burglar Alarm system installation</li>
+                        <li>Parking System configuration</li>
+                        <li>Access Points and Wireless Network setup</li>
+                        <li>Paging System installation</li>
+                        <li>Biometrics system implementation</li>
+                        <li>Fire Alarm System installation</li>
+                        <li>Access Control System configuration</li>
+                    </ul>
+                </div>
+                <div class="capacity-card fade-in shiny">
+                    <h3><i class="fas fa-drafting-compass"></i> Design & Integration</h3>
+                    <ul class="capacity-list">
+                        <li>Design safety and security alarm/auxiliary systems</li>
+                        <li>Building and residence security design</li>
+                        <li>Conduct surveys and estimates</li>
+                        <li>Auxiliary system design</li>
+                        <li>Security and alarm equipment integration</li>
+                        <li>Preventive Maintenance services</li>
+                        <li>Fire Alarm System maintenance</li>
+                        <li>CCTV systems maintenance</li>
+                        <li>Various security related systems maintenance</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- CERTIFICATIONS SECTION -->
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications & Trainings</h2>
+                <p class="section-subtitle">
+                    Our team holds industry-recognized certifications ensuring quality service delivery
+                </p>
+            </div>
+
+            <div class="cert-grid">
+                <div class="cert-item"><img src="/assets/img/certificate/cert-1.png" alt=""></div>
+                <div class="cert-item"><img src="/assets/img/certificate/cert-2.png" alt=""></div>
+                <div class="cert-item"><img src="/assets/img/certificate/cert-3.png" alt=""></div>
+                <div class="cert-item"><img src="/assets/img/certificate/cert-4.png" alt=""></div>
+                <div class="cert-item"><img src="/assets/img/certificate/cert-5.png" alt=""></div>
+                <div class="cert-item"><img src="/assets/img/certificate/cert-6.png" alt=""></div>
+                <div class="cert-item hidden"><img src="/assets/img/certificate/cert-7.png" alt=""></div>
+                <div class="cert-item hidden"><img src="/assets/img/certificate/cert-8.png" alt=""></div>
+                <div class="cert-item hidden"><img src="/assets/img/certificate/cert-9.png" alt=""></div>
+                <div class="cert-item hidden"><img src="/assets/img/certificate/cert-10.png" alt=""></div>
+            </div>
+
+            <div class="cert-buttons">
+                <button class="btn btn-primary" id="seeMoreBtn">
+                    See More
+                </button>
+                <button class="btn btn-secondary" id="seeLessBtn" style="display: none;">
+                    See Less
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCREDITATION SECTION -->
+    <section class="accreditation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Accreditation</h2>
+            </div>
+            <div class="accreditation-content">
+                <div class="accreditation-badge">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Philgeps Registered</h3>
+                <p><strong>Platinum Membership</strong></p>
+                <p>Cert. Ref.No. 2023053473061139251958</p>
+                <p>Our registration with the Philippine Government Electronic Procurement System demonstrates our
+                    commitment to transparency and professionalism in all our business dealings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS SECTION -->
+    <section class="clients-section" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Esteemed Clients</h2>
+                <p class="section-subtitle">We proudly serve a diverse range of industries and businesses</p>
+            </div>
+
+            <div class="clients-columns">
+                <div class="clients-column">
+                    <h3>Public</h3>
+                    <div class="clients-grid">
+                        <div class="client-card"><img src="assets/img/public/pub-1.png" alt="Client 1"></div>
+                        <div class="client-card"><img src="assets/img/public/pub-2.png" alt="Client 2"></div>
+                        <div class="client-card"><img src="assets/img/public/pub-3.png" alt="Client 3"></div>
+                        <div class="client-card"><img src="assets/img/public/pub-4.png" alt="Client 4"></div>
+                        <div class="client-card"><img src="assets/img/public/pub-5.png" alt="Client 5"></div>
+                    </div>
+                    <div class="clients-cta">
+                        <button class="btn btn-primary see-more" style="display:none;">See More</button>
+                        <button class="btn btn-secondary see-less" style="display:none;">See Less</button>
+                    </div>
+                </div>
+
+                <div class="clients-column">
+                    <h3>Private</h3>
+                    <div class="clients-grid">
+                        <div class="client-card"><img src="assets/img/private/priv-1.png" alt="Client 1"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-2.png" alt="Client 2"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-3.png" alt="Client 3"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-4.png" alt="Client 4"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-5.jpg" alt="Client 5"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-6.png" alt="Client 6"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-7.png" alt="Client 7"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-8.png" alt="Client 8"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-9.jpg" alt="Client 9"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-10.png" alt="Client 10"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-11.png" alt="Client 11"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-12.png" alt="Client 12"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-13.jpg" alt="Client 13"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-14.png" alt="Client 14"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-15.jpg" alt="Client 15"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-16.jpg" alt="Client 16"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-17.png" alt="Client 17"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-18.png" alt="Client 18"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-19.png" alt="Client 19"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-20.png" alt="Client 20"></div>
+                    </div>
+                    <div class="clients-cta">
+                        <button class="btn btn-primary see-more">See More</button>
+                        <button class="btn btn-secondary see-less" style="display:none;">See Less</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clients-partner-us">
+                <h3>Partner With Us</h3>
+                <p>Join our growing list of satisfied clients who trust our end-to-end solutions.</p>
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-handshake"></i> Get in Touch</a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- PARTNERS SECTION -->
     <section class="partners" id="partners">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
                 <h2>Our Technology Partners</h2>
-                <p>We work with industry-leading brands to deliver the best security solutions</p>
+                <p class="section-subtitle">We work with industry-leading brands to deliver the best security solutions
+                </p>
             </div>
             <div class="partners-container">
                 <div class="partners-gradient left"></div>
                 <div class="partners-track">
+                    <div class="partner-logo"><img src="./assets/img/partner/part-1.png" alt="part 1 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-2.png" alt="part 2 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-3.png" alt="part 3 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-4.png" alt="part 4 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-5.png" alt="part 5 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-6.png" alt="part 6 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-7.png" alt="part 7 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-8.png" alt="part 8 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-9.png" alt="part 9 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-10.png" alt="part 10 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-11.png" alt="part 11 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-12.png" alt="part 12 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-13.png" alt="part 13 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-14.png" alt="part 14 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-15.png" alt="part 15 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-16.png" alt="part 16 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-17.png" alt="part 17 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-18.png" alt="part 18 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-19.png" alt="part 19 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-20.png" alt="part 20 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-21.png" alt="part 21 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-22.png" alt="part 22 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-23.png" alt="part 23 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-24.png" alt="part 24 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-25.png" alt="part 25 Logo"
+                            loading="lazy"></div>
+                    <div class="partner-logo"><img src="./assets/img/partner/part-26.png" alt="part 26 Logo"
+                            loading="lazy"></div>
                 </div>
+
                 <div class="partners-gradient right"></div>
             </div>
         </div>
     </section>
 
+    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
                 <h2>Get In Touch</h2>
-                <p>Contact us for a free consultation and customized security solution</p>
+                <p class="section-subtitle">Get in touch for a free consultation and quote</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -191,12 +825,7 @@
                         </p>
                     </div>
                     <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-details">
-                                <h3>Our Location</h3>
-                                <p>Futura Homes Mactan, Suba BasBas, Lapu-Lapu City, Philippines</p>
-                            </div>
-                        </div>
+
                         <div class="contact-item">
                             <div class="contact-details">
                                 <h3>Phone Number</h3>
@@ -215,6 +844,18 @@
                                 <p>Monday - Friday: 7:30 AM - 5:00 PM</p>
                             </div>
                         </div>
+                        <div class="contact-item">
+                            <div class="contact-details">
+                                <h3>Our Location</h3>
+                                <p>Futura Homes Mactan, Suba BasBas, Lapu-Lapu City, Philippines</p>
+                            </div>
+                        </div>
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1624.372461663809!2d123.96982943963839!3d10.268049767736848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99b44eda16677%3A0x179cfb38499b608e!2sZ3%20Security%20Technologies%20Solution-Cebu%20Branch!5e0!3m2!1sen!2sus!4v1760264325589!5m2!1sen!2sus"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            aria-label="Google Map showing Z3 Security Technologies Solution location"></iframe>
                     </div>
                 </div>
                 <form id="contactForm" class="contact-form">
@@ -223,13 +864,8 @@
                     </div>
                     <div class="form-grid">
                         <div class="form__group field">
-                            <input type="text" class="form__field" id="name" name="name" placeholder="Name" required>
-                            <label for="name" class="form__label">Your Name *</label>
-                        </div>
-                        <div class="form__group field">
-                            <input type="email" class="form__field" id="email" name="email" placeholder="Email"
-                                required>
-                            <label for="email" class="form__label">Email Address *</label>
+                            <input type="text" class="form__field" id="name" name="name" placeholder="Name">
+                            <label for="name" class="form__label">Your Name</label>
                         </div>
                         <div class="form__group field">
                             <input type="tel" class="form__field" id="phone" name="phone" placeholder="Phone">
@@ -241,20 +877,13 @@
                         </div>
 
                         <div class="form__group field full-width">
-                            <select class="form__field" id="service" name="service">
-                                <option value=""></option>
-                                <option value="CCTV-Surveillance">CCTV Surveillance</option>
-                                <option value="Biometrics">Biometrics</option>
-                                <option value="Electrical-Installation">Electrical Installation</option>
-                                <option value="Fire-Alarm-System">Fire Alarm System</option>
-                                <option value="Burglar-Alarm-System">Burglar Alarm System</option>
-                                <option value="Structured-Cabling">Structured Cabling</option>
-                                <option value="Access-Point-WiFi">Access Point / WiFi</option>
-                                <option value="Telephone-System">Telephone System</option>
-                                <option value="Access-Control-System">Access Control System</option>
-                                <option value="Turnstile-Barrier-Gate-System">Turnstile/Barrier Gate System</option>
-                                <option value="Payroll-Management">Payroll Management</option>
-                                <option value="Point-of-Sale">Point of Sale</option>
+                            <select class="form__field" id="service" name="service" aria-required="true">
+                                <option value="">Select a service</option>
+                                <option value="Security-Systems">Security Systems</option>
+                                <option value="Communication-Systems">Communication Systems</option>
+                                <option value="Business-Systems">Business Systems</option>
+                                <option value="Electrical-Works">Electrical Works</option>
+                                <option value="Maintenance">Maintenance</option>
                                 <option value="other">Other</option>
                             </select>
                             <label for="service" class="form__label">Service Interested In</label>
@@ -262,42 +891,42 @@
 
                         <div class="form__group field full-width">
                             <textarea class="form__field" id="message" name="message" placeholder="Message"
-                                required></textarea>
+                                required=""></textarea>
                             <label for="message" class="form__label">Your Message *</label>
                         </div>
                     </div>
 
                     <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-spinner" style="display:none;"></span>
+                        <button type="submit" class="btn btn-primary" id="sendBtn" disabled>
+                            <i class="fas fa-paper-plane"></i> Send Message
                         </button>
+                    </div>
+
+                    <div class="google">
+                        <div class="google-btn">
+                            <div id="g_id_onload"
+                                data-client_id="1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com"
+                                data-callback="handleCredentialResponse" data-auto_select="true"
+                                data-itp_support="true">
+                            </div>
+                            <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                                data-text="sign_in_with" data-size="large" data-logo_alignment="left">
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Secure Your Business?</h2>
-            <p>Contact us today for a free consultation and discover how our tailored security solutions can protect
-                your assets and ensure compliance.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
-            </div>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>About Z3 Security Technologies Solution</h3>
-                    <p>Z3 Security Technologies Solution is a leading provider of enterprise-grade security solutions in
-                        the
-                        Philippines. Since 2025, we have been delivering innovative, reliable, and customized security
-                        systems to businesses of all sizes.</p>
+                    <h3>SecureTech Solutions</h3>
+                    <p>Professional security and auxiliary systems provider since 2019. Complete design, installation,
+                        and maintenance services nationwide.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/z3tecsolution" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">
@@ -316,58 +945,25 @@
                 </div>
                 <div class="footer-column">
                     <h3>Our Services</h3>
-                    <div style="display: flex; flex-direction: row; gap:10px;">
-                        <ul>
-                            <li><a href="#services">CCTV Surveillance</a></li>
-                            <li><a href="#services">Biometrics</a></li>
-                            <li><a href="#services">Electrical Installation</a></li>
-                            <li><a href="#services">Fire Alarm System</a></li>
-                            <li><a href="#services">Burglar Alarm System</a></li>
-                            <li><a href="#services">Structured Cabling</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#services">Access Point / WiFi</a></li>
-                            <li><a href="#services">Telephone System</a></li>
-                            <li><a href="#services">Access Control System</a></li>
-                            <li><a href="#services">Turnstile/Barrier Gate System</a></li>
-                            <li><a href="#services">Payroll Management</a></li>
-                            <li><a href="#services">Point of Sale</a></li>
-                        </ul>
-                    </div>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Security Systems</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Communication</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Business Systems</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Electrical & Power</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                    </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact Information</h3>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Futura Homes Mactan, Suba BasBas,
-                            Lapu-Lapu City, Philippines</p>
-                        <p><i class="fas fa-phone" aria-hidden="true"></i> 0917 773 1107</p>
-                        <p><i class="fas fa-envelope" aria-hidden="true"></i> z3tech2019@gmail.com</p>
-                        <p><i class="fas fa-clock" aria-hidden="true"></i> Mon-Fri: 7:30 AM - 5:00 PM</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-map">
-                <h3>Our Location</h3>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1624.372461663809!2d123.96982943963839!3d10.268049767736848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99b44eda16677%3A0x179cfb38499b608e!2sZ3%20Security%20Technologies%20Solution-Cebu%20Branch!5e0!3m2!1sen!2sus!4v1760264325589!5m2!1sen!2sus"
-                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    aria-label="Google Map showing Z3 Security Technologies Solution location"></iframe>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Z3 Security Technologies Solution. All rights reserved.</p>
+                <p>&copy; 2025 SecureTech Solutions. All rights reserved. | Established 2019</p>
             </div>
         </div>
     </footer>
 
-    <script src="./js/utils.js"></script>
-    <script src="./js/theme.js"></script>
-    <script src="./js/heroParallax.js"></script>
-    <script src="./js/navigation.js"></script>
-    <script src="./js/services.js"></script>
-    <script src="./js/partners.js"></script>
-    <script src="./js/contact.js"></script>
-    <script src="./js/main.js"></script>
+    <!-- JavaScript -->
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

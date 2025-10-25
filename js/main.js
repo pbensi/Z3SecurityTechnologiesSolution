@@ -1,30 +1,74 @@
-document.addEventListener('DOMContentLoaded', function () {
-    if (typeof initTheme === 'function') initTheme();
-    if (typeof initHeroParallax === 'function') initHeroParallax();
-    if (typeof initNavigation === 'function') initNavigation();
-    if (typeof initServices === 'function') initServices();
-    if (typeof initPartners === 'function') initPartners();
-    if (typeof initContact === 'function') initContact();
-    if (typeof initUtils === 'function') initUtils();
+import { initServices } from './components/services.js';
+import { initCertifications } from './components/certifications.js';
+import { initContact } from './components/contact.js';
+import { initAnimations } from './components/animations.js';
+import { initOrganizations } from './components/oganization.js';
 
-    initScrollAnimations();
-});
+class App {
+    constructor() {
+        this.init();
+        this.addGlobalEventListeners();
+    }
 
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.section-title, .service-card, .feature-card, .contact-item, .contact-form');
+    init() {
+        const spinner = document.getElementById('loadingSpinner');
+        if (spinner) {
+            spinner.style.display = 'none';
+        }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+        initServices();
+        initCertifications();
+        initOrganizations();
+        initContact();
+        initAnimations();
+    }
+
+    addGlobalEventListeners() {
+        this.handleImageLoading();
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.handleResize();
+            }, 250);
+        });
+
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const perfData = window.performance.timing;
+                const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+                console.log('Page load time:', loadTime + 'ms');
+            });
+        }
+    }
+
+    handleImageLoading() {
+        const images = document.querySelectorAll('img');
+        
+        images.forEach(img => {
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    }
 
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
+    handleResize() {
+        if (window.innerWidth > 768) {
+            const navbarMenu = document.querySelector('.navbar-menu');
+            if (navbarMenu) {
+                navbarMenu.classList.remove('active');
+            }
+        }
+    }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    new App();
+});
+
+export default App;

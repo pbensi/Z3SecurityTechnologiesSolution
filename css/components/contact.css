@@ -1,0 +1,301 @@
+.contact-section {
+  padding: var(--space-xl) 0;
+   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact-description {
+  margin-bottom: var(--space-lg);
+}
+
+.contact-description h3 {
+  font-size: 1.5rem;
+  color: var(--accent-light);
+  margin-bottom: var(--space-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.contact-description p {
+  color: var(--text-light);
+  line-height: var(--line-height-relaxed);
+}
+
+.contact-items {
+  display: flex;
+  gap: var(--space-md);
+  flex-direction: column;
+}
+
+.contact-details h3 {
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.contact-details p {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  background: var(--glass-dark);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.form-header {
+  margin-bottom: var(--space-lg);
+}
+
+.form-header h3 {
+  font-size: 1.5rem;
+  color: var(--accent-light);
+  margin-bottom: var(--space-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form-header p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-bottom: var(--space-md);
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--text-lighter);
+  outline: 0;
+  font-size: 14px;
+  color: var(--text);
+  padding: 6px 0;
+  background: transparent;
+  transition: var(--transition);
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+  font-size: 14px;
+  cursor: text;
+  top: 15px;
+  color: var(--text-lighter);
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: var(--transition);
+  font-size: 14px;
+  color: var(--text-lighter);
+  pointer-events: none;
+}
+
+.form__field:focus {
+  padding-bottom: 5px;
+  border-width: 3px;
+  border-image: var(--gradient-accent);
+  border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: var(--transition);
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
+}
+
+.form__group select.form__field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d4af37' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.form__group select.form__field option {
+  background-color: var(--bg-primary);
+  color: var(--text);
+  padding: var(--space-sm);
+  font-size: 14px;
+  border: none;
+}
+
+.form__group select.form__field option:hover,
+.form__group select.form__field option:focus {
+  background-color: var(--primary-light);
+  color: var(--accent-light);
+}
+
+.form__group select.form__field option:checked {
+  background-color: var(--accent);
+  color: var(--dark);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form__group select.form__field option:disabled {
+  background-color: var(--bg-secondary);
+  color: var(--text-lighter);
+}
+
+.form__group textarea.form__field {
+  min-height: 100px;
+  resize: vertical;
+  line-height: var(--line-height-normal);
+}
+
+.form-submit {
+  margin-top: var(--space-lg);
+}
+
+.form-submit .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-items iframe {
+  border-radius: var(--radius);
+  margin-top: var(--space-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.google {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+.google-btn {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: var(--space-lg);
+  }
+
+  .contact-item {
+    padding: var(--space-sm);
+  }
+
+  .form-grid {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: var(--space-lg) 0;
+  }
+
+  .contact-form {
+    padding: var(--space-md);
+    border-radius: var(--radius);
+  }
+
+  .contact-description h3,
+  .form-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .form__group {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+@media (prefers-contrast: high) {
+  .contact-form {
+    border: 2px solid var(--accent);
+  }
+
+  .contact-item {
+    border: 1px solid var(--accent);
+  }
+
+  .form__group select.form__field option {
+    border: 1px solid var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .contact-item,
+  .contact-form,
+  .form__field,
+  .form__label,
+  .form-submit .btn {
+    transition: none;
+  }
+}
+
+@supports not (selector(:has(*))) {
+  .form__group select.form__field {
+    color: var(--text);
+  }
+
+  .form__group select.form__field:invalid {
+    color: var(--text-lighter);
+  }
+}

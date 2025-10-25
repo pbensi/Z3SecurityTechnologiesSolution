@@ -1,0 +1,47 @@
+.accreditation {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  padding: 4rem 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.accreditation-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accreditation-badge {
+  width: 100px;
+  height: 100px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  animation: badgeRotate 3s ease-in-out infinite;
+}
+
+@keyframes badgeRotate {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.accreditation-badge i {
+  font-size: 3rem;
+  color: var(--dark);
+}
+
+.accreditation-content h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.accreditation-content p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
