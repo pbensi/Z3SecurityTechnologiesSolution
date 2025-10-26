@@ -47,7 +47,7 @@ function handleCredentialResponse(response) {
     googleUser = parseJwt(googleToken);
 
     hideGoogleOverlay();
-    showNotification(`Signed in as ${googleUser?.email || "user"}`, "success");
+    showNotification(`Signed in as ${googleUser?.email}`, "success");
 
     const sendBtn = document.getElementById("sendBtn");
     if (sendBtn) sendBtn.disabled = false;
