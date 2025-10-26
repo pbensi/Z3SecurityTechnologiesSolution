@@ -1,61 +1,57 @@
-
 let googleToken = "";
 let googleUser = null;
-let isGoogleLoaded = false;
 let googleInitialized = false;
 
 function waitForGoogle() {
     return new Promise((resolve, reject) => {
-        if (window.google?.accounts?.id) {
-            isGoogleLoaded = true;
+        if (window.google && window.google.accounts && window.google.accounts.id) {
             resolve();
             return;
         }
 
-        const maxAttempts = 50;
         let attempts = 0;
-
-        const checkGoogle = setInterval(() => {
+        const maxAttempts = 50;
+        const check = setInterval(() => {
             attempts++;
-            if (window.google?.accounts?.id) {
-                clearInterval(checkGoogle);
-                isGoogleLoaded = true;
+            if (window.google && window.google.accounts && window.google.accounts.id) {
+                clearInterval(check);
                 resolve();
             } else if (attempts >= maxAttempts) {
-                clearInterval(checkGoogle);
+                clearInterval(check);
                 reject(new Error("Google Identity Services failed to load"));
             }
         }, 100);
     });
 }
 
-function handleCredentialResponse(response) {
-    if (!response?.credential) {
-        return;
-    }
-
-    try {
-        googleToken = response.credential;
-        googleUser = parseJwt(googleToken);
-
-        hideGoogleOverlay();
-        enableForm();
-
-        showNotification(`Signed in as ${googleUser.email}`, "success");
-    } catch (err) {
-        console.error("Error parsing Google token:", err);
+function hideGoogleOverlay() {
+    const overlay = document.querySelector(".google");
+    if (overlay && !overlay.classList.contains("hidden")) {
+        overlay.classList.add("hidden");
+        setTimeout(() => (overlay.style.display = "none"), 400);
     }
 }
 
+function handleCredentialResponse(response) {
+    googleToken = response.credential;
+    googleUser = parseJwt(googleToken);
+
+    const sendBtn = document.getElementById("sendBtn");
+    if (sendBtn) sendBtn.disabled = false;
+
+    hideGoogleOverlay();
+    showNotification(`Signed in as ${googleUser.email}`, "success");
+}
 window.handleCredentialResponse = handleCredentialResponse;
+
+const phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '');
+});
 
 export async function initContact() {
     const contactForm = document.getElementById("contactForm");
-    if (!contactForm) {
-        return;
-    }
-
-    disableForm();
+    if (!contactForm) return;
 
     try {
         await waitForGoogle();
@@ -68,44 +64,28 @@ export async function initContact() {
             });
             googleInitialized = true;
         }
+
         google.accounts.id.prompt((notification) => {
-            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
 
-            }
         });
-
-        let retries = 0;
-        const maxRetries = 15;
-        const checkInterval = setInterval(() => {
-            retries++;
-            if (googleUser && googleToken) {
-                hideGoogleOverlay();
-                enableForm();
-                clearInterval(checkInterval);
-            } else if (retries >= maxRetries) {
-                clearInterval(checkInterval);
-            }
-        }, 200);
     } catch (error) {
-        console.error("Google Sign-In load error:", error);
+        console.warn("Google Sign-In not available:", error.message);
+        document.querySelector("#sendBtn").disabled = false;
+        hideGoogleOverlay();
+        showNotification("Form ready (Google sign-in skipped)", "info");
     }
 
-    contactForm.addEventListener("submit", async (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        if (!googleUser || !googleToken) {
-            return;
-        }
-
         const form = e.target;
         const formData = {
             token: googleToken,
-            name: form.name.value.trim() || googleUser.name || "",
+            name: form.name.value.trim() || (googleUser ? googleUser.name : ""),
             phone: form.phone.value.trim(),
             company: form.company.value.trim(),
             service: form.service.value.trim(),
             message: form.message.value.trim(),
-            secret: "z3",
+            secret: "z3"
         };
 
         if (!validateForm(formData)) return;
@@ -124,17 +104,16 @@ async function submitForm(contactForm, formData) {
 
     try {
         const response = await fetch(endpoint, {
-            redirect: "follow",
+            redirect: 'follow',
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
                 "Content-Type": "application/json",
                 "Content-Type": "text/plain;charset=utf-8"
-            },
+            }
         });
 
-        if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
-
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
 
         if (result.success) {
@@ -152,43 +131,39 @@ async function submitForm(contactForm, formData) {
 }
 
 function parseJwt(token) {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const jsonPayload = decodeURIComponent(
-        atob(base64)
-            .split("")
-            .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-            .join("")
-    );
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    ).join(''));
     return JSON.parse(jsonPayload);
 }
 
-function hideGoogleOverlay() {
-    const overlay = document.querySelector(".google");
-    if (!overlay || overlay.classList.contains("hidden")) return;
-
-    overlay.classList.add("hidden");
-    setTimeout(() => (overlay.style.display = "none"), 400);
+function validateForm(formData) {
+    if (!formData.message) {
+        showNotification("Message is required.", "error");
+        return false;
+    }
+    return true;
 }
 
 function showNotification(message, type) {
-    const existing = document.querySelectorAll(".notification");
-    existing.forEach((n) => n.remove());
+    const existing = document.querySelectorAll('.notification');
+    existing.forEach(n => n.remove());
 
-    const notification = document.createElement("div");
+    const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.style.opacity = "1";
-        notification.style.transform = "translateX(0)";
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
     }, 100);
 
     setTimeout(() => {
-        notification.style.opacity = "0";
-        notification.style.transform = "translateX(100%)";
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     }, 4000);
 }
