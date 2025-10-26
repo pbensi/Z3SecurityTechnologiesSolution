@@ -38,7 +38,7 @@ function hideGoogleOverlay() {
     const overlay = document.getElementById("googleOverlay");
     if (!overlay) return;
     overlay.classList.add("hidden");
-    setTimeout(() => overlay.style.display = "none", 400);
+    setTimeout(() => (overlay.style.display = "none"), 400);
 }
 
 function handleCredentialResponse(response) {
@@ -48,6 +48,7 @@ function handleCredentialResponse(response) {
     googleUser = parseJwt(googleToken);
 
     hideGoogleOverlay();
+
     showNotification(`Signed in as ${googleUser?.email || "user"}`, "success");
 
     const sendBtn = document.getElementById("sendBtn");
@@ -79,30 +80,37 @@ async function initGoogleSignIn(clientId) {
         if (!googleInitialized) {
             google.accounts.id.initialize({
                 client_id: clientId,
-                callback: handleCredentialResponse,
+                callback: (response) => {
+                    handleCredentialResponse(response);
+                    hideGoogleOverlay();
+                },
                 auto_select: true,
+                itp_support: true,
+                cancel_on_tap_outside: false,
             });
             googleInitialized = true;
         }
 
-        google.accounts.id.prompt(notification => {
+        google.accounts.id.prompt((notification) => {
+            if (notification.isDisplayed() || notification.isSuccessful()) {
+                hideGoogleOverlay();
+                return;
+            }
+
             if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                console.warn("Google prompt skipped or not displayed");
-                setTimeout(hideGoogleOverlay, 1500);
+                hideGoogleOverlay();
             }
         });
 
         setTimeout(() => {
             if (!googleToken) {
-                console.warn("Google sign-in timeout — hiding overlay");
                 hideGoogleOverlay();
                 const sendBtn = document.getElementById("sendBtn");
                 if (sendBtn) sendBtn.disabled = false;
                 showNotification("Form ready (Google sign-in skipped)", "info");
             }
-        }, 10000);
+        }, 7000);
     } catch (error) {
-        console.warn("Google Sign-In not available:", error);
         hideGoogleOverlay();
         showNotification("Form ready (Google sign-in skipped)", "info");
         const sendBtn = document.getElementById("sendBtn");
@@ -116,7 +124,7 @@ async function submitForm(contactForm, endpoint) {
 
     const formData = {
         token: googleToken,
-        name: contactForm.name.value.trim(),
+        name: contactForm.name.value.trim() || googleUser?.name || "",
         phone: contactForm.phone.value.trim(),
         company: contactForm.company.value.trim(),
         service: contactForm.service.value.trim(),
@@ -136,7 +144,10 @@ async function submitForm(contactForm, endpoint) {
         const response = await fetch(endpoint, {
             redirect: "follow",
             method: "POST",
-            headers: { "Content-Type": "application/json", "Content-Type": "text/plain;charset=utf-8" },
+            headers: {
+                "Content-Type": "application/json",
+                "Content-Type": "text/plain;charset=utf-8"
+            },
             body: JSON.stringify(formData)
         });
 
@@ -148,14 +159,12 @@ async function submitForm(contactForm, endpoint) {
             showNotification(result.message, "error");
         }
     } catch (err) {
-        console.error(err);
         showNotification("Failed to send message. Please try again later.", "error");
     } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     }
 }
-
 
 export async function initContact({ clientId, endpoint }) {
     const contactForm = document.getElementById("contactForm");
