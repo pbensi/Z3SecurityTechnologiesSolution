@@ -125,7 +125,7 @@ img.loaded {
 
 .notification {
   position: fixed;
-  top: 50px;
+  top: 150px;
   right: 50px;
   background: #38a169;
   color: white;
