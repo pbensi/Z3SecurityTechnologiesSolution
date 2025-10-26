@@ -59,11 +59,7 @@ export async function initContact() {
             auto_select: true,
         });
 
-        google.accounts.id.prompt((notification) => {
-            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                enableFormAndHideOverlay("You can still fill out the form without signing in.");
-            }
-        });
+        google.accounts.id.prompt();
 
     } catch (error) {
         enableFormAndHideOverlay("Form ready (Google sign-in skipped)");
