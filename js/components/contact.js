@@ -35,9 +35,12 @@ function handleCredentialResponse(response) {
     if (sendBtn) sendBtn.disabled = false;
 
     const googleOverlay = document.querySelector(".google");
-    if (googleOverlay) googleOverlay.style.display = "none";
+    if (googleOverlay) {
+        googleOverlay.classList.add("hidden");
+        setTimeout(() => (googleOverlay.style.display = "none"), 400);
+    }
 
-    showNotification(`✅ Signed in as ${googleUser.email}`, "success");
+    showNotification(`Signed in as ${googleUser.email}`, "success");
 }
 
 window.handleCredentialResponse = handleCredentialResponse;
@@ -70,7 +73,7 @@ export async function initContact() {
         const googleSection = document.querySelector(".google");
         if (googleSection) googleSection.style.display = "none";
 
-        showNotification("⚠️ Form ready (Google sign-in skipped)", "info");
+        showNotification("Form ready (Google sign-in skipped)", "info");
     }
 
     contactForm.addEventListener('submit', async (e) => {
