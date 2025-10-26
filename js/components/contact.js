@@ -30,25 +30,21 @@ function waitForGoogle() {
 function handleCredentialResponse(response) {
     googleToken = response.credential;
     googleUser = parseJwt(googleToken);
-
     const sendBtn = document.getElementById("sendBtn");
     if (sendBtn) sendBtn.disabled = false;
 
-    const googleOverlay = document.querySelector(".google");
-    if (googleOverlay) {
-        googleOverlay.classList.add("hidden");
-        setTimeout(() => (googleOverlay.style.display = "none"), 400);
-    }
-
+    hideGoogleOverlay();
     showNotification(`Signed in as ${googleUser.email}`, "success");
 }
 
 window.handleCredentialResponse = handleCredentialResponse;
 
 const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', function () {
-    this.value = this.value.replace(/\D/g, '');
-});
+if (phoneInput) {
+    phoneInput.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '');
+    });
+}
 
 export async function initContact() {
     const contactForm = document.getElementById('contactForm');
@@ -63,17 +59,14 @@ export async function initContact() {
             auto_select: true,
         });
 
-        google.accounts.id.prompt();
+        google.accounts.id.prompt((notification) => {
+            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                enableFormAndHideOverlay("You can still fill out the form without signing in.");
+            }
+        });
 
     } catch (error) {
-        console.warn("Google Sign-In not available:", error.message);
-        const sendBtn = document.getElementById("sendBtn");
-        if (sendBtn) sendBtn.disabled = false;
-
-        const googleSection = document.querySelector(".google");
-        if (googleSection) googleSection.style.display = "none";
-
-        showNotification("Form ready (Google sign-in skipped)", "info");
+        enableFormAndHideOverlay("Form ready (Google sign-in skipped)");
     }
 
     contactForm.addEventListener('submit', async (e) => {
@@ -91,9 +84,24 @@ export async function initContact() {
         };
 
         if (!validateForm(formData)) return;
-
         await submitForm(contactForm, formData);
     });
+}
+
+function hideGoogleOverlay() {
+    const googleOverlay = document.querySelector(".google");
+    if (googleOverlay) {
+        googleOverlay.classList.add("hidden");
+        setTimeout(() => (googleOverlay.style.display = "none"), 400);
+    }
+
+    const sendBtn = document.getElementById("sendBtn");
+    if (sendBtn) sendBtn.disabled = false;
+}
+
+function enableFormAndHideOverlay(msg) {
+    hideGoogleOverlay();
+    if (msg) showNotification(msg, "info");
 }
 
 async function submitForm(contactForm, formData) {
@@ -110,16 +118,13 @@ async function submitForm(contactForm, formData) {
             redirect: 'follow',
             method: "POST",
             body: JSON.stringify(formData),
-            headers:
-            {
+            headers: {
                 "Content-Type": "application/json",
                 "Content-Type": "text/plain;charset=utf-8"
             }
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const result = await response.json();
 
