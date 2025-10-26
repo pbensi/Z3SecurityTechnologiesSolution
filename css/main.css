@@ -1,5 +1,7 @@
 @import url('./utilities/variables.css');
 @import url('./utilities/buttons.css');
+@import url('./utilities/modal.css');
+@import url('./utilities/theme-overrides.css');
 @import url('./components/header.css');
 @import url('./components/hero.css');
 @import url('./components/services.css');
@@ -89,17 +91,6 @@ body {
   text-align: center;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .shiny {
   position: relative;
   overflow: hidden;
@@ -130,77 +121,6 @@ img {
 
 img.loaded {
   opacity: 1;
-}
-
-.loading-spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.3s ease;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.theme-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: var(--gradient-accent);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-  z-index: 1000;
-  transition: var(--transition);
-  color: var(--white);
-  font-size: 1.3rem;
-  animation: themeToggleEnter 0.6s ease-out 1s both;
-}
-
-@keyframes themeToggleEnter {
-  from {
-    opacity: 0;
-    transform: scale(0) rotate(-180deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-  }
-}
-
-.theme-toggle:hover {
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: var(--shadow-hover);
 }
 
 .notification {
@@ -238,13 +158,6 @@ img.loaded {
   h2 {
     font-size: 2rem !important;
   }
-
-  .btn,
-  .category-btn,
-  .nav-link {
-    min-height: 44px;
-    min-width: 44px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -259,10 +172,7 @@ img.loaded {
   }
 
   .section-header,
-  .section-header h2::after,
-  .accreditation-badge,
-  .theme-toggle,
-  .loading-spinner {
+  .section-header h2::after {
     animation: none !important;
   }
 
@@ -273,15 +183,5 @@ img.loaded {
 
   .section-header h2::after {
     transform: scaleX(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .theme-toggle {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.1rem;
   }
 }

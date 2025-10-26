@@ -17,27 +17,34 @@
             <div class="navbar-brand">
                 <a href="#home">
                     <div class="navbar-logo">
-                        <img src="./assets/img/s3-Logo.jpg" alt="">
+                        <img src="./assets/img/logo.png" alt="Logo">
                         <span>Z3 Security</span>
                     </div>
-                    <div class="tagline">Technologies Solution</div>
                 </a>
+                <div class="tagline">Technologies Solution</div>
             </div>
 
-            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-            <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <div class="navbar-menu">
+            <div class="navbar-menu" id="navbarMenu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#capacity" class="nav-link">Expertise</a>
                 <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#clients" class="nav-link">Clients</a>
                 <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="navbar-actions">
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="themeIcon"></i>
+                    </button>
+                </div>
+
+                <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -52,20 +59,7 @@
                 <h1 class="hero-title">Complete Security &amp; Auxiliary Systems</h1>
                 <p class="hero-subtitle">Professional design, supply, installation, and maintenance of comprehensive
                     security solutions with nationwide coverage.</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Expert Engineers</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
-                    </div>
-                </div>
+
                 <div class="hero-btns">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i>
@@ -94,7 +88,7 @@
                 </div>
                 <div class="badge-item">
                     <i class="fas fa-users"></i>
-                    <span>50+ Certified Engineers</span>
+                    <span>Certified Engineers</span>
                 </div>
                 <div class="badge-item">
                     <i class="fas fa-map-marker-alt"></i>
@@ -588,7 +582,7 @@
                     needs</p>
             </div>
             <div class="capacity-grid">
-                <div class="capacity-card fade-in shiny">
+                <div class="capacity-card shiny">
                     <h3><i class="fas fa-tools"></i> Technical Engineer Skills</h3>
                     <ul class="capacity-list">
                         <li>Installer and programmer of Telephone System (PABX)</li>
@@ -602,7 +596,7 @@
                         <li>Access Control System configuration</li>
                     </ul>
                 </div>
-                <div class="capacity-card fade-in shiny">
+                <div class="capacity-card shiny">
                     <h3><i class="fas fa-drafting-compass"></i> Design & Integration</h3>
                     <ul class="capacity-list">
                         <li>Design safety and security alarm/auxiliary systems</li>
@@ -700,16 +694,15 @@
                 <div class="clients-column">
                     <h3>Private</h3>
                     <div class="clients-grid">
-                        <div class="client-card"><img src="assets/img/private/priv-1.png" alt="Client 1"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-2.png" alt="Client 2"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-10.png" alt="Client 10"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-7.png" alt="Client 7"></div>
+                        <div class="client-card"><img src="assets/img/private/priv-20.png" alt="Client 20"></div>
                         <div class="client-card"><img src="assets/img/private/priv-3.png" alt="Client 3"></div>
                         <div class="client-card"><img src="assets/img/private/priv-4.png" alt="Client 4"></div>
                         <div class="client-card"><img src="assets/img/private/priv-5.jpg" alt="Client 5"></div>
                         <div class="client-card"><img src="assets/img/private/priv-6.png" alt="Client 6"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-7.png" alt="Client 7"></div>
                         <div class="client-card"><img src="assets/img/private/priv-8.png" alt="Client 8"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-9.jpg" alt="Client 9"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-10.png" alt="Client 10"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-11.png" alt="Client 11"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-12.png" alt="Client 12"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-13.jpg" alt="Client 13"></div>
@@ -719,7 +712,8 @@
                         <div class="client-card hidden"><img src="assets/img/private/priv-17.png" alt="Client 17"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-18.png" alt="Client 18"></div>
                         <div class="client-card hidden"><img src="assets/img/private/priv-19.png" alt="Client 19"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-20.png" alt="Client 20"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-1.png" alt="Client 1"></div>
+                        <div class="client-card hidden"><img src="assets/img/private/priv-2.png" alt="Client 2"></div>
                     </div>
                     <div class="clients-cta">
                         <button class="btn btn-primary see-more">See More</button>
@@ -734,8 +728,6 @@
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-handshake"></i> Get in Touch</a>
             </div>
         </div>
-
-
     </section>
 
     <!-- PARTNERS SECTION -->
@@ -748,7 +740,7 @@
             </div>
             <div class="partners-container">
                 <div class="partners-gradient left"></div>
-                <div class="partners-track">
+                <div class="partners-track" id="partnersTrack">
                     <div class="partner-logo"><img src="./assets/img/partner/part-1.png" alt="part 1 Logo"
                             loading="lazy"></div>
                     <div class="partner-logo"><img src="./assets/img/partner/part-2.png" alt="part 2 Logo"
@@ -802,7 +794,6 @@
                     <div class="partner-logo"><img src="./assets/img/partner/part-26.png" alt="part 26 Logo"
                             loading="lazy"></div>
                 </div>
-
                 <div class="partners-gradient right"></div>
             </div>
         </div>
@@ -880,9 +871,9 @@
                             <select class="form__field" id="service" name="service" aria-required="true">
                                 <option value="">Select a service</option>
                                 <option value="Security-Systems">Security Systems</option>
-                                <option value="Communication-Systems">Communication Systems</option>
+                                <option value="Communication-Systems">Communication</option>
                                 <option value="Business-Systems">Business Systems</option>
-                                <option value="Electrical-Works">Electrical Works</option>
+                                <option value="Electrical-Works">Electrical & Power</option>
                                 <option value="Maintenance">Maintenance</option>
                                 <option value="other">Other</option>
                             </select>
@@ -937,11 +928,11 @@
                 <div class="footer-column">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Security Systems</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Communication</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Business Systems</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Electrical & Power</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                        <li><a href="#services">Security Systems</a></li>
+                        <li><a href="#services">Communication</a></li>
+                        <li><a href="#services">Business Systems</a></li>
+                        <li><a href="#services">Electrical & Power</a></li>
+                        <li><a href="#services">Maintenance</a></li>
                     </ul>
                 </div>
             </div>
@@ -952,7 +943,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/App.js"></script>
 </body>
 
 </html>

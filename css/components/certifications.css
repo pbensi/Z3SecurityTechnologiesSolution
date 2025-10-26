@@ -2,7 +2,7 @@
   background: rgba(255, 255, 255, 0.03);
   padding: var(--space-3xl) var(--space-lg);
   backdrop-filter: blur(10px);
-    border-top: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
 }
 

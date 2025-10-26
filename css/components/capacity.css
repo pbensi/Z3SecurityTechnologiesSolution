@@ -78,10 +78,6 @@
   transition: var(--transition);
 }
 
-.capacity-card:hover .capacity-list li {
-  color: var(--white);
-}
-
 .capacity-list li:last-child {
   border-bottom: none;
 }
