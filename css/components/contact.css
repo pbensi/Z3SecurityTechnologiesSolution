@@ -220,7 +220,7 @@
   pointer-events: none;
 }
 
-.googleBtnContainer {
+.google-btn {
   display: flex;
   justify-content: center;
 }
