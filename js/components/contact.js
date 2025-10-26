@@ -26,7 +26,6 @@ function showNotification(message, type = "info") {
         n.style.opacity = "1";
         n.style.transform = "translateX(0)";
     }, 100);
-
     setTimeout(() => {
         n.style.opacity = "0";
         n.style.transform = "translateX(100%)";
@@ -38,7 +37,7 @@ function hideGoogleOverlay() {
     const overlay = document.getElementById("googleOverlay");
     if (!overlay) return;
     overlay.classList.add("hidden");
-    setTimeout(() => (overlay.style.display = "none"), 400);
+    setTimeout(() => overlay.style.display = "none", 400);
 }
 
 function handleCredentialResponse(response) {
@@ -48,7 +47,6 @@ function handleCredentialResponse(response) {
     googleUser = parseJwt(googleToken);
 
     hideGoogleOverlay();
-
     showNotification(`Signed in as ${googleUser?.email || "user"}`, "success");
 
     const sendBtn = document.getElementById("sendBtn");
@@ -80,41 +78,21 @@ async function initGoogleSignIn(clientId) {
         if (!googleInitialized) {
             google.accounts.id.initialize({
                 client_id: clientId,
-                callback: (response) => {
-                    handleCredentialResponse(response);
-                    hideGoogleOverlay();
-                },
-                auto_select: true,
-                itp_support: true,
-                cancel_on_tap_outside: false,
+                callback: handleCredentialResponse,
+                auto_select: false,
             });
             googleInitialized = true;
         }
 
-        google.accounts.id.prompt((notification) => {
-            if (notification.isDisplayed() || notification.isSuccessful()) {
-                hideGoogleOverlay();
-                return;
-            }
-
-            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                hideGoogleOverlay();
-            }
-        });
-
-        setTimeout(() => {
-            if (!googleToken) {
-                hideGoogleOverlay();
-                const sendBtn = document.getElementById("sendBtn");
-                if (sendBtn) sendBtn.disabled = false;
-                showNotification("Form ready (Google sign-in skipped)", "info");
-            }
-        }, 7000);
+        google.accounts.id.renderButton(
+            document.getElementById("googleBtnContainer"),
+            { theme: "outline", size: "large" }
+        );
     } catch (error) {
         hideGoogleOverlay();
-        showNotification("Form ready (Google sign-in skipped)", "info");
         const sendBtn = document.getElementById("sendBtn");
         if (sendBtn) sendBtn.disabled = false;
+        showNotification("Form ready (Google sign-in skipped)", "info");
     }
 }
 
@@ -124,7 +102,7 @@ async function submitForm(contactForm, endpoint) {
 
     const formData = {
         token: googleToken,
-        name: contactForm.name.value.trim() || googleUser?.name || "",
+        name: contactForm.name.value.trim(),
         phone: contactForm.phone.value.trim(),
         company: contactForm.company.value.trim(),
         service: contactForm.service.value.trim(),
