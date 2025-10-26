@@ -1,6 +1,8 @@
+
 let googleToken = "";
 let googleUser = null;
 let isGoogleLoaded = false;
+let googleInitialized = false;
 
 function waitForGoogle() {
     return new Promise((resolve, reject) => {
@@ -28,61 +30,70 @@ function waitForGoogle() {
 }
 
 function handleCredentialResponse(response) {
-    googleToken = response.credential;
-    googleUser = parseJwt(googleToken);
+    if (!response?.credential) {
+        return;
+    }
 
-    const sendBtn = document.getElementById("sendBtn");
-    if (sendBtn) sendBtn.disabled = false;
+    try {
+        googleToken = response.credential;
+        googleUser = parseJwt(googleToken);
 
-    hideGoogleOverlay();
+        hideGoogleOverlay();
+        enableForm();
 
-    showNotification(`Signed in as ${googleUser.email}`, "success");
+        showNotification(`Signed in as ${googleUser.email}`, "success");
+    } catch (err) {
+        console.error("Error parsing Google token:", err);
+    }
 }
 
 window.handleCredentialResponse = handleCredentialResponse;
 
-const phoneInput = document.getElementById("phone");
-if (phoneInput) {
-    phoneInput.addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "");
-    });
-}
-
 export async function initContact() {
     const contactForm = document.getElementById("contactForm");
-    if (!contactForm) return;
+    if (!contactForm) {
+        return;
+    }
 
-    const sendBtn = document.getElementById("sendBtn");
-    if (sendBtn) sendBtn.disabled = true;
+    disableForm();
 
     try {
         await waitForGoogle();
 
-        google.accounts.id.initialize({
-            client_id: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-            callback: handleCredentialResponse,
-            auto_select: true,
-        });
-
+        if (!googleInitialized) {
+            google.accounts.id.initialize({
+                client_id: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
+                callback: handleCredentialResponse,
+                auto_select: true,
+            });
+            googleInitialized = true;
+        }
         google.accounts.id.prompt((notification) => {
             if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+
             }
         });
 
-        setTimeout(() => {
+        let retries = 0;
+        const maxRetries = 15;
+        const checkInterval = setInterval(() => {
+            retries++;
             if (googleUser && googleToken) {
                 hideGoogleOverlay();
+                enableForm();
+                clearInterval(checkInterval);
+            } else if (retries >= maxRetries) {
+                clearInterval(checkInterval);
             }
-        }, 1500);
+        }, 200);
     } catch (error) {
-        showNotification("Google Sign-In not available", "error");
+        console.error("Google Sign-In load error:", error);
     }
 
     contactForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         if (!googleUser || !googleToken) {
-            showNotification("Please sign in with Google first.", "error");
             return;
         }
 
@@ -113,7 +124,7 @@ async function submitForm(contactForm, formData) {
 
     try {
         const response = await fetch(endpoint, {
-            redirect: 'follow',
+            redirect: "follow",
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -122,7 +133,7 @@ async function submitForm(contactForm, formData) {
             },
         });
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
 
         const result = await response.json();
 
@@ -152,12 +163,12 @@ function parseJwt(token) {
     return JSON.parse(jsonPayload);
 }
 
-function validateForm(formData) {
-    if (!formData.message) {
-        showNotification("Message is required.", "error");
-        return false;
-    }
-    return true;
+function hideGoogleOverlay() {
+    const overlay = document.querySelector(".google");
+    if (!overlay || overlay.classList.contains("hidden")) return;
+
+    overlay.classList.add("hidden");
+    setTimeout(() => (overlay.style.display = "none"), 400);
 }
 
 function showNotification(message, type) {
@@ -180,15 +191,4 @@ function showNotification(message, type) {
         notification.style.transform = "translateX(100%)";
         setTimeout(() => notification.remove(), 300);
     }, 4000);
-}
-
-function hideGoogleOverlay() {
-    const overlay = document.querySelector(".google");
-    if (overlay) {
-        overlay.classList.add("hidden");
-        setTimeout(() => (overlay.style.display = "none"), 400);
-    }
-
-    const sendBtn = document.getElementById("sendBtn");
-    if (sendBtn) sendBtn.disabled = false;
 }
