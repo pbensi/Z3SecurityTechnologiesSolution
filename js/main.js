@@ -19,7 +19,10 @@ class App {
         initServices();
         initCertifications();
         initOrganizations();
-        initContact();
+        initContact({
+            clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
+            endpoint: "https://script.google.com/macros/s/AKfycbymCpg0NATb0ymqmPMb0Xh_UfdL5Bc1O3ABUIrZYxpUm1s91mJSbo-GRFdjBRth6F3f/exec"
+        });
         initAnimations();
     }
 
@@ -45,12 +48,12 @@ class App {
 
     handleImageLoading() {
         const images = document.querySelectorAll('img');
-        
+
         images.forEach(img => {
             if (img.complete) {
                 img.classList.add('loaded');
             } else {
-                img.addEventListener('load', function() {
+                img.addEventListener('load', function () {
                     this.classList.add('loaded');
                 });
             }

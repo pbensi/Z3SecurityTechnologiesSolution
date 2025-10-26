@@ -2,120 +2,145 @@ let googleToken = "";
 let googleUser = null;
 let googleInitialized = false;
 
-function waitForGoogle() {
-    return new Promise((resolve, reject) => {
-        if (window.google && window.google.accounts && window.google.accounts.id) {
-            resolve();
-            return;
-        }
+function parseJwt(token) {
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        ).join(''));
+        return JSON.parse(jsonPayload);
+    } catch {
+        return {};
+    }
+}
 
+function showNotification(message, type = "info") {
+    document.querySelectorAll(".notification").forEach(n => n.remove());
+    const n = document.createElement("div");
+    n.className = `notification ${type}`;
+    n.textContent = message;
+    document.body.appendChild(n);
+
+    setTimeout(() => {
+        n.style.opacity = "1";
+        n.style.transform = "translateX(0)";
+    }, 100);
+
+    setTimeout(() => {
+        n.style.opacity = "0";
+        n.style.transform = "translateX(100%)";
+        setTimeout(() => n.remove(), 300);
+    }, 4000);
+}
+
+function hideGoogleOverlay() {
+    const overlay = document.getElementById("googleOverlay");
+    if (!overlay) return;
+    overlay.classList.add("hidden");
+    setTimeout(() => overlay.style.display = "none", 400);
+}
+
+function handleCredentialResponse(response) {
+    if (!response?.credential) return;
+
+    googleToken = response.credential;
+    googleUser = parseJwt(googleToken);
+
+    hideGoogleOverlay();
+    showNotification(`Signed in as ${googleUser?.email || "user"}`, "success");
+
+    const sendBtn = document.getElementById("sendBtn");
+    if (sendBtn) sendBtn.disabled = false;
+}
+window.handleCredentialResponse = handleCredentialResponse;
+
+async function waitForGoogle() {
+    if (window.google?.accounts?.id) return true;
+    return new Promise((resolve, reject) => {
         let attempts = 0;
-        const maxAttempts = 50;
-        const check = setInterval(() => {
+        const interval = setInterval(() => {
             attempts++;
-            if (window.google && window.google.accounts && window.google.accounts.id) {
-                clearInterval(check);
-                resolve();
-            } else if (attempts >= maxAttempts) {
-                clearInterval(check);
-                reject(new Error("Google Identity Services failed to load"));
+            if (window.google?.accounts?.id) {
+                clearInterval(interval);
+                resolve(true);
+            } else if (attempts > 50) {
+                clearInterval(interval);
+                reject("Google Identity Services failed to load");
             }
         }, 100);
     });
 }
 
-function hideGoogleOverlay() {
-    const overlay = document.querySelector(".google");
-    if (overlay && !overlay.classList.contains("hidden")) {
-        overlay.classList.add("hidden");
-        setTimeout(() => (overlay.style.display = "none"), 400);
-    }
-}
-
-function handleCredentialResponse(response) {
-    googleToken = response.credential;
-    googleUser = parseJwt(googleToken);
-
-    const sendBtn = document.getElementById("sendBtn");
-    if (sendBtn) sendBtn.disabled = false;
-
-    hideGoogleOverlay();
-    showNotification(`Signed in as ${googleUser.email}`, "success");
-}
-window.handleCredentialResponse = handleCredentialResponse;
-
-const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', function () {
-    this.value = this.value.replace(/\D/g, '');
-});
-
-export async function initContact() {
-    const contactForm = document.getElementById("contactForm");
-    if (!contactForm) return;
-
+async function initGoogleSignIn(clientId) {
     try {
         await waitForGoogle();
 
         if (!googleInitialized) {
             google.accounts.id.initialize({
-                client_id: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
+                client_id: clientId,
                 callback: handleCredentialResponse,
                 auto_select: true,
             });
             googleInitialized = true;
         }
 
-        google.accounts.id.prompt((notification) => {
-
+        google.accounts.id.prompt(notification => {
+            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                console.warn("Google prompt skipped or not displayed");
+                setTimeout(hideGoogleOverlay, 1500);
+            }
         });
+
+        setTimeout(() => {
+            if (!googleToken) {
+                console.warn("Google sign-in timeout — hiding overlay");
+                hideGoogleOverlay();
+                const sendBtn = document.getElementById("sendBtn");
+                if (sendBtn) sendBtn.disabled = false;
+                showNotification("Form ready (Google sign-in skipped)", "info");
+            }
+        }, 10000);
     } catch (error) {
-        console.warn("Google Sign-In not available:", error.message);
-        document.querySelector("#sendBtn").disabled = false;
+        console.warn("Google Sign-In not available:", error);
         hideGoogleOverlay();
         showNotification("Form ready (Google sign-in skipped)", "info");
+        const sendBtn = document.getElementById("sendBtn");
+        if (sendBtn) sendBtn.disabled = false;
     }
-
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const formData = {
-            token: googleToken,
-            name: form.name.value.trim() || (googleUser ? googleUser.name : ""),
-            phone: form.phone.value.trim(),
-            company: form.company.value.trim(),
-            service: form.service.value.trim(),
-            message: form.message.value.trim(),
-            secret: "z3"
-        };
-
-        if (!validateForm(formData)) return;
-        await submitForm(contactForm, formData);
-    });
 }
 
-async function submitForm(contactForm, formData) {
+async function submitForm(contactForm, endpoint) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
+
+    const formData = {
+        token: googleToken,
+        name: contactForm.name.value.trim(),
+        phone: contactForm.phone.value.trim(),
+        company: contactForm.company.value.trim(),
+        service: contactForm.service.value.trim(),
+        message: contactForm.message.value.trim(),
+        secret: "z3",
+    };
+
+    if (!formData.message) {
+        showNotification("Message is required.", "error");
+        return;
+    }
 
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    const endpoint = "https://script.google.com/macros/s/AKfycbymCpg0NATb0ymqmPMb0Xh_UfdL5Bc1O3ABUIrZYxpUm1s91mJSbo-GRFdjBRth6F3f/exec";
-
     try {
         const response = await fetch(endpoint, {
-            redirect: 'follow',
+            redirect: "follow",
             method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json",
-                "Content-Type": "text/plain;charset=utf-8"
-            }
+            headers: { "Content-Type": "application/json", "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(formData)
         });
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
-
         if (result.success) {
             showNotification(result.message, "success");
             contactForm.reset();
@@ -123,6 +148,7 @@ async function submitForm(contactForm, formData) {
             showNotification(result.message, "error");
         }
     } catch (err) {
+        console.error(err);
         showNotification("Failed to send message. Please try again later.", "error");
     } finally {
         submitBtn.innerHTML = originalText;
@@ -130,40 +156,23 @@ async function submitForm(contactForm, formData) {
     }
 }
 
-function parseJwt(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
-        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-    ).join(''));
-    return JSON.parse(jsonPayload);
-}
 
-function validateForm(formData) {
-    if (!formData.message) {
-        showNotification("Message is required.", "error");
-        return false;
+export async function initContact({ clientId, endpoint }) {
+    const contactForm = document.getElementById("contactForm");
+    const phoneInput = document.getElementById("phone");
+
+    if (phoneInput) {
+        phoneInput.addEventListener("input", () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, "");
+        });
     }
-    return true;
-}
 
-function showNotification(message, type) {
-    const existing = document.querySelectorAll('.notification');
-    existing.forEach(n => n.remove());
+    if (contactForm) {
+        contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            await submitForm(contactForm, endpoint);
+        });
+    }
 
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    }, 4000);
+    await initGoogleSignIn(clientId);
 }
