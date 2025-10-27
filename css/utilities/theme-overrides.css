@@ -122,6 +122,7 @@
 /* ===== CLIENTS SECTION ===== */
 [data-theme="light"] .clients-section {
     background: var(--bg-secondary);
+    color: var(--text-light);
 }
 
 [data-theme="light"] .client-card {
