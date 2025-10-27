@@ -53,6 +53,8 @@ class App {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("year").textContent = new Date().getFullYear();
+
     new App();
     new Theme();
     new Menu();
