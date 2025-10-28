@@ -28,11 +28,6 @@
     backdrop-filter: blur(20px);
 }
 
-[data-theme="light"] .service-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-}
-
 [data-theme="light"] .service-card h4 {
     color: var(--primary);
 }
@@ -68,6 +63,91 @@
     color: var(--text-light);
 }
 
+/* ===== ABOUT US SECTION ===== */
+[data-theme="light"] .about {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .about::before {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.03) 0%, rgba(44, 80, 163, 0.06) 100%);
+}
+
+[data-theme="light"] .about::after {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.03) 0%, rgba(44, 80, 163, 0.06) 100%);
+}
+
+[data-theme="light"] .about-text h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .about-text p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .about-highlight span {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .feature {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .feature h4 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .feature p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .stats {
+    background: var(--gradient);
+}
+
+[data-theme="light"] .stats::before {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23000000" opacity="0.03"><polygon points="1000,100 1000,0 0,100"/></svg>');
+}
+
+/* ===== WHY US SECTION ===== */
+[data-theme="light"] .why-us {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .why-us::before {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.02) 0%, rgba(44, 80, 163, 0.04) 100%);
+}
+
+[data-theme="light"] .why-us::after {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.02) 0%, rgba(44, 80, 163, 0.04) 100%);
+}
+
+[data-theme="light"] .why-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .why-card h4 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .why-card p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .why-cta {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .why-cta h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .why-cta p {
+    color: var(--text-light);
+}
+
 /* ===== CAPACITY SECTION ===== */
 [data-theme="light"] .capacity {
     background: var(--bg-secondary);
@@ -76,10 +156,6 @@
 [data-theme="light"] .capacity-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
-}
-
-[data-theme="light"] .capacity-card:hover {
-    border-color: var(--accent);
 }
 
 [data-theme="light"] .capacity-card h3 {
@@ -94,11 +170,6 @@
 /* ===== CERTIFICATIONS ===== */
 [data-theme="light"] .certifications {
     background: var(--bg-secondary);
-}
-
-[data-theme="light"] .cert-item img:hover {
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
 }
 
 /* ===== ACCREDITATION ===== */
@@ -128,11 +199,6 @@
 [data-theme="light"] .client-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
-}
-
-[data-theme="light"] .client-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
 
 [data-theme="light"] .clients-partner-us {
@@ -240,19 +306,10 @@
     color: var(--white);
 }
 
-[data-theme="light"] .footer-links a:hover {
-    color: var(--accent-light);
-}
-
 [data-theme="light"] .social-links a {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--white);
-}
-
-[data-theme="light"] .social-links a:hover {
-    background: var(--accent);
-    color: var(--primary-dark);
 }
 
 [data-theme="light"] .copyright {

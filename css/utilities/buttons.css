@@ -1,34 +1,35 @@
-@import url('./variables.css');
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-xl);
+  gap: clamp(0.4rem, 1vw, 0.8rem);
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.2rem, 3vw, 1.8rem);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
   border-radius: var(--radius-lg);
   cursor: pointer;
   position: relative;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: var(--transition);
   user-select: none;
   border: none;
+  min-height: 44px;
+  min-width: 120px;
+  text-align: center;
 }
 
 .btn-primary {
   background: linear-gradient(180deg, var(--accent-light) 0%, var(--accent-dark) 100%);
   color: var(--dark);
   border: 2px solid var(--accent-dark);
-    box-shadow:
+  box-shadow:
     0 4px 0 var(--accent-dark),
     inset 0 2px 2px rgba(255, 255, 255, 0.6),
     inset 0 -3px 5px rgba(0, 0, 0, 0.4);
-  text-shadow: 0 1px 1px rgba(255,255,255,0.3);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .btn-primary:hover {
@@ -36,16 +37,16 @@
   transform: translateY(2px);
   box-shadow:
     0 2px 0 var(--accent-dark),
-    inset 0 1px 1px rgba(255,255,255,0.5),
-    inset 0 -2px 4px rgba(0,0,0,0.4);
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary:active {
   transform: translateY(3px);
   background: linear-gradient(180deg, var(--accent-dark), var(--accent));
   box-shadow:
-    inset 0 3px 6px rgba(0,0,0,0.5),
-    0 1px 0 rgba(255,255,255,0.2);
+    inset 0 3px 6px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary {
@@ -63,15 +64,15 @@
   transform: translateY(2px);
   box-shadow:
     0 2px 0 var(--primary-dark),
-    inset 0 2px 2px rgba(255,255,255,0.2),
-    inset 0 -2px 4px rgba(0,0,0,0.3);
+    inset 0 2px 2px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary:active {
   transform: translateY(3px);
   box-shadow:
-    inset 0 3px 6px rgba(0,0,0,0.5),
-    0 1px 0 rgba(255,255,255,0.1);
+    inset 0 3px 6px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-outline {
@@ -80,7 +81,7 @@
   border: 2px solid var(--accent);
   box-shadow:
     inset 0 0 5px rgba(255, 215, 80, 0.3),
-    0 2px 6px rgba(0,0,0,0.2);
+    0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-outline:hover {
@@ -89,21 +90,91 @@
   transform: translateY(2px);
   box-shadow:
     0 2px 0 var(--accent-dark),
-    inset 0 1px 2px rgba(255,255,255,0.4);
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1200px) {
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    min-width: 140px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .btn {
+    padding: 0.85rem 1.6rem;
+    font-size: 1rem;
+    min-width: 130px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .btn {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.95rem;
+    min-width: 120px;
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 479px) {
   .btn {
     width: 100%;
-    justify-content: center;
-    font-size: 0.95rem;
-    padding: var(--space-md) var(--space-lg);
+    max-width: 280px;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    min-height: 42px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn:active {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
   }
 }
 
 @media (prefers-contrast: high) {
   .btn {
-    border: 2px solid currentColor !important;
+    border: 3px solid currentColor !important;
     box-shadow: none !important;
+  }
+
+  .btn-primary {
+    background: var(--accent) !important;
+  }
+
+  .btn-secondary {
+    background: var(--primary) !important;
   }
 }

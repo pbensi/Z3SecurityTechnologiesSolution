@@ -2,25 +2,25 @@
   text-align: center;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
-  padding: 4rem 0;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
 }
 
 .accreditation-content {
-  max-width: 600px;
+  max-width: min(600px, 90vw);
   margin: 0 auto;
 }
 
 .accreditation-badge {
-  width: 100px;
-  height: 100px;
+  width: clamp(70px, 15vw, 100px);
+  height: clamp(70px, 15vw, 100px);
   background: var(--accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 2rem;
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
   animation: badgeRotate 3s ease-in-out infinite;
 }
 
@@ -31,17 +31,206 @@
 }
 
 .accreditation-badge i {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: var(--dark);
 }
 
 .accreditation-content h3 {
   color: var(--accent);
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
+  margin-bottom: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  line-height: 1.2;
 }
 
 .accreditation-content p {
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
   color: var(--text);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  line-height: 1.5;
+}
+
+.accreditation-content p strong {
+  color: var(--accent);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+@media (min-width: 1400px) {
+  .accreditation-content {
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .accreditation-content {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .accreditation {
+    padding: 4rem 2rem;
+  }
+  
+  .accreditation-badge {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .accreditation-badge i {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .accreditation {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .accreditation-badge {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 1.8rem;
+  }
+  
+  .accreditation-badge i {
+    font-size: 2.3rem;
+  }
+  
+  .accreditation-content h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 599px) {
+  .accreditation {
+    padding: 3rem 1.2rem;
+  }
+  
+  .accreditation-content {
+    max-width: 400px;
+  }
+  
+  .accreditation-badge {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .accreditation-badge i {
+    font-size: 2rem;
+  }
+  
+  .accreditation-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .accreditation-content p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 479px) {
+  .accreditation {
+    padding: 2.5rem 1rem;
+  }
+  
+  .accreditation-content {
+    max-width: 350px;
+  }
+  
+  .accreditation-badge {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 1.2rem;
+  }
+  
+  .accreditation-badge i {
+    font-size: 1.8rem;
+  }
+  
+  .accreditation-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .accreditation-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .accreditation {
+    padding: 2rem 0.8rem;
+  }
+  
+  .accreditation-content {
+    max-width: 300px;
+  }
+  
+  .accreditation-badge {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+  }
+  
+  .accreditation-badge i {
+    font-size: 1.6rem;
+  }
+  
+  .accreditation-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .accreditation-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .accreditation {
+    padding: 1.5rem 0.6rem;
+  }
+  
+  .accreditation-content {
+    max-width: 280px;
+  }
+  
+  .accreditation-badge {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .accreditation-badge i {
+    font-size: 1.5rem;
+  }
+  
+  .accreditation-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .accreditation-badge {
+    animation: badgeRotate 3s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accreditation-badge {
+    animation: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .accreditation-badge {
+    border: 3px solid var(--dark);
+  }
+  
+  .accreditation-content h3 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
 }

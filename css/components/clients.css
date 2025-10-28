@@ -24,14 +24,15 @@
 
 .clients-columns {
   display: flex;
-  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
   justify-content: center;
+  align-items: flex-start;
 }
 
 .clients-column {
-  flex: 1 1 280px;
-  max-width: 480px;
-  min-width: 250px;
+  flex: 1 1 min(100%, 400px);
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
@@ -40,13 +41,15 @@
 .clients-column h3 {
   margin-bottom: clamp(0.8rem, 2vw, 1rem);
   font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  text-align: center;
 }
 
 .clients-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: clamp(0.8rem, 2vw, 1.2rem);
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.6rem, 2vw, 1.2rem);
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -59,12 +62,14 @@
   align-items: center;
   justify-content: center;
   transition: var(--transition);
-  width: 100%;
-  max-width: 120px;
+  flex: 0 0 auto;
+  width: calc(25% - clamp(0.6rem, 2vw, 1.2rem) * 0.75);
+  max-width: 140px;
+  min-width: 60px;
   overflow: hidden;
-  flex-shrink: 0;
-  padding: 0.8rem;
+  padding: min(1rem, 3vw);
   position: relative;
+  cursor: pointer;
 }
 
 .client-card img {
@@ -78,9 +83,103 @@
   filter: brightness(1) contrast(1);
 }
 
-.client-card:hover {
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25);
-  border-color: var(--accent);
+/* Read Me Button */
+.read-me-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 215, 0, 0.9);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #000;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.client-card:hover .read-me-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Client Description */
+.client-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  border: 1px solid var(--accent);
+}
+
+.client-card.active .client-description {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.client-description h4 {
+  color: var(--accent);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.client-description p {
+  color: var(--white);
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.close-description {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 1.2rem;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-description:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.1);
+}
+
+/* Overlay when description is active */
+.client-card.active {
+  z-index: 100;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
 }
 
 .client-card.hidden {
@@ -100,7 +199,7 @@
 
 .clients-cta {
   text-align: center;
-  margin-top: clamp(0.8rem, 2vw, 1.2rem);
+  margin-top: clamp(1rem, 3vw, 1.5rem);
 }
 
 .clients-cta .btn {
@@ -108,14 +207,16 @@
   cursor: pointer;
   padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(1rem, 2vw, 1.5rem);
   font-size: clamp(0.85rem, 1.8vw, 1rem);
+  min-width: 140px;
 }
 
 .clients-partner-us {
   border-radius: var(--radius-lg);
   padding: clamp(1.5rem, 5vw, 3rem);
-  margin-top: clamp(1.5rem, 5vw, 4rem);
+  margin-top: clamp(2rem, 6vw, 4rem);
   text-align: center;
   border: 1px solid var(--glass-border);
+  width: 100%;
 }
 
 .clients-partner-us h3 {
@@ -133,73 +234,160 @@
   line-height: 1.5;
 }
 
-@media (max-width: 992px) {
-  .clients-columns {
-    flex-direction: column;
-    gap: clamp(1rem, 3vw, 2rem);
-  }
-
-  .clients-column {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-
+/* Responsive Design */
+@media (min-width: 1400px) {
   .client-card {
-    max-width: 110px;
-    padding: 0.7rem;
+    width: calc(20% - clamp(0.6rem, 2vw, 1.2rem) * 0.8);
+    max-width: 150px;
+    padding: 1rem;
   }
+}
 
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .client-card {
+    width: calc(25% - clamp(0.6rem, 2vw, 1.2rem) * 0.75);
+    max-width: 130px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .clients-column {
+    flex: 1 1 min(100%, 350px);
+  }
+  
+  .client-card {
+    width: calc(25% - clamp(0.6rem, 2vw, 1rem) * 0.75);
+    max-width: 110px;
+    padding: 0.8rem;
+  }
+  
   .client-card img {
     height: 65%;
   }
+  
+  .read-me-btn {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
 }
 
-@media (max-width: 768px) {
-  .clients-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: clamp(0.6rem, 2vw, 1rem);
+@media (min-width: 600px) and (max-width: 767px) {
+  .clients-columns {
+    gap: clamp(1.5rem, 4vw, 2.5rem);
   }
-
+  
   .client-card {
-    max-width: 90px;
-    padding: 0.6rem;
+    width: calc(20% - clamp(0.5rem, 1.5vw, 0.9rem) * 0.8);
+    max-width: 100px;
+    padding: 0.7rem;
   }
-
+  
   .client-card img {
     height: 60%;
   }
+  
+  .client-description {
+    padding: 0.8rem;
+  }
 }
 
-@media (max-width: 480px) {
-  .clients-grid {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: clamp(0.5rem, 2vw, 0.8rem);
-  }
-
+@media (min-width: 480px) and (max-width: 599px) {
   .client-card {
-    max-width: 75px;
-    padding: 0.5rem;
+    width: calc(25% - clamp(0.5rem, 1.5vw, 0.8rem) * 0.75);
+    max-width: 85px;
+    padding: 0.6rem;
+    min-width: 70px;
   }
-
+  
   .client-card img {
     height: 55%;
   }
-
+  
+  .read-me-btn {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+    top: 3px;
+    right: 3px;
+  }
+  
+  .clients-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
   .clients-cta .btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    min-width: 120px;
+    flex: 1;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 479px) {
+  .clients-columns {
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+  
+  .client-card {
+    width: calc(33.333% - clamp(0.4rem, 1.2vw, 0.7rem) * 0.666);
+    max-width: 80px;
+    padding: 0.5rem;
+    min-width: 65px;
+  }
+  
+  .client-card img {
+    height: 50%;
+  }
+  
+  .client-description {
+    padding: 0.6rem;
+  }
+  
+  .client-description h4 {
+    font-size: 0.8rem;
+  }
+  
+  .client-description p {
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 360px) {
-  .clients-grid {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    gap: 0.5rem;
+  .clients-section {
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.8rem, 2vw, 1.5rem);
   }
-
+  
   .client-card {
-    max-width: 70px;
-    padding: 0.4rem 0.6rem;
+    width: calc(50% - clamp(0.4rem, 1.2vw, 0.6rem) * 0.5);
+    max-width: 75px;
+    padding: 0.5rem;
+    min-width: 60px;
+  }
+  
+  .client-card img {
+    height: 45%;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .client-card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  
+  .client-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  .read-me-btn {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(255, 215, 0, 0.7);
   }
 }
 
@@ -215,16 +403,26 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .client-card,
   .client-card img,
-  .clients-cta .btn {
+  .clients-cta .btn,
+  .read-me-btn,
+  .client-description {
     transition: none !important;
+  }
+  
+  .client-card.show-animation {
+    opacity: 1;
+    transform: none;
   }
 }
 
 @media (prefers-contrast: high) {
   .client-card {
+    border: 2px solid var(--accent);
+  }
+  
+  .client-description {
     border: 2px solid var(--accent);
   }
 }
