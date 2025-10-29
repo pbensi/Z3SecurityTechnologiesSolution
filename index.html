@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z3 Security Technologies Solution</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="./assets/img/logo.png" type="image/png">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -26,13 +27,13 @@
             </div>
 
             <div class="navbar-menu" id="navbarMenu">
-                <a href="#about" class="nav-link">About Us</a>
+                <a href="#about" class="nav-link" data-target="about">About Us</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#why-us" class="nav-link">Why Us</a>
                 <a href="#capacity" class="nav-link">Expertise</a>
                 <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#clients" class="nav-link">Clients</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
             </div>
 
             <div class="navbar-actions">
@@ -101,7 +102,7 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="about" id="about">
+    <section class="about hidden" id="about">
         <div class="container">
             <div class="section-header">
                 <h2>About Z3 Security Technologies</h2>
@@ -761,43 +762,104 @@
 
             <div class="clients-columns">
                 <div class="clients-column">
-                    <h3>Public</h3>
+                    <h3>Public Sector</h3>
                     <div class="clients-grid">
-                        <div class="client-card"><img src="assets/img/public/pub-1.png" alt="Client 1"></div>
-                        <div class="client-card"><img src="assets/img/public/pub-2.png" alt="Client 2"></div>
-                        <div class="client-card"><img src="assets/img/public/pub-3.png" alt="Client 3"></div>
-                        <div class="client-card"><img src="assets/img/public/pub-4.png" alt="Client 4"></div>
-                        <div class="client-card"><img src="assets/img/public/pub-5.png" alt="Client 5"></div>
+                        <div class="client-card" data-client-id="pub-1">
+                            <img src="./assets/img/public/Municipality_of_samboan.png" alt="Municipality_of_samboan">
+                        </div>
+                        <div class="client-card" data-client-id="pub-2">
+                            <img src="./assets/img/public/City_Hall_Of_Bay_Bay_Leyte.png"
+                                alt="City_Hall_Of_Bay_Bay_Leyte">
+                        </div>
+                        <div class="client-card" data-client-id="pub-3">
+                            <img src="./assets/img/public/barangay_looc.png" alt="barangay_looc">
+                        </div>
+                        <div class="client-card" data-client-id="pub-4">
+                            <img src="./assets/img/public/Municipality_of_Mainit.png" alt="Municipality_of_Mainit">
+                        </div>
+                        <div class="client-card" data-client-id="pub-5">
+                            <img src="./assets/img/public/Baranggay_Biga.png" alt="Baranggay_Biga">
+                        </div>
                     </div>
+
                     <div class="clients-cta">
-                        <button class="btn btn-primary see-more" style="display:none;">See More</button>
+                        <button class="btn btn-primary see-more">See More</button>
                         <button class="btn btn-secondary see-less" style="display:none;">See Less</button>
                     </div>
                 </div>
 
                 <div class="clients-column">
-                    <h3>Private</h3>
+                    <h3>Private Sector</h3>
                     <div class="clients-grid">
-                        <div class="client-card"><img src="assets/img/private/priv-10.png" alt="Client 10"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-7.png" alt="Client 7"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-20.png" alt="Client 20"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-3.png" alt="Client 3"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-4.png" alt="Client 4"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-5.jpg" alt="Client 5"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-6.png" alt="Client 6"></div>
-                        <div class="client-card"><img src="assets/img/private/priv-8.png" alt="Client 8"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-9.jpg" alt="Client 9"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-11.png" alt="Client 11"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-12.png" alt="Client 12"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-13.jpg" alt="Client 13"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-14.png" alt="Client 14"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-15.jpg" alt="Client 15"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-16.jpg" alt="Client 16"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-17.png" alt="Client 17"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-18.png" alt="Client 18"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-19.png" alt="Client 19"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-1.png" alt="Client 1"></div>
-                        <div class="client-card hidden"><img src="assets/img/private/priv-2.png" alt="Client 2"></div>
+                        <div class="client-card" data-client-id="priv-1">
+                            <img src="./assets/img/private/Dusit_Thani_Mactan_Resort_and_Spa.png"
+                                alt="Dusit_Thani_Mactan_Resort_and_Spa">
+                        </div>
+                        <div class="client-card" data-client-id="priv-2">
+                            <img src="./assets/img/private/The_Sisters_of_Mary_Schools.png"
+                                alt="The_Sisters_of_Mary_Schools">
+                        </div>
+                        <div class="client-card" data-client-id="priv-3">
+                            <img src="./assets/img/private/RNVios_Construction_Dev_Corp.png"
+                                alt="RNVios_Construction_Dev_Corp">
+                        </div>
+                        <div class="client-card" data-client-id="priv-4">
+                            <img src="./assets/img/private/villatuna.png" alt="villatuna">
+                        </div>
+                        <div class="client-card" data-client-id="priv-5">
+                            <img src="./assets/img/private/svjhotel.png" alt="svjhotel">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-6">
+                            <img src="./assets/img/private/breaver.png" alt="breaver">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-7">
+                            <img src="./assets/img/private/lorenzo.png" alt="lorenzo">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-8">
+                            <img src="./assets/img/private/mlhuillier.png" alt="mlhuillier">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-9">
+                            <img src="./assets/img/private/Seaside_Heaven.png" alt="Seaside_Heaven">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-10">
+                            <img src="./assets/img/private/starbucks_coffee.png" alt="starbucks_coffee">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-11">
+                            <img src="./assets/img/private/Chowking.png" alt="Chowking">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-12">
+                            <img src="./assets/img/private/HTLand.webp" alt="HTLand">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-13">
+                            <img src="./assets/img/private/Honda.webp" alt="Honda">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-14">
+                            <img src="./assets/img/private/ontempo.png" alt="ontempo">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-15">
+                            <img src="./assets/img/private/bamboobay.png" alt="bamboobay">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-16">
+                            <img src="./assets/img/private/villageone.png" alt="villageone">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-17">
+                            <img src="./assets/img/private/andyhotel.png" alt="andyhotel">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-18">
+                            <img src="./assets/img/private/MLSuite.jpg" alt="MLSuite">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-19">
+                            <img src="./assets/img/private/Kalahi.png" alt="Kalahi">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-20">
+                            <img src="./assets/img/private/Dito_Telecommunity.png" alt="Dito_Telecommunity">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-21">
+                            <img src="./assets/img/private/autolab.png" alt="autolab">
+                        </div>
+                        <div class="client-card hidden" data-client-id="priv-22">
+                            <img src="./assets/img/private/lab.png" alt="lab">
+                        </div>
                     </div>
                     <div class="clients-cta">
                         <button class="btn btn-primary see-more">See More</button>
@@ -808,11 +870,37 @@
 
             <div class="clients-partner-us">
                 <h3>Partner With Us</h3>
-                <p>Join our growing list of satisfied clients who trust our end-to-end solutions.</p>
+                <p>Join our growing list of satisfied clients who trust our end-to-end solutions. We deliver exceptional
+                    results through innovative technology and dedicated service.</p>
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-handshake"></i> Get in Touch</a>
             </div>
         </div>
     </section>
+
+    <!-- Client Detail Modal -->
+    <div id="clientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Client Details</h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="client-modal-content">
+                    <div class="client-modal-image">
+                        <img id="modalClientImage" src="" alt="Client">
+                    </div>
+                    <div class="client-modal-info">
+                        <h4 id="modalClientTitle">Client Name</h4>
+                        <p id="modalClientDescription">Client description will appear here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button class="btn-close">Close</button> -->
+            </div>
+        </div>
+    </div>
+
 
     <!-- PARTNERS SECTION -->
     <section class="partners" id="partners">
@@ -825,57 +913,57 @@
             <div class="partners-container">
                 <div class="partners-gradient left"></div>
                 <div class="partners-track" id="partnersTrack">
-                    <div class="partner-logo"><img src="./assets/img/partner/part-1.png" alt="part 1 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Hikvision.png" alt="part 1 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-2.png" alt="part 2 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Dahua.png" alt="part 2 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-3.png" alt="part 3 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Honeywell.png" alt="part 3 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-4.png" alt="part 4 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/rosslare.png" alt="part 4 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-5.png" alt="part 5 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/apollo.png" alt="part 5 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-6.png" alt="part 6 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/TYY.png" alt="part 6 Logo" loading="lazy">
+                    </div>
+                    <div class="partner-logo"><img src="./assets/img/partner/ZKTECO.png" alt="part 7 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-7.png" alt="part 7 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/gst.png" alt="part 8 Logo" loading="lazy">
+                    </div>
+                    <div class="partner-logo"><img src="./assets/img/partner/ubnt.png" alt="part 9 Logo" loading="lazy">
+                    </div>
+                    <div class="partner-logo"><img src="./assets/img/partner/panasonic.png" alt="part 10 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-8.png" alt="part 8 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/longhorn.png" alt="part 11 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-9.png" alt="part 9 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Yeastar.webp" alt="part 12 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-10.png" alt="part 10 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/itc.png" alt="part 13 Logo" loading="lazy">
+                    </div>
+                    <div class="partner-logo"><img src="./assets/img/partner/Huawei.png" alt="part 14 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-11.png" alt="part 11 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Fanvil.png" alt="part 15 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-12.png" alt="part 12 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/ezviz.webp" alt="part 16 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-13.png" alt="part 13 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/kstar.png" alt="part 17 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-14.png" alt="part 14 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/JA-solar.png" alt="part 18 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-15.png" alt="part 15 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/himax.png" alt="part 19 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-16.png" alt="part 16 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/bdcom.png" alt="part 20 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-17.png" alt="part 17 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/seagate.png" alt="part 21 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-18.png" alt="part 18 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Western.png" alt="part 22 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-19.png" alt="part 19 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/HP.png" alt="part 23 Logo" loading="lazy">
+                    </div>
+                    <div class="partner-logo"><img src="./assets/img/partner/dell.png" alt="part 24 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-20.png" alt="part 20 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/ViewSonic.svg" alt="part 25 Logo"
                             loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-21.png" alt="part 21 Logo"
-                            loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-22.png" alt="part 22 Logo"
-                            loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-23.png" alt="part 23 Logo"
-                            loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-24.png" alt="part 24 Logo"
-                            loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-25.png" alt="part 25 Logo"
-                            loading="lazy"></div>
-                    <div class="partner-logo"><img src="./assets/img/partner/part-26.png" alt="part 26 Logo"
+                    <div class="partner-logo"><img src="./assets/img/partner/Lenovo.png" alt="part 26 Logo"
                             loading="lazy"></div>
                 </div>
                 <div class="partners-gradient right"></div>

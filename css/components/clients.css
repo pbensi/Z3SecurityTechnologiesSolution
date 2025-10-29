@@ -7,21 +7,6 @@
   border-bottom: 1px solid var(--glass-border);
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: clamp(1.5rem, 5vw, 3rem);
-}
-
-.section-header h2 {
-  font-size: clamp(1.8rem, 4vw, 2.2rem);
-  margin-bottom: 0.5rem;
-}
-
-.section-header .section-subtitle {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  opacity: 0.8;
-}
-
 .clients-columns {
   display: flex;
   flex-wrap: wrap;
@@ -42,6 +27,7 @@
   margin-bottom: clamp(0.8rem, 2vw, 1rem);
   font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   text-align: center;
+  color: var(--accent);
 }
 
 .clients-grid {
@@ -54,8 +40,8 @@
 }
 
 .client-card {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
   aspect-ratio: 1 / 1;
   display: flex;
@@ -72,6 +58,20 @@
   cursor: pointer;
 }
 
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: white;
+  border-radius: calc(var(--radius-lg) - 4px);
+  z-index: 1;
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
 .client-card img {
   width: auto;
   height: 70%;
@@ -80,35 +80,26 @@
   max-width: 100%;
   max-height: 100%;
   transition: var(--transition);
+  position: relative;
+  z-index: 2;
   filter: brightness(1) contrast(1);
 }
 
-/* Read Me Button */
-.read-me-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(255, 215, 0, 0.9);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: #000;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: var(--transition);
-  z-index: 2;
+.client-card:hover::before {
+  opacity: 0.95;
+  transform: scale(1.02);
 }
 
-.client-card:hover .read-me-btn {
-  opacity: 1;
-  transform: scale(1);
+.client-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
 
-/* Client Description */
+.client-card:hover img {
+  transform: scale(1.1);
+}
+
 .client-description {
   position: absolute;
   top: 0;
@@ -126,8 +117,7 @@
   text-align: center;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.9);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
   z-index: 10;
   border: 1px solid var(--accent);
 }
@@ -135,7 +125,6 @@
 .client-card.active .client-description {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
 }
 
 .client-description h4 {
@@ -168,18 +157,16 @@
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
+  z-index: 11;
 }
 
 .close-description:hover {
   background: rgba(255, 215, 0, 0.2);
-  transform: scale(1.1);
 }
 
-/* Overlay when description is active */
 .client-card.active {
   z-index: 100;
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
 }
 
 .client-card.hidden {
@@ -188,7 +175,7 @@
 
 .client-card.show-animation {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(15px);
   transition: var(--transition);
 }
 
@@ -202,12 +189,26 @@
   margin-top: clamp(1rem, 3vw, 1.5rem);
 }
 
-.clients-cta .btn {
-  margin: 0.3rem;
-  cursor: pointer;
-  padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(1rem, 2vw, 1.5rem);
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
-  min-width: 140px;
+.btn-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .clients-partner-us {
@@ -234,195 +235,180 @@
   line-height: 1.5;
 }
 
-/* Responsive Design */
-@media (min-width: 1400px) {
-  .client-card {
-    width: calc(20% - clamp(0.6rem, 2vw, 1.2rem) * 0.8);
-    max-width: 150px;
-    padding: 1rem;
+.client-modal-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.client-modal-image {
+  flex: 0 0 200px;
+  position: relative;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.client-modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  filter: none !important;
+  transition: all 0.3s ease;
+}
+
+.client-modal-image:hover img {
+  transform: scale(1.05);
+}
+
+.client-modal-info {
+  flex: 1;
+  animation: slideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+  transform: translateX(30px);
+  opacity: 0;
+}
+
+.client-modal-info h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.client-modal-info p {
+  line-height: 1.6;
+  color: var(--text-light);
+  font-size: 1rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  animation: fadeIn 0.6s ease 0.7s forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1399px) {
-  .client-card {
-    width: calc(25% - clamp(0.6rem, 2vw, 1.2rem) * 0.75);
-    max-width: 130px;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .clients-column {
-    flex: 1 1 min(100%, 350px);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .client-card {
-    width: calc(25% - clamp(0.6rem, 2vw, 1rem) * 0.75);
-    max-width: 110px;
-    padding: 0.8rem;
-  }
-  
-  .client-card img {
-    height: 65%;
-  }
-  
-  .read-me-btn {
-    width: 18px;
-    height: 18px;
-    font-size: 9px;
+  to {
+    opacity: 1;
   }
 }
 
-@media (min-width: 600px) and (max-width: 767px) {
-  .clients-columns {
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-  }
-  
+@media (max-width: 768px) {
   .client-card {
-    width: calc(20% - clamp(0.5rem, 1.5vw, 0.9rem) * 0.8);
-    max-width: 100px;
-    padding: 0.7rem;
+    width: calc(33.333% - clamp(0.6rem, 2vw, 1.2rem) * 0.666);
   }
-  
-  .client-card img {
-    height: 60%;
-  }
-  
-  .client-description {
-    padding: 0.8rem;
-  }
-}
 
-@media (min-width: 480px) and (max-width: 599px) {
-  .client-card {
-    width: calc(25% - clamp(0.5rem, 1.5vw, 0.8rem) * 0.75);
-    max-width: 85px;
-    padding: 0.6rem;
-    min-width: 70px;
+  .client-modal-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
   }
   
-  .client-card img {
-    height: 55%;
-  }
-  
-  .read-me-btn {
-    width: 16px;
-    height: 16px;
-    font-size: 8px;
-    top: 3px;
-    right: 3px;
-  }
-  
-  .clients-cta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  .clients-cta .btn {
-    min-width: 120px;
-    flex: 1;
+  .client-modal-image {
+    flex: none;
     max-width: 200px;
+    margin: 0 auto;
+    padding: 15px;
+    animation: slideUpFade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+    transform: translateY(20px);
+  }
+
+  .client-modal-info {
+    text-align: center;
+    animation: slideUpFade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+    transform: translateY(20px);
+  }
+
+  .client-modal-info p {
+    border-left: none;
+    border-top: 3px solid var(--accent);
+    padding-left: 0;
+    padding-top: 1rem;
   }
 }
 
-@media (max-width: 479px) {
-  .clients-columns {
-    gap: clamp(2rem, 5vw, 3rem);
-  }
-  
+@media (max-width: 480px) {
   .client-card {
-    width: calc(33.333% - clamp(0.4rem, 1.2vw, 0.7rem) * 0.666);
-    max-width: 80px;
-    padding: 0.5rem;
-    min-width: 65px;
+    width: calc(50% - clamp(0.6rem, 2vw, 1.2rem) * 0.5);
   }
-  
-  .client-card img {
-    height: 50%;
+
+  .client-modal-content {
+    gap: 1rem;
   }
-  
-  .client-description {
-    padding: 0.6rem;
-  }
-  
-  .client-description h4 {
-    font-size: 0.8rem;
-  }
-  
-  .client-description p {
-    font-size: 0.7rem;
+
+  .client-modal-image {
+    max-width: 150px;
+    padding: 12px;
   }
 }
 
-@media (max-width: 360px) {
-  .clients-section {
-    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.8rem, 2vw, 1.5rem);
-  }
-  
-  .client-card {
-    width: calc(50% - clamp(0.4rem, 1.2vw, 0.6rem) * 0.5);
-    max-width: 75px;
-    padding: 0.5rem;
-    min-width: 60px;
-  }
-  
-  .client-card img {
-    height: 45%;
-  }
-}
-
-/* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .client-card:hover {
     transform: none;
-    box-shadow: var(--shadow);
   }
   
   .client-card:active {
-    transform: scale(0.98);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-  }
-  
-  .read-me-btn {
-    opacity: 1;
-    transform: scale(1);
-    background: rgba(255, 215, 0, 0.7);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .client-card {
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .client-card img {
-    filter: brightness(1.2) contrast(1.1);
+    transform: scale(0.95);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .client-card,
   .client-card img,
-  .clients-cta .btn,
-  .read-me-btn,
   .client-description {
     transition: none !important;
+    animation: none !important;
   }
-  
+
+  .client-card {
+    opacity: 1;
+    transform: none;
+  }
+
   .client-card.show-animation {
     opacity: 1;
     transform: none;
   }
-}
-
-@media (prefers-contrast: high) {
-  .client-card {
-    border: 2px solid var(--accent);
-  }
   
-  .client-description {
-    border: 2px solid var(--accent);
+  .client-modal-image,
+  .client-modal-info {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1;
   }
 }

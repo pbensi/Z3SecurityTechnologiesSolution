@@ -219,9 +219,18 @@
     background: var(--bg-secondary);
 }
 
-[data-theme="light"] .partner-logo {
-    background: var(--glass);
-    border: 1px solid transparent;
+[data-theme="light"] .partner-logo img {
+  filter: grayscale(100%) brightness(0.6) contrast(1.4);
+  opacity: 0.6;
+}
+
+[data-theme="light"] .partner-logo img {
+  background: transparent;
+}
+
+[data-theme="light"] .partner-logo:hover img {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
 }
 
 [data-theme="light"] .partners-gradient.left {

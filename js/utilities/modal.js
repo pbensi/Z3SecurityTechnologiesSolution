@@ -1,52 +1,67 @@
-export function initModal() {
-    document.querySelectorAll('.open-modal-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const modalId = btn.dataset.modalTarget;
-            const sourceSelector = btn.dataset.source;
-            const modal = document.querySelector(modalId);
-            if (!modal) return;
-
-            const modalBody = modal.querySelector('.modal-body');
-            const modalTitle = modal.querySelector('.modal-title');
-
-            if (sourceSelector) {
-                const source = document.querySelector(sourceSelector);
-                if (source) {
-                    modalBody.innerHTML = source.innerHTML;
-                }
-            }
-
-            if (btn.dataset.title) {
-                modalTitle.textContent = btn.dataset.title;
-            }
-
-            modal.style.display = 'block';
-        });
-    });
-
-    document.querySelectorAll('.modal-close').forEach(span => {
-        span.addEventListener('click', () => {
-            span.closest('.modal').style.display = 'none';
-        });
-    });
-
-    document.querySelectorAll('.btn-close').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.closest('.modal').style.display = 'none';
-        });
-    });
-
-    window.addEventListener('click', e => {
-        if (e.target.classList.contains('modal')) {
-            e.target.style.display = 'none';
+export class Modal {
+    constructor(modalId) {
+        this.modal = document.getElementById(modalId);
+        if (!this.modal) {
+            console.error(`Modal with ID '${modalId}' not found`);
+            return;
         }
-    });
-
-    window.addEventListener('keydown', e => {
-        if (e.key === "Escape") {
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
-    });
+        
+        this.isOpen = false;
+        this.init();
+    }
+    
+    init() {
+        this.bindEvents();
+    }
+    
+    bindEvents() {
+        const closeBtn = this.modal.querySelector('.modal-close');
+        const closeButton = this.modal.querySelector('.btn-close');
+        
+        [closeBtn, closeButton].forEach(btn => {
+            btn?.addEventListener('click', () => this.close());
+        });
+        
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.close();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && this.isOpen) {
+                this.close();
+            }
+        });
+    }
+    
+    open() {
+        this.modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        this.isOpen = true;
+        
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.setAttribute('aria-hidden', 'true');
+        
+        this.modal.dispatchEvent(new CustomEvent('modal:open', { bubbles: true }));
+    }
+    
+    close() {
+        this.modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        this.isOpen = false;
+        
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.setAttribute('aria-hidden', 'false');
+        
+        this.modal.dispatchEvent(new CustomEvent('modal:close', { bubbles: true }));
+    }
+    
+    setContent(title, content) {
+        const titleElement = this.modal.querySelector('.modal-title');
+        const bodyElement = this.modal.querySelector('.modal-body');
+        
+        if (titleElement && title) titleElement.textContent = title;
+        if (bodyElement && content) bodyElement.innerHTML = content;
+    }
 }
