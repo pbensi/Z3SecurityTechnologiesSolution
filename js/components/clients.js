@@ -187,7 +187,7 @@ class ClientModal extends Modal {
 
   updateModalContent(imageSrc, title, description) {
     const imageElement = document.getElementById('modalClientImage');
-    const titleElement = document.getElementById('modalClientTitle');
+    const titleElement = document.getElementById('modalClientName');
     const descriptionElement = document.getElementById('modalClientDescription');
 
     if (imageElement) imageElement.src = imageSrc;

@@ -22,8 +22,6 @@ export class AboutSection {
         });
 
         this.addCloseButton();
-
-        console.log('About Panel initialized - Ready to slide in');
     }
 
     createOverlay() {
@@ -55,8 +53,6 @@ export class AboutSection {
         document.body.classList.add('about-open');
         
         this.isVisible = true;
-        
-        console.log('About panel sliding in from right');
     }
 
     hide() {
@@ -69,9 +65,7 @@ export class AboutSection {
         
         document.body.classList.remove('about-open');
         
-        this.isVisible = false;
-        
-        console.log('About panel sliding out to right');
+        this.isVisible = false; 
     }
 
     toggle() {

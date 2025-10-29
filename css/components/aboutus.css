@@ -197,10 +197,6 @@ body.about-open {
         right: var(--space-md);
     }
     
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
-    
     .about-text h3 {
         font-size: 1.4rem;
     }
@@ -219,19 +215,6 @@ body.about-open {
 @media (max-width: 576px) {
     .about .container {
         padding: var(--space-md);
-    }
-    
-    .section-header {
-        margin-bottom: var(--space-xl);
-        padding-top: var(--space-md);
-    }
-    
-    .section-header h2 {
-        font-size: 1.7rem;
-    }
-    
-    .section-subtitle {
-        font-size: 1rem;
     }
     
     .about-text h3 {
@@ -271,11 +254,7 @@ body.about-open {
     .about .container {
         padding: var(--space-sm);
     }
-    
-    .section-header h2 {
-        font-size: 1.6rem;
-    }
-    
+
     .about-text h3 {
         font-size: 1.25rem;
     }
@@ -288,10 +267,6 @@ body.about-open {
 @media (max-width: 360px) {
     .about .container {
         padding: var(--space-xs);
-    }
-    
-    .section-header h2 {
-        font-size: 1.5rem;
     }
     
     .about-text h3 {
