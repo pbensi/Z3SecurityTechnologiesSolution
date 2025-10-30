@@ -127,7 +127,7 @@
     border: 1px solid var(--glass-border);
 }
 
-[data-theme="light"] .why-card h4 {
+[data-theme="light"] .why-card h3 {
     color: var(--primary);
 }
 

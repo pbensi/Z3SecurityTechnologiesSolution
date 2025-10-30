@@ -41,7 +41,7 @@
     margin-bottom: var(--space-lg);
 }
 
-.why-card h4 {
+.why-card h3 {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: var(--space-md);
     color: var(--text);
@@ -126,7 +126,7 @@
         margin-bottom: var(--space-md);
     }
 
-    .why-card h4 {
+    .why-card h3 {
         font-size: 1.2rem;
     }
     
@@ -148,7 +148,7 @@
         font-size: 1.8rem;
     }
     
-    .why-card h4 {
+    .why-card h3 {
         font-size: 1.1rem;
     }
     
@@ -163,7 +163,7 @@
         border: 2px solid var(--black);
     }
 
-    .why-card h4 {
+    .why-card h3 {
         color: var(--black);
         font-weight: var(--font-weight-bold);
     }
