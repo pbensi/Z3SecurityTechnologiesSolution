@@ -167,7 +167,7 @@
   background: rgba(255, 215, 0, 0.2);
 }
 
-.service-card h4 {
+.service-card h3 {
   color: var(--white);
   margin-bottom: clamp(0.5rem, 1.2vw, 0.8rem);
   font-size: clamp(1rem, 2.2vw, 1.2rem);

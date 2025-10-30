@@ -28,7 +28,7 @@
     backdrop-filter: blur(20px);
 }
 
-[data-theme="light"] .service-card h4 {
+[data-theme="light"] .service-card h3 {
     color: var(--primary);
 }
 
