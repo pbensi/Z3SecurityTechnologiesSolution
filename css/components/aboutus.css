@@ -36,7 +36,7 @@
     outline: 2px solid var(--accent);
     outline-offset: 2px;
     top: var(--space-lg);
-    left: var(--space-lg);
+    right: var(--space-lg);
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
     color: var(--text);
@@ -171,19 +171,7 @@ body.about-open {
     overflow: hidden;
 }
 
-@media (max-width: 1200px) {
-    .about {
-        --slide-panel-width: 90%;
-        --slide-panel-max-width: 450px;
-    }
-}
-
 @media (max-width: 992px) {
-    .about {
-        --slide-panel-width: 95%;
-        --slide-panel-max-width: 400px;
-    }
-
     .feature {
         flex: 1 1 100%;
     }
