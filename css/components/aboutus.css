@@ -11,7 +11,7 @@
     z-index: 1000;
     overflow-y: auto;
     overflow-x: hidden;
-    
+
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0;
 }
@@ -33,14 +33,21 @@
 
 .about-close {
     position: absolute;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
     top: var(--space-lg);
-    right: var(--space-lg);
-    background: rgba(255, 255, 255, 0.1);
+    left: var(--space-lg);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--text);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--glass-border);
+    background: none;
     color: var(--text-light);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,9 +57,9 @@
 }
 
 .about-close:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--text);
-    transform: rotate(90deg);
+    color: var(--accent-light);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1) rotate(90deg);
 }
 
 .about-content {
@@ -176,9 +183,9 @@ body.about-open {
         --slide-panel-width: 95%;
         --slide-panel-max-width: 400px;
     }
-    
+
     .feature {
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
     }
 }
 
@@ -187,24 +194,24 @@ body.about-open {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .about .container {
         padding: var(--space-lg);
     }
-    
+
     .about-close {
         top: var(--space-md);
         right: var(--space-md);
     }
-    
+
     .about-text h3 {
         font-size: 1.4rem;
     }
-    
+
     .about-features {
         gap: var(--space-md);
     }
-    
+
     .feature {
         flex: 1 1 calc(50% - var(--space-md));
         min-width: 150px;
@@ -216,35 +223,35 @@ body.about-open {
     .about .container {
         padding: var(--space-md);
     }
-    
+
     .about-text h3 {
         font-size: 1.3rem;
     }
-    
+
     .about-text p {
         font-size: 0.95rem;
         margin-bottom: var(--space-md);
     }
-    
+
     .about-features {
         flex-direction: column;
         gap: var(--space-md);
     }
-    
+
     .feature {
         flex: 1 1 100%;
         min-width: auto;
         padding: var(--space-lg);
     }
-    
+
     .feature i {
         font-size: 1.8rem;
     }
-    
+
     .feature h4 {
         font-size: 1.1rem;
     }
-    
+
     .feature p {
         font-size: 0.85rem;
     }
@@ -258,7 +265,7 @@ body.about-open {
     .about-text h3 {
         font-size: 1.25rem;
     }
-    
+
     .feature {
         padding: var(--space-md);
     }
@@ -268,19 +275,19 @@ body.about-open {
     .about .container {
         padding: var(--space-xs);
     }
-    
+
     .about-text h3 {
         font-size: 1.2rem;
     }
-    
+
     .feature {
         padding: var(--space-sm);
     }
-    
+
     .feature i {
         font-size: 1.6rem;
     }
-    
+
     .feature h4 {
         font-size: 1rem;
     }
@@ -290,11 +297,11 @@ body.about-open {
     .about {
         overflow-y: auto;
     }
-    
+
     .about .container {
         padding: var(--space-md);
     }
-    
+
     .about-image {
         display: none;
     }
@@ -310,12 +317,12 @@ body.about-open {
     .about {
         transition: none;
     }
-    
+
     .feature,
     .about-close {
         transition: none;
     }
-    
+
     .feature:hover {
         transform: none;
     }
