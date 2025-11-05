@@ -270,7 +270,7 @@
 
 .clients-partner-us p {
   color: var(--text-light);
-  max-width: min(600px, 90vw);
+  max-width: min(650px, 90vw);
   margin: 0 auto clamp(1.5rem, 4vw, 2rem) auto;
   font-size: clamp(0.9rem, 2.2vw, 1.1rem);
   line-height: 1.5;
