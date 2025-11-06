@@ -6,6 +6,7 @@ import { Theme } from './utilities/theme.js';
 import { Menu } from './components/menu.js';
 import { initClients } from './components/clients.js';
 import { initAbout } from './components/about.js';
+import { initHero } from './components/hero.js';
 
 class App {
     constructor() {
@@ -14,6 +15,7 @@ class App {
     }
 
     init() {
+        initHero();
         initAbout();
         initServices();
         initCertifications();

@@ -1,14 +1,14 @@
 .hero {
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 26, 46, 0.85), rgba(30, 58, 95, 0.85)),
-    url('../../assets/img/hero-section.jpg') center/cover no-repeat;
-  background-attachment: fixed;
   color: var(--white);
   text-align: center;
   padding: 4rem 2rem;
   overflow: hidden;
-  min-height: 70vh;
+  min-height: 74vh;
   display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(15, 26, 46, 0.85), rgba(30, 58, 95, 0.85));
+  gap: 1rem;
   align-items: center;
   justify-content: center;
 }
@@ -18,6 +18,102 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 25% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
+}
+
+.slideshow-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity;
+}
+
+.background-slide.active {
+  opacity: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.slideshow-nav {
+  transform: translateY(50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.slideshow-btn {
+  color: var(--white);
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.slideshow-btn:hover {
+  transform: scale(1.);
+}
+
+.slideshow-btn:active {
+  transform: scale(0.95);
+}
+
+.slideshow-btn i {
+  font-size: 1.1rem;
+}
+
+.slideshow-dots {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: var(--accent);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .hero-badge {
@@ -136,7 +232,7 @@
 }
 
 .trust-badges {
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   backdrop-filter: blur(10px);
   background: rgba(15, 26, 46, 0.8);
 }
@@ -269,6 +365,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-badge,
   .hero-title,
   .hero-subtitle,

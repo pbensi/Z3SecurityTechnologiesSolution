@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Tw Cen MT';
   background: var(--dark);
   color: var(--text);
   line-height: 1.6;
@@ -65,7 +65,7 @@ body {
   line-height: 1.2;
 }
 
-.section-header h2::after {
+/* .section-header h2::after {
   content: "";
   display: block;
   width: clamp(60px, 15vw, 80px);
@@ -76,7 +76,7 @@ body {
   animation: lineExtend 0.8s ease-out 0.5s forwards;
   transform: scaleX(0);
   transform-origin: center;
-}
+} */
 
 @keyframes lineExtend {
   to {
