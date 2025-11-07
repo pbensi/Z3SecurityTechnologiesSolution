@@ -2,20 +2,32 @@ const SLIDESHOW_CONFIG = {
     slides: [
         {
             image: './assets/img/hero-section.jpg',
-            alt: 'CCTV Security Systems'
+            alt: 'hero'
         },
         {
-            image: './assets/img/logo.png',
-            alt: 'Access Control Systems'
+            image: './assets/img/hero-section-1.png',
+            alt: 'hero-1'
         },
         {
-            image: './assets/img/hero-section.jpg',
-            alt: 'Alarm Systems'
+            image: './assets/img/hero-section-2.jpg',
+            alt: 'hero-2'
         },
         {
-            image: './assets/img/logo.png',
-            alt: 'Fire Safety Systems'
-        }
+            image: './assets/img/hero-section-3.jpg',
+            alt: 'hero-3'
+        },
+        {
+            image: './assets/img/hero-section-4.jpg',
+            alt: 'hero-4'
+        },
+        {
+            image: './assets/img/hero-section-5.jpg',
+            alt: 'hero-5'
+        },
+        {
+            image: './assets/img/hero-section-6.jpg',
+            alt: 'hero-6'
+        },
     ],
     settings: {
         autoPlay: true,
@@ -124,7 +136,7 @@ function setupSlideshow() {
     dots.forEach(dot => {
         dot.addEventListener('click', function () {
             const slideIndex = parseInt(this.getAttribute('data-slide'));
-            
+
             if (slideIndex === currentSlide) {
                 return;
             }
