@@ -6,7 +6,6 @@
   height: var(--header-height);
   padding: 1rem;
   width: 100%;
-  color: red;
   z-index: 1000;
   background: transparent;
   border-bottom: 1px solid transparent;
