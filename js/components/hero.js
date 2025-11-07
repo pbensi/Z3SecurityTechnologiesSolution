@@ -67,7 +67,7 @@ function setupSlideshow() {
 
         const activeDot = dots[currentSlide];
         activeDot.style.animation = 'none';
-        activeDot.offsetHeight; 
+        activeDot.offsetHeight;
         activeDot.style.animation = null;
     }
 
@@ -84,7 +84,7 @@ function setupSlideshow() {
 
         stopSlideShow();
         slideInterval = setInterval(nextSlide, SLIDESHOW_CONFIG.settings.slideDuration);
-        
+
         dots.forEach(dot => dot.classList.remove('paused'));
     }
 
@@ -92,7 +92,7 @@ function setupSlideshow() {
         if (slideInterval) {
             clearInterval(slideInterval);
         }
-        
+
         dots.forEach(dot => dot.classList.add('paused'));
     }
 
@@ -124,6 +124,11 @@ function setupSlideshow() {
     dots.forEach(dot => {
         dot.addEventListener('click', function () {
             const slideIndex = parseInt(this.getAttribute('data-slide'));
+            
+            if (slideIndex === currentSlide) {
+                return;
+            }
+
             stopSlideShow();
             showSlide(slideIndex);
             startSlideShow();
@@ -136,7 +141,7 @@ function setupSlideshow() {
                 stopSlideShow();
             }
         });
-        
+
         navContainer.addEventListener('mouseleave', () => {
             if (SLIDESHOW_CONFIG.settings.autoPlay && !isPaused) {
                 startSlideShow();
@@ -172,9 +177,9 @@ function generateSlides(slideshow) {
         slideElement.setAttribute('data-slide', index);
         slideElement.style.backgroundImage = `url('${slide.image}')`;
         slideElement.setAttribute('aria-label', slide.alt);
-        
+
         slideElement.setAttribute('loading', 'lazy');
-        
+
         slideshow.appendChild(slideElement);
     });
 }
@@ -188,9 +193,9 @@ function generateDots(dotsContainer) {
         dot.setAttribute('data-slide', index);
         dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
         dot.setAttribute('title', `Slide ${index + 1}`);
-        
+
         dot.style.setProperty('--slide-duration', `${SLIDESHOW_CONFIG.settings.slideDuration}ms`);
-        
+
         dotsContainer.appendChild(dot);
     });
 }
