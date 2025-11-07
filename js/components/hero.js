@@ -1,19 +1,19 @@
 const SLIDESHOW_CONFIG = {
     slides: [
         {
-            image: '../../assets/img/hero-section.jpg',
+            image: './assets/img/hero-section.jpg',
             alt: 'CCTV Security Systems'
         },
         {
-            image: '../../assets/img/logo.png',
+            image: './assets/img/logo.png',
             alt: 'Access Control Systems'
         },
         {
-            image: '../../assets/img/hero-section.jpg',
+            image: './assets/img/hero-section.jpg',
             alt: 'Alarm Systems'
         },
         {
-            image: '../../assets/img/logo.png',
+            image: './assets/img/logo.png',
             alt: 'Fire Safety Systems'
         }
     ],
