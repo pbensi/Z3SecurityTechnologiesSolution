@@ -1,12 +1,13 @@
 import { initServices } from './components/services.js';
 import { initCertifications } from './components/certifications.js';
-import { initContact } from './components/contact.js';
+import { initContact, initLocationTabs } from './components/contact.js';
 import { initPartner } from './components/partner.js';
 import { Theme } from './utilities/theme.js';
 import { Menu } from './components/menu.js';
 import { initClients } from './components/clients.js';
 import { initAbout } from './components/about.js';
 import { initHero } from './components/hero.js';
+import { HeaderScroll } from './components/header.js';
 
 class App {
     constructor() {
@@ -15,12 +16,16 @@ class App {
     }
 
     init() {
+        new Theme();
+        new Menu();
+        new HeaderScroll();
         initHero();
         initAbout();
         initServices();
         initCertifications();
         initClients();
         initPartner();
+        initLocationTabs();
         initContact({
             clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
             endpoint: "https://script.google.com/macros/s/AKfycbymCpg0NATb0ymqmPMb0Xh_UfdL5Bc1O3ABUIrZYxpUm1s91mJSbo-GRFdjBRth6F3f/exec"
@@ -58,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("year").textContent = new Date().getFullYear();
 
     new App();
-    new Theme();
-    new Menu();
 });
 
 export default App;

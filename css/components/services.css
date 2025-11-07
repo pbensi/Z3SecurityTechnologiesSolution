@@ -1,7 +1,7 @@
 .services {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
-  padding: clamp(2rem, 6vw, 6rem) clamp(0.8rem, 3vw, 2rem);
+  padding: var(--space-2xl);
   position: relative;
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
@@ -251,11 +251,138 @@
   min-width: 200px;
 }
 
+@media (max-width: 480px) {
+  .category-btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  .category-btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    min-width: 0;
+  }
+
+  .service-card h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .service-card p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+  }
+
+  .service-features li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .services-cta h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .services-cta p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+  }
+
+  .services-cta .btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .services-cta .btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+}
+
+@media (max-width: 360px) {
+  .category-btn {
+    max-width: 140px;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    max-height: 3em;
+    font-size: 0.85rem;
+  }
+
+  .service-features li {
+    font-size: 0.8rem;
+  }
+
+  .services-cta h3 {
+    font-size: 1.3rem;
+  }
+
+  .services-cta p {
+    max-height: 3em;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .category-btn {
+    max-width: 120px;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .service-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .service-card p {
+    max-height: 3em;
+    font-size: 0.8rem;
+  }
+
+  .service-features li {
+    font-size: 0.75rem;
+  }
+
+  .services-cta h3 {
+    font-size: 1.1rem;
+  }
+
+  .services-cta p {
+    max-height: 3em;
+    font-size: 0.85rem;
+  }
+}
+
 @media (min-width: 1400px) {
   .services-grid {
     gap: 2rem;
   }
-  
+
   .service-card {
     flex: 1 1 320px;
   }
@@ -277,13 +404,13 @@
   .category-nav {
     justify-content: flex-start;
   }
-  
+
   .service-card {
     flex: 1 1 calc(50% - 1.2rem);
     min-height: 260px;
     padding: 1.5rem;
   }
-  
+
   .services-cta .btn {
     min-width: 180px;
   }
@@ -293,29 +420,29 @@
   .category-nav {
     justify-content: flex-start;
   }
-  
+
   .service-card {
     flex: 1 1 calc(50% - 1rem);
     min-height: auto;
     padding: 1.3rem;
   }
-  
+
   .services-cta .btn {
     min-width: 160px;
   }
 }
 
-@media (min-width: 480px) and (max-width: 599px) {
+@media (min-width: 481px) and (max-width: 599px) {
   .category-nav {
     justify-content: flex-start;
   }
-  
+
   .service-card {
     flex: 1 1 100%;
     min-height: auto;
     padding: 1.2rem;
   }
-  
+
   .services-cta .btn {
     width: 100%;
     max-width: 280px;
@@ -327,22 +454,22 @@
   .services {
     padding: 1.5rem 0.8rem;
   }
-  
+
   .category-nav {
     justify-content: flex-start;
   }
-  
+
   .service-card {
     flex: 1 1 100%;
     padding: 1rem;
     min-height: auto;
   }
-  
+
   .services-cta {
     padding: 1.2rem;
     margin-top: 2rem;
   }
-  
+
   .services-cta .btn {
     width: 100%;
     max-width: 260px;
@@ -365,11 +492,6 @@
     font-size: 1.1rem;
   }
 
-  .category-btn {
-    padding: 0.7rem 0.8rem;
-    font-size: 0.8rem;
-  }
-  
   .services-cta .btn {
     max-width: 240px;
     padding: 0.7rem 1.2rem;
@@ -402,6 +524,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .category-panel.active,
   .service-card,
   .category-btn {

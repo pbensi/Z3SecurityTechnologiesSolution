@@ -163,3 +163,31 @@ export async function initContact({ clientId, endpoint }) {
 
     await initGoogleSignIn(clientId);
 }
+
+
+export function initLocationTabs() {
+    const tabs = document.querySelectorAll('.location-tab');
+
+    function handleTabClick() {
+        document.querySelectorAll('.location-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content-location-panel').forEach(c => c.classList.remove('active'));
+
+        this.classList.add('active');
+
+        const tabId = this.getAttribute('data-tab');
+        const contentPanel = document.getElementById(tabId);
+        if (contentPanel) {
+            contentPanel.classList.add('active');
+        }
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', handleTabClick);
+    });
+
+    return function cleanup() {
+        tabs.forEach(tab => {
+            tab.removeEventListener('click', handleTabClick);
+        });
+    };
+}

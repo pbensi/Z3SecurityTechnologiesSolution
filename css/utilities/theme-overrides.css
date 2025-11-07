@@ -1,20 +1,11 @@
 /* ===== HEADER & NAVIGATION ===== */
-[data-theme="light"] .header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+[data-theme="light"] .header .navbar .navbar-menu .nav-link {
+    color: white;
 }
 
-[data-theme="light"] .navbar-logo {
-    color: var(--primary);
-}
 
-[data-theme="light"] .tagline {
-    color: var(--text-light);
-}
-
-[data-theme="light"] .menu-toggle-label span {
-    background: var(--text);
+[data-theme="light"] .header.scrolled .navbar .navbar-menu .nav-link {
+    color: var(--text);
 }
 
 /* ===== SERVICES SECTION ===== */
@@ -219,18 +210,9 @@
     background: var(--bg-secondary);
 }
 
-[data-theme="light"] .partner-logo img {
-  filter: grayscale(100%) brightness(0.6) contrast(1.4);
-  opacity: 0.6;
-}
-
-[data-theme="light"] .partner-logo img {
-  background: transparent;
-}
-
 [data-theme="light"] .partner-logo:hover img {
-  filter: grayscale(0%) brightness(1) contrast(1);
-  opacity: 1;
+    /* filter: grayscale(0%) brightness(1) contrast(1); */
+    opacity: 1;
 }
 
 [data-theme="light"] .partners-gradient.left {
@@ -375,6 +357,7 @@
 
 [data-theme="light"] .badge-item {
     color: var(--text);
+    border: 1px solid rgb(0 0 0 / 29%);
 }
 
 [data-theme="light"] .badge-item i {

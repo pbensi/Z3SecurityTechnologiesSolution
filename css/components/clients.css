@@ -1,7 +1,7 @@
 .clients-section {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
-  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem);
+  padding: var(--space-2xl);
   color: var(--white);
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
@@ -380,6 +380,221 @@
   }
 }
 
+@media (max-width: 480px) {
+  .clients-section {
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.8rem, 2vw, 1.5rem);
+  }
+
+  .clients-columns {
+    padding: 0 1rem;
+  }
+
+  .client-card {
+    width: calc(50% - clamp(0.6rem, 2vw, 1.2rem) * 0.5);
+    max-width: 90px;
+    min-width: 50px;
+    padding: min(0.8rem, 2vw);
+  }
+
+  .clients-grid {
+    min-height: 160px;
+    gap: clamp(0.4rem, 1.5vw, 0.8rem);
+  }
+
+  .clients-column h3 {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin-bottom: clamp(0.6rem, 1.5vw, 0.8rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+  }
+
+  .clients-cta {
+    margin-top: clamp(0.8rem, 2vw, 1.2rem);
+  }
+
+  .clients-column.public-sector::after {
+    left: 8%;
+    right: 8%;
+  }
+
+  .client-modal-content {
+    gap: 1rem;
+  }
+
+  .client-modal-image {
+    max-width: 140px;
+    padding: 12px;
+  }
+
+  .client-modal-info h3 {
+    font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+  }
+
+  .client-modal-info p {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 6em;
+    text-align: left;
+  }
+
+  .client-description h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+    padding: 0 0.5rem;
+  }
+
+  .client-description p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.2em;
+    width: 95%;
+  }
+
+  .clients-partner-us h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+  }
+
+  .clients-partner-us p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+  }
+
+  .clients-cta .btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .clients-cta .btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+}
+
+@media (max-width: 360px) {
+  .client-card {
+    width: calc(50% - 0.4rem);
+    max-width: 80px;
+    padding: 0.6rem;
+  }
+
+  .clients-grid {
+    gap: 0.4rem;
+  }
+
+  .clients-column.public-sector::after {
+    left: 5%;
+    right: 5%;
+  }
+
+  .clients-column h3 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.3rem;
+  }
+
+  .client-modal-info h3 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .client-modal-info p {
+    font-size: 0.85rem;
+    max-height: 4.5em;
+  }
+
+  .client-description h3 {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .client-description p {
+    font-size: 0.7rem;
+    max-height: 2.8em;
+  }
+
+  .clients-partner-us h3 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .clients-partner-us p {
+    font-size: 0.85rem;
+    max-height: 3em;
+  }
+}
+
+@media (max-width: 320px) {
+  .clients-column h3 {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.2rem;
+  }
+
+  .client-modal-info h3 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .client-modal-info p {
+    font-size: 0.8rem;
+    max-height: 4.2em;
+  }
+
+  .client-description h3 {
+    font-size: 0.8rem;
+  }
+
+  .client-description p {
+    font-size: 0.65rem;
+    max-height: 2.6em;
+  }
+
+  .clients-partner-us h3 {
+    font-size: 1rem;
+  }
+
+  .clients-partner-us p {
+    font-size: 0.8rem;
+    max-height: 2.8em;
+  }
+}
+
 @media (max-width: 1100px) {
   .clients-columns {
     max-width: 1000px;
@@ -507,76 +722,6 @@
   .clients-column.public-sector::after {
     left: 10%;
     right: 10%;
-  }
-}
-
-@media (max-width: 480px) {
-  .clients-section {
-    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.8rem, 2vw, 1.5rem);
-  }
-
-  .clients-columns {
-    padding: 0 1rem;
-  }
-
-  .client-card {
-    width: calc(50% - clamp(0.6rem, 2vw, 1.2rem) * 0.5);
-    max-width: 90px;
-    min-width: 50px;
-    padding: min(0.8rem, 2vw);
-  }
-
-  .clients-grid {
-    min-height: 160px;
-    gap: clamp(0.4rem, 1.5vw, 0.8rem);
-  }
-
-  .clients-column h3 {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    margin-bottom: clamp(0.6rem, 1.5vw, 0.8rem);
-  }
-
-  .clients-cta {
-    margin-top: clamp(0.8rem, 2vw, 1.2rem);
-  }
-
-  .clients-column.public-sector::after {
-    left: 8%;
-    right: 8%;
-  }
-
-  .client-modal-content {
-    gap: 1rem;
-  }
-
-  .client-modal-image {
-    max-width: 140px;
-    padding: 12px;
-  }
-
-  .client-modal-info h3 {
-    font-size: 1.3rem;
-  }
-
-  .client-modal-info p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .client-card {
-    width: calc(50% - 0.4rem);
-    max-width: 80px;
-    padding: 0.6rem;
-  }
-
-  .clients-grid {
-    gap: 0.4rem;
-  }
-
-  .clients-column.public-sector::after {
-    left: 5%;
-    right: 5%;
   }
 }
 
