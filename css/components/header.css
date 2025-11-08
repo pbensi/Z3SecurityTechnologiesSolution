@@ -41,6 +41,7 @@
 }
 
 .navbar-logo img {
+  background: var(--white);
   height: 45px;
   width: 45px;
   border-radius: 50%;

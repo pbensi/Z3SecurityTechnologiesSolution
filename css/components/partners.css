@@ -11,6 +11,7 @@
 
  .partners-container {
    display: flex;
+   background: #f0f0f0c4;
    width: 100%;
    flex-direction: column;
  }
@@ -42,13 +43,13 @@
 
  .partner-logo {
    flex-shrink: 0;
+   background:transparent;
    display: flex;
    align-items: center;
    justify-content: center;
    padding: 1.5rem;
    width: 200px;
    height: 140px;
-   background: #f0f0f0c4;
    border: none;
    outline: none;
    transition: all 0.3s ease;
