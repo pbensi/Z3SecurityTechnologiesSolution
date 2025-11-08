@@ -5,6 +5,8 @@ export function initCertifications() {
 
     if (!seeMoreBtn || !seeLessBtn || !certGrid) return;
 
+    updateCertImages();
+
     const hiddenCerts = Array.from(certGrid.querySelectorAll('.cert-item.hidden'));
 
     seeMoreBtn.addEventListener('click', () => {
@@ -32,6 +34,44 @@ export function initCertifications() {
     });
 
     initCertObserver(certGrid.querySelectorAll('.cert-item:not(.hidden)'));
+    
+    initThemeObserver();
+}
+
+function updateCertImages() {
+    const certImages = document.querySelectorAll('.cert-item img');
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    
+    certImages.forEach(img => {
+        const lightSrc = img.getAttribute('data-light');
+        const darkSrc = img.getAttribute('data-dark');
+        
+        if (currentTheme === 'dark' && darkSrc) {
+            img.src = darkSrc;
+        } else if (lightSrc) {
+            img.src = lightSrc;
+        }
+        
+        if (!img.alt) {
+            const fileName = lightSrc?.split('/').pop() || 'certificate';
+            img.alt = `Certificate ${fileName}`;
+        }
+    });
+}
+
+function initThemeObserver() {
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                updateCertImages();
+            }
+        });
+    });
+
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
 }
 
 function initCertObserver(certItems) {
