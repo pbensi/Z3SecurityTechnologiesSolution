@@ -5,7 +5,7 @@ const SLIDESHOW_CONFIG = {
             alt: 'hero'
         },
         {
-            image: './assets/img/hero-section-1.png',
+            image: './assets/img/hero-section-1.jpg',
             alt: 'hero-1'
         },
         {
