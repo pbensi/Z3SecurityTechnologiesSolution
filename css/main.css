@@ -1,7 +1,20 @@
 @import url('./utilities/variables.css');
 @import url('./utilities/buttons.css');
 @import url('./utilities/modal.css');
-@import url('./utilities/theme-overrides.css');
+@import url('./utilities/lights/buttons-light.css');
+@import url('./utilities/lights/enhancements-light.css');
+@import url('./utilities/lights/theme-toggle-light.css');
+@import url('./components/lights/about-light.css');
+@import url('./components/lights/accreditation-light.css');
+@import url('./components/lights/certifications-light.css');
+@import url('./components/lights/clients-light.css');
+@import url('./components/lights/contact-light.css');
+@import url('./components/lights/footer-light.css');
+@import url('./components/lights/header-light.css');
+@import url('./components/lights/partners-light.css');
+@import url('./components/lights/services-light.css');
+@import url('./components/lights/trust-badges-light.css');
+@import url('./components/lights/why-us-light.css');
 @import url('./components/header.css');
 @import url('./components/hero.css');
 @import url('./components/aboutus.css');
@@ -14,6 +27,7 @@
 @import url('./components/partners.css');
 @import url('./components/contact.css');
 @import url('./components/footer.css');
+
 
 * {
   margin: 0;

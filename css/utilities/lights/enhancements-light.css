@@ -1,0 +1,27 @@
+/* ===== GLASS MORPHISM ENHANCEMENTS ===== */
+[data-theme="light"] .service-card,
+[data-theme="light"] .client-card,
+[data-theme="light"] .contact-form,
+[data-theme="light"] .category-btn {
+    backdrop-filter: blur(30px);
+}
+
+/* ===== TEXT CONTRAST ENHANCEMENTS ===== */
+[data-theme="light"] .service-card p,
+[data-theme="light"] .contact-description p,
+[data-theme="light"] .form-header p,
+[data-theme="light"] .services-cta p,
+[data-theme="light"] .clients-partner-us p,
+[data-theme="light"] .accreditation-content p {
+    color: var(--text-light);
+}
+
+/* ===== BORDER CONTRAST ===== */
+[data-theme="light"] .service-card,
+[data-theme="light"] .client-card,
+[data-theme="light"] .contact-form,
+[data-theme="light"] .category-btn,
+[data-theme="light"] .services-cta,
+[data-theme="light"] .clients-partner-us {
+    border: 1px solid var(--glass-border);
+}

@@ -1,0 +1,13 @@
+/* ===== TRUST BADGES ===== */
+[data-theme="light"] .trust-badges {
+    background: var(--bg-primary);
+}
+
+[data-theme="light"] .badge-item {
+    color: var(--text-light);
+    border: 1px solid rgb(0 0 0 / 29%);
+}
+
+[data-theme="light"] .badge-item i {
+    color: var(--accent);
+}

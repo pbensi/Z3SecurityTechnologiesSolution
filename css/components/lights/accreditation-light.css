@@ -1,0 +1,22 @@
+/* ===== ACCREDITATION ===== */
+[data-theme="light"] .accreditation {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .accreditation-content h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .accreditation-content p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .accreditation-badge {
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow);
+}
+
+[data-theme="light"] .accreditation-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}

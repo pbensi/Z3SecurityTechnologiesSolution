@@ -1,0 +1,29 @@
+/* ===== FOOTER ===== */
+[data-theme="light"] footer {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+[data-theme="light"] .footer-column h3 {
+    color: var(--accent-light);
+}
+
+[data-theme="light"] .footer-column p {
+    color: var(--white);
+    opacity: 0.9;
+}
+
+[data-theme="light"] .footer-links a {
+    color: var(--white);
+}
+
+[data-theme="light"] .social-links a {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+[data-theme="light"] .copyright {
+    border-top-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}

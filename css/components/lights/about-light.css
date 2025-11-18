@@ -1,0 +1,45 @@
+/* ===== ABOUT US SECTION ===== */
+[data-theme="light"] .about {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .about::before {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.03) 0%, rgba(44, 80, 163, 0.06) 100%);
+}
+
+[data-theme="light"] .about::after {
+    background: linear-gradient(45deg, rgba(30, 58, 117, 0.03) 0%, rgba(44, 80, 163, 0.06) 100%);
+}
+
+[data-theme="light"] .about-text h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .about-text p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .about-highlight span {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .feature {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .feature h4 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .feature p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .stats {
+    background: var(--gradient);
+}
+
+[data-theme="light"] .stats::before {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23000000" opacity="0.03"><polygon points="1000,100 1000,0 0,100"/></svg>');
+}

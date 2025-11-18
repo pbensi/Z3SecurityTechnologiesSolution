@@ -1,0 +1,17 @@
+/* ===== PARTNERS SECTION ===== */
+[data-theme="light"] .partners {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .partner-logo:hover img {
+    /* filter: grayscale(0%) brightness(1) contrast(1); */
+    opacity: 1;
+}
+
+[data-theme="light"] .partners-gradient.left {
+    background: linear-gradient(to right, var(--bg-secondary) 0%, transparent 100%);
+}
+
+[data-theme="light"] .partners-gradient.right {
+    background: linear-gradient(to left, var(--bg-secondary) 0%, transparent 100%);
+}

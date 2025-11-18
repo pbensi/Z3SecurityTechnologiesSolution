@@ -1,0 +1,45 @@
+/* ===== SERVICES SECTION ===== */
+[data-theme="light"] .services {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .service-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="light"] .service-card h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .service-card p {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .service-features li {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .category-btn {
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+}
+
+[data-theme="light"] .category-btn.active {
+    background: var(--gradient-accent);
+    color: var(--primary-dark);
+}
+
+[data-theme="light"] .services-cta {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .services-cta h3 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .services-cta p {
+    color: var(--text-light);
+}

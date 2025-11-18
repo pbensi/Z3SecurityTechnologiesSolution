@@ -1,0 +1,29 @@
+/* ===== HEADER & NAVIGATION ===== */
+[data-theme="light"] .header .navbar .navbar-menu .nav-link,
+[data-theme="light"] .header.scrolled .navbar .navbar-menu.active .nav-link,
+[data-theme="light"] .header .navbar  .navbar-menu.active::after,
+[data-theme="light"] .header.scrolled .navbar .navbar-menu.active::after {
+    color: var(--white);
+}
+
+[data-theme="light"] .header .navbar .navbar-menu .nav-link:hover,
+[data-theme="light"] .header.scrolled .navbar .navbar-menu .nav-link:hover {
+    color: var(--accent);
+}
+
+[data-theme="light"] .header.scrolled .navbar .navbar-menu .nav-link {
+    color: var(--text);
+}
+
+/* ===== SECTION HEADERS ===== */
+[data-theme="light"] .section-header h2 {
+    color: var(--primary);
+}
+
+[data-theme="light"] .section-header .section-subtitle {
+    color: var(--text-light);
+}
+
+[data-theme="light"] .section-header h2::after {
+    background: var(--accent);
+}

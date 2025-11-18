@@ -161,21 +161,6 @@ function setupSlideshow() {
         });
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            stopSlideShow();
-            prevSlide();
-            startSlideShow();
-        } else if (e.key === 'ArrowRight') {
-            stopSlideShow();
-            nextSlide();
-            startSlideShow();
-        } else if (e.key === ' ' || e.key === 'Spacebar') {
-            e.preventDefault();
-            togglePause();
-        }
-    });
-
     showSlide(0);
     startSlideShow();
 }

@@ -1,0 +1,17 @@
+/* ===== CLIENTS SECTION ===== */
+[data-theme="light"] .clients-section {
+    background: var(--bg-secondary);
+    color: var(--text-light);
+}
+
+[data-theme="light"] .client-card,
+[data-theme="light"] .clients-grid {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="light"] .category-title,
+[data-theme="light"] .carousel-arrow {
+    color: var(--text-light);
+    border: 1px solid rgb(0 0 0 / 29%);
+}
