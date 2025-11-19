@@ -113,10 +113,10 @@
   opacity: 1;
   transform: translateX(0) scale(1);
   z-index: 3;
-  background: rgba(212, 175, 55, 0.15);
+  background: rgb(212 175 55 / 61%);
   border: 1px solid var(--accent);
   box-shadow: var(--shadow-hover);
-  color: var(--accent);
+  color: var(--text-light);
   pointer-events: auto;
 }
 
