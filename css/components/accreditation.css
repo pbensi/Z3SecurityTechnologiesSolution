@@ -77,19 +77,6 @@
     flex-shrink: 0;
 }
 
-.accreditation-badge::after {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: pulse-gold 3s ease-in-out infinite;
-}
-
 @keyframes pulse-gold {
     0%, 100% {
         transform: scale(1);

@@ -5,112 +5,112 @@ const clientData = {
     title: 'Municipality of Samboan',
     description: 'Installation of 48 units 4MP IP CCTV Camera.',
     category: 'Public',
-    image: 'Municipality_of_samboan.png',
+    image: 'Municipality_of_samboan.webp',
     sector: 'public'
   },
   'pub-2': {
     title: 'City Hall Of Bay Bay Leyte',
     description: 'Supply and Install of 200+ CCTV Camera, telephone system and Data System.',
     category: 'Public',
-    image: 'City_Hall_Of_Bay_Bay_Leyte.png',
+    image: 'City_Hall_Of_Bay_Bay_Leyte.webp',
     sector: 'public'
   },
   'pub-3': {
     title: 'Baranggay Looc, Lapu Lapu City',
     description: 'Supply and Install of 52 units of 4MP IP CCTV Camera and 14 unit IP Paging System.',
     category: 'Public',
-    image: 'barangay_looc.png',
+    image: 'barangay_looc.webp',
     sector: 'public'
   },
   'pub-4': {
     title: 'Municipality of Mainit, Surigao del Norte',
     description: 'Supply and Install of PABX or Telephone System and IP CCTV Camera.',
     category: 'Public',
-    image: 'Municipality_of_Mainit.png',
+    image: 'Municipality_of_Mainit.webp',
     sector: 'public'
   },
   'pub-5': {
     title: 'Baranggay Biga, Toledo City',
     description: 'Supply and Install of 40 units Two Way Radio System including monopole.',
     category: 'Public',
-    image: 'Baranggay_Biga.png',
+    image: 'Baranggay_Biga.webp',
     sector: 'public'
   },
   'priv-1': {
     title: 'Dusit Thani Mactan Resort and Spa',
     description: 'Supply and Install 70 IP Camera, Hold up alarm System, and Panic Alarm System. Quarterly PMS of CCTV (200+ IP CCTV). Door Alarm System (40+ Doors).',
     category: 'Private',
-    image: 'Dusit_Thani_Mactan_Resort_and_Spa.png',
+    image: 'Dusit_Thani_Mactan_Resort_and_Spa.webp',
     sector: 'private'
   },
   'priv-2': {
     title: 'Sister of Mary Boys Town',
     description: 'Supply and Install Conventional Fire Alarm System for 4 buildings (400+ smoke detectors).',
     category: 'Private',
-    image: 'The_Sisters_of_Mary_Schools.png',
+    image: 'The_Sisters_of_Mary_Schools.webp',
     sector: 'private'
   },
   'priv-3': {
     title: 'RN VIOS CONSTRUCTION AND DEV\'T CORP.',
     description: 'Supply and Install IP CCTV CAMERA (32 UNITS), ADDRESSABLE FIRE ALARM SYSTEM AND STRUCTURE CABLING.',
     category: 'Private',
-    image: 'RNVios_Construction_Dev_Corp.png',
+    image: 'RNVios_Construction_Dev_Corp.webp',
     sector: 'private'
   },
   'priv-4': {
     title: 'Villa Tuna Restaurant',
     description: 'Supply and Install IP CCTV CAMERA (32 UNITS), ADDRESSABLE FIRE ALARM SYSTEM AND STRUCTURE CABLING.',
     category: 'Private',
-    image: 'villatuna.png',
+    image: 'villatuna.webp',
     sector: 'private'
   },
   'priv-5': {
     title: 'SVJ HOTEL',
     description: 'Supply and Install IP CCTV CAMERA (32 UNITS), ADDRESSABLE FIRE ALARM SYSTEM AND STRUCTURE CABLING.',
     category: 'Private',
-    image: 'svjhotel.png',
+    image: 'svjhotel.webp',
     sector: 'private'
   },
   'priv-6': {
     title: 'Beaver Hotel & Residences',
     description: 'Supply and Install IP CCTV CAMERA (32 UNITS), ADDRESSABLE FIRE ALARM SYSTEM AND STRUCTURE CABLING.',
     category: 'Private',
-    image: 'breaver.png',
+    image: 'breaver.webp',
     sector: 'private'
   },
   'priv-7': {
     title: 'LORENZO SHIPPING CORP',
     description: 'Supply and Install IP CCTV Camera and electrical works.',
     category: 'Private',
-    image: 'lorenzo.png',
+    image: 'lorenzo.webp',
     sector: 'private'
   },
   'priv-8': {
     title: 'MLHUILLIER IT Department office',
     description: 'Supply and Install Fire alarm System.',
     category: 'Private',
-    image: 'mlhuillier.png',
+    image: 'mlhuillier.webp',
     sector: 'private'
   },
   'priv-9': {
     title: 'Seaside Haven',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'Seaside_Heaven.png',
+    image: 'Seaside_Heaven.webp',
     sector: 'private'
   },
   'priv-10': {
     title: 'Starbucks',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'starbucks_coffee.png',
+    image: 'starbucks_coffee.webp',
     sector: 'private'
   },
   'priv-11': {
     title: 'Chowking',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'Chowking.png',
+    image: 'Chowking.webp',
     sector: 'private'
   },
   'priv-12': {
@@ -131,63 +131,63 @@ const clientData = {
     title: 'Contempo Property Holdings Inc.',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'ontempo.png',
+    image: 'ontempo.webp',
     sector: 'private'
   },
   'priv-15': {
     title: 'Bamboo Bay',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'bamboobay.png',
+    image: 'bamboobay.webp',
     sector: 'private'
   },
   'priv-16': {
     title: 'Village One Saekyung',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'villageone.png',
+    image: 'villageone.webp',
     sector: 'private'
   },
   'priv-17': {
     title: 'Andy Hotel',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'andyhotel.png',
+    image: 'andyhotel.webp',
     sector: 'private'
   },
   'priv-18': {
     title: 'ML Suites',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'MLSuite.jpg',
+    image: 'MLSuite.webp',
     sector: 'private'
   },
   'priv-19': {
     title: 'Kalahi-CIDSS/NCDDP',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'Kalahi.png',
+    image: 'Kalahi.webp',
     sector: 'private'
   },
   'priv-20': {
     title: 'Dito Telecommunity',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'Dito_Telecommunity.png',
+    image: 'Dito_Telecommunity.webp',
     sector: 'private'
   },
   'priv-21': {
     title: 'AutoLab Car Care Specialists',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'autolab.png',
+    image: 'autolab.webp',
     sector: 'private'
   },
   'priv-22': {
     title: 'LAB Solution Technologies INC.',
     description: 'Supply and Install IP CCTV Camera and IP PABX.',
     category: 'Private',
-    image: 'lab.png',
+    image: 'lab.webp',
     sector: 'private'
   },
 };
@@ -201,7 +201,6 @@ class ClientModal extends Modal {
   init() {
     super.init();
     this.bindClientCards();
-    this.addKeyboardNavigation();
   }
 
   bindClientCards() {
@@ -214,48 +213,30 @@ class ClientModal extends Modal {
     });
   }
 
-  addKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-      const clientCard = e.target.closest('.client-card');
-      
-      if (clientCard && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        this.openClientModal(clientCard);
-      }
-      
-      if (e.key === 'Escape' && this.isOpen) {
-        this.close();
-      }
-    });
-  }
-
   openClientModal(card) {
     const clientId = card.getAttribute('data-client-id');
-    const imgElement = card.querySelector('img');
+    const data = this.clientData[clientId];
 
-    if (!imgElement || !clientId) return;
+    if (!data) return;
 
-    const data = this.clientData[clientId] || {
-      title: imgElement.alt || 'Our Valued Client',
-      description: 'We are proud to partner with this organization...',
-      category: 'Client'
-    };
-
-    this.updateModalContent(imgElement.src, data.title, data.description);
+    this.updateModalContent(data);
     this.open();
   }
 
-  updateModalContent(imageSrc, title, description) {
+  updateModalContent(data) {
     const imageElement = document.getElementById('modalClientImage');
     const titleElement = document.getElementById('modalClientName');
     const descriptionElement = document.getElementById('modalClientDescription');
 
     if (imageElement) {
-      imageElement.src = imageSrc;
-      imageElement.alt = `${title} logo`;
+      imageElement.src = `./assets/img/${data.sector}/${data.image}`;
+      imageElement.alt = `${data.title} logo`;
+      imageElement.loading = 'lazy';
+      imageElement.width = 250;
+      imageElement.height = 250;
     }
-    if (titleElement) titleElement.textContent = title;
-    if (descriptionElement) descriptionElement.textContent = description;
+    if (titleElement) titleElement.textContent = data.title;
+    if (descriptionElement) descriptionElement.textContent = data.description;
   }
 }
 
@@ -268,8 +249,9 @@ class SectorCarousel {
     this.clientsGrid = container.querySelector('.clients-grid');
     this.prevArrow = container.querySelector('.carousel-arrow.prev');
     this.nextArrow = container.querySelector('.carousel-arrow.next');
-    this.imageCache = {};
+    
     this.observer = null;
+    this.hasLoadedInitialImages = false;
 
     this.categories = {
       public: [
@@ -278,7 +260,7 @@ class SectorCarousel {
           clients: ['pub-1', 'pub-4']
         },
         {
-          title: "City Government",
+          title: "City Government", 
           clients: ['pub-2']
         },
         {
@@ -292,7 +274,7 @@ class SectorCarousel {
           clients: ['priv-1', 'priv-5', 'priv-6', 'priv-17', 'priv-18']
         },
         {
-          title: "Construction & Dev",
+          title: "Construction & Dev", 
           clients: ['priv-3', 'priv-12', 'priv-14']
         },
         {
@@ -308,7 +290,7 @@ class SectorCarousel {
           clients: ['priv-19', 'priv-20', 'priv-21', 'priv-22']
         },
         {
-          title: "Automotive & Retail",
+          title: "Automotive & Retail", 
           clients: ['priv-13', 'priv-21']
         },
         {
@@ -330,27 +312,26 @@ class SectorCarousel {
     this.initIntersectionObserver();
     this.updateCarousel();
     this.bindEvents();
-    this.addResizeListener();
   }
 
   initIntersectionObserver() {
-    if ('IntersectionObserver' in window) {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target.querySelector('img');
-            if (img && img.dataset.src) {
-              img.src = img.dataset.src;
-              delete img.dataset.src;
-            }
-            this.observer.unobserve(entry.target);
+    if (!('IntersectionObserver' in window)) return;
+    
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target.querySelector('img');
+          if (img && img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
           }
-        });
-      }, {
-        rootMargin: '50px',
-        threshold: 0.1
+          this.observer.unobserve(entry.target);
+        }
       });
-    }
+    }, {
+      rootMargin: '100px',
+      threshold: 0.1
+    });
   }
 
   createTitles() {
@@ -362,8 +343,6 @@ class SectorCarousel {
       this.titlesWrapper.classList.add('few-categories');
       if (categoryCount === 1) {
         this.titlesWrapper.classList.add('single-category');
-      } else if (categoryCount === 2) {
-        this.titlesWrapper.classList.add('two-categories');
       }
     } else {
       this.titlesWrapper.classList.remove('few-categories', 'single-category', 'two-categories');
@@ -386,27 +365,28 @@ class SectorCarousel {
     if (this.isAnimating) return;
     
     this.isAnimating = true;
+    const currentCategory = this.currentCategories[this.currentIndex];
+
     const titles = this.titlesContainer.querySelectorAll('.category-title');
     const totalItems = this.currentCategories.length;
-    const currentCategory = this.currentCategories[this.currentIndex];
+
+    if (totalItems >= 3) {
+      this.updateCarouselPositions();
+    } else {
+      titles.forEach((title, index) => {
+        title.classList.toggle('active', index === this.currentIndex);
+      });
+    }
 
     titles.forEach((title, index) => {
       title.setAttribute('aria-pressed', index === this.currentIndex ? 'true' : 'false');
     });
 
-    if (totalItems <= 2) {
-      titles.forEach((title, index) => {
-        title.classList.toggle('active', index === this.currentIndex);
-      });
-    } else {
-      this.updateCarouselPositions();
-    }
-
     this.updateClientsGrid(currentCategory.clients);
     
     setTimeout(() => {
       this.isAnimating = false;
-    }, 300);
+    }, 150);
   }
 
   updateCarouselPositions() {
@@ -448,42 +428,30 @@ class SectorCarousel {
   updateClientsGrid(clientIds) {
     this.clientsGrid.innerHTML = '';
     
-    this.preloadImages(clientIds);
-    
     clientIds.forEach((clientId, index) => {
       const client = this.getClientData(clientId);
       if (client) {
         const card = this.createClientCard(clientId, client, index);
         this.clientsGrid.appendChild(card);
         
-        if (this.observer) {
+        if (this.observer && !this.hasLoadedInitialImages) {
           this.observer.observe(card);
         }
       }
     });
 
-    this.checkScrollable();
-  }
-
-  preloadImages(clientIds) {
-    clientIds.forEach(clientId => {
-      const client = this.getClientData(clientId);
-      if (client && !this.imageCache[clientId]) {
-        const img = new Image();
-        img.src = `./assets/img/${client.sector}/${client.image}`;
-        this.imageCache[clientId] = img;
-      }
-    });
+    if (!this.hasLoadedInitialImages) {
+      this.hasLoadedInitialImages = true;
+    }
   }
 
   createClientCard(clientId, clientData, index) {
     const card = document.createElement('div');
-    card.className = 'client-card loading';
+    card.className = 'client-card';
     card.setAttribute('data-client-id', clientId);
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', `View details for ${clientData.title}`);
-    card.style.animationDelay = `${index * 0.1}s`;
 
     const img = document.createElement('img');
     img.alt = clientData.title;
@@ -492,36 +460,28 @@ class SectorCarousel {
     img.width = 100;
     img.height = 100;
 
-    if (this.imageCache[clientId]) {
-      img.src = this.imageCache[clientId].src;
-      this.handleImageLoad(img, card);
-    } else {
-      img.dataset.src = `./assets/img/${clientData.sector}/${clientData.image}`;
-      
-      const cardRect = this.clientsGrid.getBoundingClientRect();
-      if (cardRect.top < window.innerHeight + 100) {
-        img.src = img.dataset.src;
-        delete img.dataset.src;
-      }
-      
-      img.onload = () => this.handleImageLoad(img, card);
-      img.onerror = () => this.handleImageError(img, card);
+    img.dataset.src = `./assets/img/${clientData.sector}/${clientData.image}`;
+    
+    const cardRect = this.clientsGrid.getBoundingClientRect();
+    if (cardRect.top < window.innerHeight + 200) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
     }
+
+    img.onload = () => {
+      card.classList.remove('loading');
+      img.classList.add('loaded');
+    };
+
+    img.onerror = () => {
+      card.classList.remove('loading');
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjBGMEYwIi8+CjxwYXRoIGQ9Ik0zNSA0MEg2NVY2MEgzNVY0MFoiIGZpbGw9IiNDMEMwQzAiLz4KPHBhdGggZD0iTTQ1IDI1SDU1VjM1SDQ1VjI1WiIgZmlsbD0iI0MwQzBDMCIvPgo8L3N2Zz4K';
+      img.alt = 'Client logo not available';
+      img.classList.add('loaded');
+    };
 
     card.appendChild(img);
     return card;
-  }
-
-  handleImageLoad(img, card) {
-    card.classList.remove('loading');
-    img.classList.add('loaded');
-  }
-
-  handleImageError(img, card) {
-    card.classList.remove('loading');
-    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjBGMEYwIi8+CjxwYXRoIGQ9Ik0zNSA0MEg2NVY2MEgzNVY0MFoiIGZpbGw9IiNDMEMwQzAiLz4KPHBhdGggZD0iTTQ1IDI1SDU1VjM1SDQ1VjI1WiIgZmlsbD0iI0MwQzBDMCIvPgo8L3N2Zz4K';
-    img.alt = 'Client logo not available';
-    img.classList.add('loaded');
   }
 
   getClientData(clientId) {
@@ -530,13 +490,8 @@ class SectorCarousel {
       description: 'We are proud to partner with this organization.',
       category: 'Unknown',
       sector: this.sectorType,
-      image: 'default-client.png'
+      image: 'default-client.webp'
     };
-  }
-
-  checkScrollable() {
-    const isScrollable = this.clientsGrid.scrollHeight > this.clientsGrid.clientHeight;
-    this.clientsGrid.classList.toggle('scrollable', isScrollable);
   }
 
   bindEvents() {
@@ -544,17 +499,6 @@ class SectorCarousel {
       const title = e.target.closest('.category-title');
       if (title && !title.classList.contains('hidden')) {
         const index = parseInt(title.dataset.index);
-        if (index !== this.currentIndex && !this.isAnimating) {
-          this.currentIndex = index;
-          this.updateCarousel();
-        }
-      }
-    });
-
-    this.titlesContainer.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('category-title')) {
-        e.preventDefault();
-        const index = parseInt(e.target.dataset.index);
         if (index !== this.currentIndex && !this.isAnimating) {
           this.currentIndex = index;
           this.updateCarousel();
@@ -572,13 +516,6 @@ class SectorCarousel {
           e.stopPropagation();
           this.navigate(-1);
         });
-
-        this.prevArrow.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.navigate(-1);
-          }
-        });
       }
 
       if (this.nextArrow) {
@@ -588,13 +525,6 @@ class SectorCarousel {
           e.stopPropagation();
           this.navigate(1);
         });
-
-        this.nextArrow.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.navigate(1);
-          }
-        });
       }
 
       this.setupSwipeSupport();
@@ -602,10 +532,6 @@ class SectorCarousel {
       if (this.prevArrow) this.prevArrow.style.display = 'none';
       if (this.nextArrow) this.nextArrow.style.display = 'none';
     }
-
-    this.clientsGrid.addEventListener('scroll', () => {
-      this.checkScrollable();
-    });
   }
 
   setupSwipeSupport() {
@@ -634,28 +560,9 @@ class SectorCarousel {
     }
   }
 
-  addResizeListener() {
-    let resizeTimeout;
-    const resizeHandler = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        this.updateCarousel();
-      }, 250);
-    };
-
-    window.addEventListener('resize', resizeHandler, { passive: true });
-
-    this.cleanupResizeListener = () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }
-
   destroy() {
     if (this.observer) {
       this.observer.disconnect();
-    }
-    if (this.cleanupResizeListener) {
-      this.cleanupResizeListener();
     }
   }
 }
@@ -670,4 +577,4 @@ export function initClients() {
   const privateCarousel = new SectorCarousel(document.querySelector('.private-sector .sector-carousel'), 'private');
   
   return { clientModal, publicCarousel, privateCarousel };
-} 
+}

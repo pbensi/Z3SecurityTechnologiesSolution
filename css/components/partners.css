@@ -1,3 +1,4 @@
+/* ------- PARTNER SECTION -------- */
 .partners {
   padding-top: var(--space-2xl);
   background: rgba(255, 255, 255, 0.03);
@@ -11,11 +12,12 @@
 
 .partners-container {
   display: flex;
-  width: 100%;
   flex-direction: column;
+  width: 100%;
   background: #f0f0f0c4;
 }
 
+/* ------- MARQUEE SYSTEM -------- */
 .marquee {
   position: relative;
   overflow: hidden;
@@ -24,32 +26,35 @@
 
 .marquee-content {
   display: flex;
-  align-items: center;
   gap: 2rem;
   width: max-content;
-  animation: scroll 55s linear infinite;
+  animation: marquee 40s linear infinite;
   will-change: transform;
-  animation-play-state: paused;
 }
 
+/* Duplicate content automatically using CSS */
 .marquee-content::after {
-  content: "";
+  content: attr(data-duplicate);
   display: flex;
-  width: 100%;
 }
 
-.marquee-left .marquee-content {
-  animation-direction: normal;
-}
+/* Reverse direction for second row */
 .marquee-right .marquee-content {
   animation-direction: reverse;
 }
 
-@keyframes scroll {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+/* The smooth infinite scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
+/* Pause on hover */
+.marquee:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* -------- LOGO STYLES -------- */
 .partner-logo {
   flex-shrink: 0;
   padding: 1.5rem;
@@ -72,15 +77,7 @@
   opacity: 1;
 }
 
-.marquee:hover .marquee-content {
-  animation-play-state: running;
-}
-
-.marquee:hover .marquee-content {
-  animation-play-state: paused !important;
-}
-
-
+/* ------ RESPONSIVE ------ */
 @media (max-width: 1200px) {
   .partner-logo { width: 180px; height: 120px; }
 }
@@ -90,7 +87,7 @@
 @media (max-width: 768px) {
   .partners { padding: 3rem 0; }
   .partner-logo { width: 140px; height: 100px; }
-  .marquee-content { animation-duration: 30s; }
+  .marquee-content { animation-duration: 25s; }
 }
 @media (max-width: 576px) {
   .partners { padding: 2rem 0; border-radius: 12px; }

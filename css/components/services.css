@@ -1,3 +1,4 @@
+/* Services Section - Performance Optimized */
 .services {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
@@ -5,11 +6,15 @@
   position: relative;
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
+  /* Performance optimization */
+  contain: layout style;
 }
 
 .services-categories {
   max-width: min(1200px, 98vw);
   margin: 0 auto;
+  /* Performance optimization */
+  content-visibility: auto;
 }
 
 .category-nav {
@@ -24,6 +29,9 @@
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
   justify-content: center;
+  /* Performance optimizations */
+  will-change: transform;
+  contain: layout style;
 }
 
 .category-nav::-webkit-scrollbar {
@@ -58,6 +66,9 @@
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3), inset 0 2px 2px rgba(255, 255, 255, 0.05);
   text-align: center;
   min-height: 44px;
+  /* Performance optimization */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .category-btn i {
@@ -103,6 +114,8 @@
 
 .category-panel {
   display: none;
+  /* Performance optimization */
+  contain: layout style;
 }
 
 .category-panel.active {
@@ -115,7 +128,6 @@
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -125,8 +137,12 @@
 .services-grid {
   display: flex;
   flex-wrap: wrap;
+  padding:10px;
   gap: clamp(0.8rem, 2.5vw, 1.8rem);
   justify-content: center;
+  /* Performance optimization */
+  content-visibility: auto;
+  contain: layout style;
 }
 
 .service-card {
@@ -145,6 +161,25 @@
   overflow: hidden;
   flex: 1 1 min(100%, 280px);
   max-width: 400px;
+  /* Performance optimizations */
+  transform: translateZ(0);
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.service-card.animate-in {
+  animation: cardSlideIn 0.6s ease-out;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .service-icon {
@@ -227,6 +262,8 @@
   margin-top: clamp(1.5rem, 5vw, 4rem);
   text-align: center;
   border: 1px solid var(--glass-border);
+  /* Performance optimization */
+  contain: layout style;
 }
 
 .services-cta h3 {
@@ -251,6 +288,19 @@
   min-width: 200px;
 }
 
+/* Reduced blur on mobile for better performance */
+@media (max-width: 768px) {
+  .services {
+    backdrop-filter: blur(10px);
+  }
+  
+  .service-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+  }
+}
+
+/* Existing Responsive Styles */
 @media (max-width: 480px) {
   .category-btn {
     white-space: nowrap;
@@ -499,6 +549,7 @@
   }
 }
 
+/* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .service-card:hover {
     transform: none;
@@ -523,11 +574,12 @@
   }
 }
 
+/* Accessibility and user preference support */
 @media (prefers-reduced-motion: reduce) {
-
   .category-panel.active,
   .service-card,
-  .category-btn {
+  .category-btn,
+  .service-card.animate-in {
     animation: none !important;
     transition: none !important;
   }
