@@ -23,7 +23,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="./assets/img/logo.png" type="image/png">
-    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="preload" href="./assets/img/hero-section.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/main.css">
+    </noscript>
 
     <script type="application/ld+json">
     {
@@ -77,11 +82,14 @@
     <main>
         <!-- HERO SECTION -->
         <section class="hero" id="home">
-            <div class="slideshow-background" data-slideshow></div>
+            <div class="slideshow-background" data-slideshow>
+                <img src="./assets/img/hero-section.jpg" alt="Security Systems" class="background-slide active"
+                    loading="eager" fetchpriority="high">
+            </div>
 
             <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge experience-badge-js">
+                    <div class="hero-badge">
                         <span>2019 Certified. Your Security, Our Vision.</span>
                     </div>
                     <h1 class="hero-title">SECURITY &amp; AUXILIARY SYSTEMS PROVIDER</h1>
@@ -101,6 +109,7 @@
                 </div>
             </div>
 
+            <!-- Slideshow Navigation -->
             <div class="slideshow-nav" data-slideshow-nav>
                 <button class="slideshow-btn prev-btn" data-prev aria-label="Previous slide">
                     <i class="fas fa-chevron-left"></i>

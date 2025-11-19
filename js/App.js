@@ -1,7 +1,7 @@
 import { initServices } from './components/services.js';
 import { initCertifications } from './components/certifications.js';
 import { initContact, initLocationTabs } from './components/contact.js';
-import { initPartner } from './components/partner.js';
+import { initPartners } from './components/partner.js';
 import { Theme } from './utilities/theme.js';
 import { Menu } from './components/menu.js';
 import { initClients } from './components/clients.js';
@@ -24,7 +24,7 @@ class App {
         initServices();
         initCertifications();
         initClients();
-        initPartner();
+        initPartners();
         initLocationTabs();
         initContact({
             clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",

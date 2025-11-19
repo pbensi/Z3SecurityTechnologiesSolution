@@ -29,6 +29,7 @@
   width: max-content;
   animation: scroll 55s linear infinite;
   will-change: transform;
+  animation-play-state: paused;
 }
 
 .marquee-content::after {
@@ -72,8 +73,13 @@
 }
 
 .marquee:hover .marquee-content {
-  animation-play-state: paused;
+  animation-play-state: running;
 }
+
+.marquee:hover .marquee-content {
+  animation-play-state: paused !important;
+}
+
 
 @media (max-width: 1200px) {
   .partner-logo { width: 180px; height: 120px; }
