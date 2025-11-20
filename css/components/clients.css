@@ -1,12 +1,8 @@
 .clients-section {
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      rgba(255, 255, 255, 0.01) 100%);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
   padding: var(--space-2xl);
   color: var(--white);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
 }
 
 .clients-columns {
@@ -261,11 +257,6 @@
   min-height: 280px;
   max-height: 450px;
   padding: var(--space-lg);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow);
-  background: var(--glass-light);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;

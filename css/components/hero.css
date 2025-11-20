@@ -379,8 +379,7 @@
 
 .trust-badges {
   padding: 1rem 0;
-  backdrop-filter: blur(10px);
-  background: rgba(15, 26, 46, 0.8);
+  background: rgba(255, 255, 255, 0.03);
   width: 100%;
 }
 
@@ -886,9 +885,6 @@
     background: linear-gradient(135deg, rgba(10, 18, 32, 0.9), rgba(20, 40, 70, 0.9));
   }
 
-  .trust-badges {
-    background: rgba(10, 18, 32, 0.9);
-  }
 }
 .background-slide[loading="eager"] {
   display: block !important;

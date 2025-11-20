@@ -1,8 +1,6 @@
 .why-us {
     padding: var(--space-2xl) 0;
     background: rgba(255, 255, 255, 0.03);
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
 }
 
 .why-grid {
