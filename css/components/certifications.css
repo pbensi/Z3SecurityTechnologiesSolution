@@ -1,12 +1,9 @@
-/* Certifications Section - Performance Optimized */
 .certifications {
   background: rgba(255, 255, 255, 0.03);
   padding: var(--space-2xl);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
-  /* Performance optimization */
-  contain: layout style;
 }
 
 .cert-grid {
@@ -18,19 +15,12 @@
   margin: 0 auto;
   overflow: hidden;
   justify-content: center;
-  /* Performance optimization */
-  content-visibility: auto;
-  contain: layout style;
 }
 
 .cert-item {
   flex: 1 1 calc(33.333% - var(--space-lg));
   max-width: 280px;
   min-width: 200px;
-  /* Performance optimization */
-  transform: translateZ(0);
-  will-change: transform;
-  contain: layout style paint;
 }
 
 .cert-item img {
@@ -40,9 +30,6 @@
   border: 1px solid transparent;
   border-radius: 200px;
   transition: var(--transition);
-  /* Performance optimizations */
-  transform: translateZ(0);
-  contain: layout style paint;
 }
 
 .cert-item.hidden {
@@ -81,12 +68,7 @@
   display: block;
 }
 
-/* Reduced blur on mobile for better performance */
 @media (max-width: 768px) {
-  .certifications {
-    backdrop-filter: blur(5px);
-  }
-  
   .cert-item {
     flex: 1 1 calc(50% - var(--space-lg));
     max-width: 300px;
@@ -174,19 +156,8 @@
   }
 }
 
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .cert-item:hover {
-    transform: none;
-  }
-  
-  .cert-item:active {
-    transform: scale(0.98);
-  }
-}
-
-/* Accessibility and user preference support */
 @media (prefers-reduced-motion: reduce) {
+
   .cert-item,
   .cert-buttons .btn {
     animation: none !important;
@@ -201,22 +172,5 @@
   .cert-item.show-animation {
     opacity: 1;
     transform: none;
-  }
-}
-
-@media (prefers-contrast: high) {
-  .cert-item img {
-    border: 2px solid var(--accent);
-  }
-  
-  .certifications {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--black);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .certifications {
-    background: rgba(0, 0, 0, 0.3);
   }
 }

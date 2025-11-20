@@ -1,37 +1,14 @@
 class HeroSlideshow {
     constructor() {
-        this.supportsWebP = this.detectWebPSupport();
-
         this.config = {
             slides: [
-                {
-                    image: this.getImagePath('hero-section'),
-                    alt: 'Security Systems'
-                },
-                {
-                    image: this.getImagePath('hero-section-1'),
-                    alt: 'Professional Security Installation'
-                },
-                {
-                    image: this.getImagePath('hero-section-2'),
-                    alt: 'CCTV Surveillance Systems'
-                },
-                {
-                    image: this.getImagePath('hero-section-3'),
-                    alt: 'Fire Alarm Systems'
-                },
-                {
-                    image: this.getImagePath('hero-section-4'),
-                    alt: 'Access Control Solutions'
-                },
-                {
-                    image: this.getImagePath('hero-section-5'),
-                    alt: 'Business Security Systems'
-                },
-                {
-                    image: this.getImagePath('hero-section-6'),
-                    alt: 'Nationwide Security Services'
-                },
+                { image: './assets/img/hero-section.jpg', alt: 'hero' },
+                { image: './assets/img/hero-section-1.jpg', alt: 'hero-1' },
+                { image: './assets/img/hero-section-2.jpg', alt: 'hero-2' },
+                { image: './assets/img/hero-section-3.jpg', alt: 'hero-3' },
+                { image: './assets/img/hero-section-4.jpg', alt: 'hero-4' },
+                { image: './assets/img/hero-section-5.jpg', alt: 'hero-5' },
+                { image: './assets/img/hero-section-6.jpg', alt: 'hero-6' },
             ],
             settings: {
                 autoPlay: true,
@@ -49,25 +26,15 @@ class HeroSlideshow {
         };
     }
 
-    detectWebPSupport() {
-        const elem = document.createElement('canvas');
-        if (!!(elem.getContext && elem.getContext('2d'))) {
-            return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-        }
-        return false;
-    }
-
-    getImagePath(baseName) {
-        return `./assets/img/${baseName}${this.supportsWebP ? '.webp' : '.jpg'}`;
-    }
-
     init() {
         if (!this.shouldInitialize()) return;
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.initializeSlideshow());
+        if (document.readyState === 'complete') {
+            setTimeout(() => this.initializeSlideshow(), 1500);
         } else {
-            this.initializeSlideshow();
+            window.addEventListener('load', () => {
+                setTimeout(() => this.initializeSlideshow(), 1500);
+            });
         }
     }
 
@@ -88,15 +55,6 @@ class HeroSlideshow {
 
         if (!slideshow || !dotsContainer) return;
 
-        const firstSlide = slideshow.querySelector('.background-slide.active');
-        if (firstSlide) {
-            firstSlide.src = this.config.slides[0].image;
-            firstSlide.loading = 'eager';
-            firstSlide.fetchpriority = 'high';
-            firstSlide.width = 1920;
-            firstSlide.height = 1080;
-        }
-
         this.generateSlides(slideshow);
         this.generateDots(dotsContainer);
         this.setupEventListeners();
@@ -105,19 +63,15 @@ class HeroSlideshow {
 
     generateSlides(container) {
         const fragment = document.createDocumentFragment();
-
+        
         for (let i = 1; i < this.config.slides.length; i++) {
             const slide = this.config.slides[i];
             const imgElement = document.createElement('img');
-
             imgElement.src = slide.image;
             imgElement.alt = slide.alt;
             imgElement.className = 'background-slide';
             imgElement.loading = 'lazy';
             imgElement.setAttribute('data-slide', i);
-            imgElement.width = 1920;
-            imgElement.height = 1080;
-
             fragment.appendChild(imgElement);
         }
 
@@ -126,7 +80,7 @@ class HeroSlideshow {
 
     generateDots(container) {
         const fragment = document.createDocumentFragment();
-
+        
         this.config.slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.className = `dot ${index === 0 ? 'active' : ''}`;
@@ -140,10 +94,10 @@ class HeroSlideshow {
 
     showSlide(index) {
         if (this.state.isAnimating || index === this.state.currentSlide) return;
-
+        
         this.state.isAnimating = true;
         const newIndex = (index + this.config.slides.length) % this.config.slides.length;
-
+        
         if (this.state.isHeroVisible) {
             this.preloadNextImages(newIndex);
         }
@@ -157,7 +111,7 @@ class HeroSlideshow {
         setTimeout(() => {
             slides[newIndex]?.classList.add('active');
             dots[newIndex]?.classList.add('active');
-
+            
             this.state.currentSlide = newIndex;
             this.state.isAnimating = false;
         }, 50);
@@ -177,10 +131,10 @@ class HeroSlideshow {
 
     startAutoPlay() {
         this.stopAutoPlay();
-
+        
         if (this.config.settings.autoPlay && this.state.isHeroVisible) {
             this.state.slideInterval = setInterval(
-                () => this.nextSlide(),
+                () => this.nextSlide(), 
                 this.config.settings.slideDuration
             );
         }
@@ -242,17 +196,18 @@ class HeroSlideshow {
             entries.forEach(entry => {
                 const wasVisible = this.state.isHeroVisible;
                 this.state.isHeroVisible = entry.isIntersecting;
-
+                
                 if (this.state.isHeroVisible && !wasVisible) {
+
                     this.startAutoPlay();
                     this.preloadNextImages(this.state.currentSlide);
                 } else if (!this.state.isHeroVisible && wasVisible) {
+
                     this.stopAutoPlay();
                 }
             });
         }, {
-            threshold: 0.4,
-            rootMargin: '50px'
+            threshold: 0.4
         });
 
         observer.observe(heroSection);
@@ -260,12 +215,12 @@ class HeroSlideshow {
 
     preloadNextImages(currentIndex) {
         if (!this.state.isHeroVisible) return;
-
+        
         const nextIndices = [
             (currentIndex + 1) % this.config.slides.length,
             (currentIndex + 2) % this.config.slides.length
         ];
-
+        
         nextIndices.forEach(index => {
             const img = new Image();
             img.src = this.config.slides[index].image;
@@ -282,7 +237,7 @@ let heroInstance = null;
 export function initHero() {
     if (!heroInstance) {
         heroInstance = new HeroSlideshow();
-        heroInstance.init();
+        heroInstance.init(); 
     }
 }
 
