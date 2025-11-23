@@ -1,19 +1,54 @@
-export function initServices() {
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const categoryPanels = document.querySelectorAll('.category-panel');
+class Services {
+    constructor() {
+        if (Services.instance) {
+            return Services.instance;
+        }
+        Services.instance = this;
 
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const category = btn.getAttribute('data-category');
-            const targetPanel = document.getElementById(`${category}-panel`);
+        this.categoryBtns = null;
+        this.categoryPanels = null;
 
-            if (btn.classList.contains('active')) return;
+        this.boundHandleCategoryClick = this.handleCategoryClick.bind(this);
 
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            categoryPanels.forEach(p => p.classList.remove('active'));
+        this.init();
+        return this;
+    }
 
-            btn.classList.add('active');
-            targetPanel.classList.add('active');
+    init() {
+        this.categoryBtns = document.querySelectorAll('.category-btn');
+        this.categoryPanels = document.querySelectorAll('.category-panel');
+
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        this.categoryBtns.forEach(btn => {
+            btn.addEventListener('click', this.boundHandleCategoryClick);
         });
-    });
+    }
+
+    handleCategoryClick(e) {
+        const btn = e.currentTarget;
+        const category = btn.getAttribute('data-category');
+        const targetPanel = document.getElementById(`${category}-panel`);
+
+        if (btn.classList.contains('active')) return;
+
+        this.categoryBtns.forEach(b => b.classList.remove('active'));
+        this.categoryPanels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        targetPanel.classList.add('active');
+    }
 }
+
+let servicesInstance = null;
+
+function initServices() {
+    if (!servicesInstance) {
+        servicesInstance = new Services();
+    }
+    return servicesInstance;
+}
+
+export { initServices };

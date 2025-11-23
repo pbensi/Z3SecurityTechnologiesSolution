@@ -15,6 +15,23 @@
     padding: 0;
 }
 
+.about::-webkit-scrollbar {
+    width: 6px;
+}
+
+.about::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.about::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+
+.about::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-light);
+}
+
 .about.active {
     right: 0;
 }
@@ -25,17 +42,14 @@
 
 .about .container {
     height: 100%;
-    padding: var(--space-xl);
+    padding: 10px var(--space-xl);
     display: flex;
     flex-direction: column;
 }
 
 .about-close {
-    position: absolute;
     outline: 2px solid var(--accent);
     outline-offset: 2px;
-    top: var(--space-lg);
-    right: var(--space-lg);
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
     color: var(--text);
@@ -84,13 +98,14 @@
 
 .about-features {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: var(--space-lg);
 }
 
 .feature {
     flex: 1 1 calc(50% - var(--space-lg));
+    color: var(--text);
     min-width: 200px;
     padding: var(--space-lg);
     background: var(--glass);
@@ -98,7 +113,6 @@
     border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(20px);
     transition: var(--transition);
 }
 
@@ -154,7 +168,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -221,7 +234,6 @@ body.about-open {
     }
 
     .about-features {
-        flex-direction: column;
         gap: var(--space-md);
     }
 

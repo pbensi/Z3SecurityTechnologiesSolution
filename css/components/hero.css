@@ -27,14 +27,13 @@
   overflow: hidden;
 }
 
-/* 🚀 FIXED: Updated for <img> elements */
 .background-slide {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;           /* 🚀 Replaces background-size: cover */
-  object-position: center;     /* 🚀 Replaces background-position: center */
+  object-fit: cover;
+  object-position: center;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
   will-change: opacity;
@@ -44,7 +43,6 @@
   opacity: 1;
 }
 
-/* 🚀 CRITICAL: Ensure LCP image renders immediately */
 .background-slide[loading="eager"] {
   display: block !important;
 }
@@ -71,7 +69,7 @@
 .hero-badge {
   display: inline-block;
   background: var(--gradient-accent);
-  color: var(--dark);
+  color: var(--white);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   font-weight: 600;
@@ -85,9 +83,12 @@
 }
 
 @keyframes badgePulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -112,6 +113,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -137,6 +139,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 0.9;
     transform: translateY(0);
@@ -157,6 +160,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -209,7 +213,7 @@
   transform: scale(0.95);
 }
 
-.slideshow-btn i {
+.slideshow-btn .svg {
   font-size: 1.1rem;
 }
 
@@ -226,7 +230,10 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  margin: 0 5px;
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.3s ease;
@@ -309,6 +316,7 @@
   0% {
     width: 0%;
   }
+
   100% {
     width: 100%;
   }
@@ -322,24 +330,28 @@
     border-bottom: 2px solid transparent;
     border-left: 2px solid transparent;
   }
+
   25% {
     border-top: 2px solid var(--accent);
     border-right: 2px solid var(--accent);
     border-bottom: 2px solid transparent;
     border-left: 2px solid transparent;
   }
+
   50% {
     border-top: 2px solid var(--accent);
     border-right: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
     border-left: 2px solid transparent;
   }
+
   75% {
     border-top: 2px solid var(--accent);
     border-right: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
     border-left: 2px solid var(--accent);
   }
+
   100% {
     transform: rotate(270deg);
     border: 2px solid var(--accent);
@@ -350,6 +362,7 @@
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
@@ -366,12 +379,19 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: rotate(45deg) translateY(0);
   }
+
   40% {
     transform: rotate(45deg) translateY(-10px);
   }
+
   60% {
     transform: rotate(45deg) translateY(-5px);
   }
@@ -385,6 +405,7 @@
 
 .badges-grid {
   display: grid;
+  color: var(--text);
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 1.5rem;
   align-items: center;
@@ -400,17 +421,17 @@
   justify-content: center;
   gap: 0.8rem;
   padding: 1rem 1.5rem;
-  transition: var(--transition);
   text-align: center;
   min-width: 0;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  transition: var(--transition);
   overflow: hidden;
 }
 
-.badge-item i {
+.badge-item .svg {
   color: var(--accent);
   font-size: 1.3rem;
   flex-shrink: 0;
@@ -581,7 +602,7 @@
     height: 35px;
   }
 
-  .slideshow-btn i {
+  .slideshow-btn .svg {
     font-size: 1rem;
   }
 
@@ -747,7 +768,7 @@
     padding: 0.875rem 1rem;
   }
 
-  .badge-item i {
+  .badge-item .svg {
     font-size: 1.1rem;
     width: 20px;
   }
@@ -764,7 +785,7 @@
     height: 32px;
   }
 
-  .slideshow-btn i {
+  .slideshow-btn .svg {
     font-size: 0.9rem;
   }
 
@@ -816,6 +837,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-badge,
   .hero-title,
   .hero-subtitle,
@@ -860,7 +882,7 @@
     padding: 8px 4px;
     margin: -8px -4px;
   }
-  
+
   .dot::after {
     content: '';
     position: absolute;
@@ -884,8 +906,8 @@
   .hero {
     background: linear-gradient(135deg, rgba(10, 18, 32, 0.9), rgba(20, 40, 70, 0.9));
   }
-
 }
+
 .background-slide[loading="eager"] {
   display: block !important;
   position: absolute !important;

@@ -1,33 +1,17 @@
+@import url('./components/logoLoading.css');
 @import url('./utilities/variables.css');
 @import url('./utilities/buttons.css');
-@import url('./utilities/modal.css');
-@import url('./utilities/lights/buttons-light.css');
-@import url('./utilities/lights/enhancements-light.css');
-@import url('./utilities/lights/theme-toggle-light.css');
-@import url('./components/lights/about-light.css');
-@import url('./components/lights/accreditation-light.css');
-@import url('./components/lights/certifications-light.css');
-@import url('./components/lights/clients-light.css');
-@import url('./components/lights/contact-light.css');
-@import url('./components/lights/footer-light.css');
-@import url('./components/lights/header-light.css');
-@import url('./components/lights/partners-light.css');
-@import url('./components/lights/services-light.css');
-@import url('./components/lights/trust-badges-light.css');
-@import url('./components/lights/why-us-light.css');
 @import url('./components/header.css');
 @import url('./components/hero.css');
 @import url('./components/aboutus.css');
 @import url('./components/services.css');
 @import url('./components/whyus.css');
-@import url('./components/capacity.css');
 @import url('./components/certifications.css');
 @import url('./components/accreditation.css');
 @import url('./components/clients.css');
 @import url('./components/partners.css');
 @import url('./components/contact.css');
 @import url('./components/footer.css');
-
 
 * {
   margin: 0;
@@ -43,10 +27,26 @@ html {
 body {
   font-family: 'Tw Cen MT';
   background: var(--dark);
-  color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
   font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+
+
+
+.no-js body {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.no-js .logo-loading {
+    display: none !important;
+}
+
+.svg {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
 }
 
 .container {
@@ -71,26 +71,13 @@ body {
 }
 
 .section-header h2 {
-  color: var(--white);
+  color: var(--accent);
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 700;
   margin-bottom: clamp(0.8rem, 2vw, 1rem);
   position: relative;
   line-height: 1.2;
 }
-
-/* .section-header h2::after {
-  content: "";
-  display: block;
-  width: clamp(60px, 15vw, 80px);
-  height: clamp(3px, 1vw, 4px);
-  background: var(--accent);
-  margin: clamp(0.8rem, 2vw, 1rem) auto 0;
-  border-radius: 2px;
-  animation: lineExtend 0.8s ease-out 0.5s forwards;
-  transform: scaleX(0);
-  transform-origin: center;
-} */
 
 @keyframes lineExtend {
   to {
@@ -132,17 +119,6 @@ body {
 
 .shiny:hover::before {
   left: 100%;
-}
-
-img {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  max-width: 100%;
-  height: auto;
-}
-
-img.loaded {
-  opacity: 1;
 }
 
 .notification {

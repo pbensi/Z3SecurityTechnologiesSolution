@@ -1,7 +1,6 @@
 .certifications {
   background: rgba(255, 255, 255, 0.03);
   padding: var(--space-2xl);
-  backdrop-filter: blur(10px);
 }
 
 .cert-grid {
@@ -67,9 +66,20 @@
 }
 
 @media (max-width: 768px) {
+  .cert-item img {
+    transition: none !important;
+  }
+  
+  .cert-item.show-animation {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
   .cert-item {
-    flex: 1 1 calc(50% - var(--space-lg));
-    max-width: 300px;
+    flex: 1 1 calc(50% - var(--space-md));
+    max-width: calc(50% - var(--space-md));
+    min-width: 140px;
   }
 
   .cert-buttons .btn {
@@ -89,8 +99,9 @@
   }
 
   .cert-item {
-    flex: 1 1 100%;
-    max-width: 280px;
+    flex: 1 1 calc(50% - var(--space-md));
+    max-width: calc(50% - var(--space-md));
+    min-width: 120px;
   }
 
   .cert-item:last-child {
@@ -124,7 +135,9 @@
   }
 
   .cert-item {
-    max-width: 260px;
+    flex: 1 1 calc(50% - var(--space-sm));
+    max-width: calc(50% - var(--space-sm));
+    min-width: 110px;
   }
 
   .cert-buttons .btn {
@@ -144,7 +157,9 @@
   }
 
   .cert-item {
-    max-width: 240px;
+    flex: 1 1 calc(50% - var(--space-xs));
+    max-width: calc(50% - var(--space-xs));
+    min-width: 100px;
   }
 
   .cert-buttons .btn {
@@ -154,8 +169,14 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
 
+@media (hover: none) and (pointer: coarse) {
+  .cert-item img:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .cert-item,
   .cert-buttons .btn {
     animation: none !important;

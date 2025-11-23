@@ -28,7 +28,7 @@
 
 .btn-primary {
   background: linear-gradient(180deg, var(--accent-light) 0%, var(--accent-dark) 100%);
-  color: var(--dark);
+  color: var(--white);
   border: 2px solid var(--accent-dark);
   box-shadow:
     0 4px 0 var(--accent-dark),

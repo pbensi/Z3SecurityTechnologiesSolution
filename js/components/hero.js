@@ -1,5 +1,10 @@
-class HeroSlideshow {
+class Hero {
     constructor() {
+        if (Hero.instance) {
+            return Hero.instance;
+        }
+        Hero.instance = this;
+
         this.config = {
             slides: [
                 { image: './assets/img/hero-section.jpg', alt: 'hero' },
@@ -24,6 +29,15 @@ class HeroSlideshow {
             isAnimating: false,
             isHeroVisible: false
         };
+
+        this.observer = null;
+
+        this.boundHandleDotClick = this.handleDotClick.bind(this);
+        this.boundHandleVisibilityChange = this.handleVisibilityChange.bind(this);
+        this.boundHandleIntersection = this.handleIntersection.bind(this);
+
+        this.init();
+        return this;
     }
 
     init() {
@@ -63,7 +77,7 @@ class HeroSlideshow {
 
     generateSlides(container) {
         const fragment = document.createDocumentFragment();
-        
+
         for (let i = 1; i < this.config.slides.length; i++) {
             const slide = this.config.slides[i];
             const imgElement = document.createElement('img');
@@ -80,7 +94,7 @@ class HeroSlideshow {
 
     generateDots(container) {
         const fragment = document.createDocumentFragment();
-        
+
         this.config.slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.className = `dot ${index === 0 ? 'active' : ''}`;
@@ -94,10 +108,10 @@ class HeroSlideshow {
 
     showSlide(index) {
         if (this.state.isAnimating || index === this.state.currentSlide) return;
-        
+
         this.state.isAnimating = true;
         const newIndex = (index + this.config.slides.length) % this.config.slides.length;
-        
+
         if (this.state.isHeroVisible) {
             this.preloadNextImages(newIndex);
         }
@@ -111,7 +125,7 @@ class HeroSlideshow {
         setTimeout(() => {
             slides[newIndex]?.classList.add('active');
             dots[newIndex]?.classList.add('active');
-            
+
             this.state.currentSlide = newIndex;
             this.state.isAnimating = false;
         }, 50);
@@ -131,10 +145,10 @@ class HeroSlideshow {
 
     startAutoPlay() {
         this.stopAutoPlay();
-        
+
         if (this.config.settings.autoPlay && this.state.isHeroVisible) {
             this.state.slideInterval = setInterval(
-                () => this.nextSlide(), 
+                () => this.nextSlide(),
                 this.config.settings.slideDuration
             );
         }
@@ -147,21 +161,47 @@ class HeroSlideshow {
         }
     }
 
+    handleDotClick(e) {
+        if (e.target.classList.contains('dot')) {
+            const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+            if (slideIndex !== this.state.currentSlide) {
+                this.stopAutoPlay();
+                this.showSlide(slideIndex);
+                this.startAutoPlay();
+            }
+        }
+    }
+
+    handleVisibilityChange() {
+        if (document.hidden) {
+            this.stopAutoPlay();
+        } else if (this.config.settings.autoPlay && this.state.isHeroVisible) {
+            this.startAutoPlay();
+        }
+    }
+
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            const wasVisible = this.state.isHeroVisible;
+            this.state.isHeroVisible = entry.isIntersecting;
+
+            if (this.state.isHeroVisible && !wasVisible) {
+                this.startAutoPlay();
+                this.preloadNextImages(this.state.currentSlide);
+            } else if (!this.state.isHeroVisible && wasVisible) {
+                this.stopAutoPlay();
+            }
+        });
+    }
+
     setupEventListeners() {
         const dotsContainer = document.querySelector('[data-dots]');
         const nextBtn = document.querySelector('[data-next]');
         const prevBtn = document.querySelector('[data-prev]');
 
-        dotsContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('dot')) {
-                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
-                if (slideIndex !== this.state.currentSlide) {
-                    this.stopAutoPlay();
-                    this.showSlide(slideIndex);
-                    this.startAutoPlay();
-                }
-            }
-        });
+        if (dotsContainer) {
+            dotsContainer.addEventListener('click', this.boundHandleDotClick);
+        }
 
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
@@ -179,71 +219,42 @@ class HeroSlideshow {
             });
         }
 
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                this.stopAutoPlay();
-            } else if (this.config.settings.autoPlay && this.state.isHeroVisible) {
-                this.startAutoPlay();
-            }
-        });
+        document.addEventListener('visibilitychange', this.boundHandleVisibilityChange);
     }
 
     setupViewportObserver() {
         const heroSection = document.getElementById('home');
         if (!heroSection || !('IntersectionObserver' in window)) return;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const wasVisible = this.state.isHeroVisible;
-                this.state.isHeroVisible = entry.isIntersecting;
-                
-                if (this.state.isHeroVisible && !wasVisible) {
-
-                    this.startAutoPlay();
-                    this.preloadNextImages(this.state.currentSlide);
-                } else if (!this.state.isHeroVisible && wasVisible) {
-
-                    this.stopAutoPlay();
-                }
-            });
-        }, {
+        this.observer = new IntersectionObserver(this.boundHandleIntersection, {
             threshold: 0.4
         });
 
-        observer.observe(heroSection);
+        this.observer.observe(heroSection);
     }
 
     preloadNextImages(currentIndex) {
         if (!this.state.isHeroVisible) return;
-        
+
         const nextIndices = [
             (currentIndex + 1) % this.config.slides.length,
             (currentIndex + 2) % this.config.slides.length
         ];
-        
+
         nextIndices.forEach(index => {
             const img = new Image();
             img.src = this.config.slides[index].image;
         });
     }
-
-    destroy() {
-        this.stopAutoPlay();
-    }
 }
 
 let heroInstance = null;
 
-export function initHero() {
+function initHero() {
     if (!heroInstance) {
-        heroInstance = new HeroSlideshow();
-        heroInstance.init(); 
+        heroInstance = new Hero();
     }
+    return heroInstance;
 }
 
-export function destroyHero() {
-    if (heroInstance) {
-        heroInstance.destroy();
-        heroInstance = null;
-    }
-}
+export { initHero };

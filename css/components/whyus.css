@@ -13,21 +13,21 @@
 }
 
 .why-card {
-    background: var(--glass-light);
+    background: var(--glass);
     padding: var(--space-xl);
     border-radius: var(--radius-xl);
     text-align: center;
     box-shadow: var(--shadow);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: var(--transition);
 }
 
-.why-card i {
-    font-size: 2.2rem;
+.why-card .svg {
+    width: 50px;
+    height: 50px;
     color: var(--accent);
     margin-bottom: var(--space-md);
 }
@@ -47,6 +47,16 @@
     margin: 0;
     text-align: left;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .why-card {
+        transition: none !important;
+    }
+    
+    .why-card:hover {
+        transform: none !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -95,7 +105,7 @@
         padding: var(--space-md);
     }
 
-    .why-card i {
+    .why-card .svg {
         font-size: 1.8rem;
         margin-bottom: var(--space-sm);
     }
@@ -123,7 +133,7 @@
         padding: var(--space-md) var(--space-sm);
     }
 
-    .why-card i {
+    .why-card .svg {
         font-size: 1.6rem;
     }
 
@@ -151,7 +161,7 @@
         padding: var(--space-lg);
     }
 
-    .why-card i {
+    .why-card .svg {
         font-size: 2rem;
     }
 
@@ -164,35 +174,10 @@
     }
 }
 
-@media (prefers-contrast: high) {
-    .why-card {
-        background: var(--white);
-        border: 2px solid var(--black);
-    }
-
-    .why-card h3 {
-        color: var(--black);
-        font-weight: var(--font-weight-bold);
-    }
-
-    .why-card p {
-        color: var(--black);
-        font-weight: var(--font-weight-semibold);
-    }
-
-    .why-us {
-        background: var(--white);
-        border-color: var(--black);
-    }
-
-    .why-card i {
-        color: var(--black);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .why-card {
-        background: rgba(0, 0, 0, 0.3);
+@media (hover: none) and (pointer: coarse) {
+    .why-card:hover {
+        transform: none;
+        box-shadow: var(--shadow);
     }
 }
 

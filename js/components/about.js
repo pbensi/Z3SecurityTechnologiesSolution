@@ -1,19 +1,24 @@
-
-export class AboutSection {
+class About {
     constructor() {
-        this.aboutSection = document.getElementById('about');
+        if (About.instance) {
+            return About.instance;
+        }
+        About.instance = this;
+
+        this.about = document.getElementById('about');
         this.navLinks = document.querySelectorAll('[data-target="about"]');
+        this.closeButton = this.about ? this.about.querySelector('.about-close') : null;
         this.isVisible = false;
         this.overlay = null;
-        
+
         this.init();
+        return this;
     }
 
     init() {
         this.createOverlay();
-        
         this.hide();
-        
+
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -21,7 +26,11 @@ export class AboutSection {
             });
         });
 
-        this.addCloseButton();
+        if (this.closeButton) {
+            this.closeButton.addEventListener('click', () => this.hide());
+        }
+
+        document.addEventListener('keydown', (e) => this.handleEscapeKey(e));
     }
 
     createOverlay() {
@@ -31,41 +40,24 @@ export class AboutSection {
         document.body.appendChild(this.overlay);
     }
 
-    addCloseButton() {
-        if (!this.aboutSection) return;
-        
-        const closeButton = document.createElement('button');
-        closeButton.className = 'about-close';
-        closeButton.innerHTML = '×';
-        closeButton.addEventListener('click', () => this.hide());
-        
-        this.aboutSection.appendChild(closeButton);
-    }
-
     show() {
-        if (!this.aboutSection) return;
-        
+        if (!this.about) return;
+
         this.overlay.classList.add('active');
-        
-        this.aboutSection.classList.remove('hidden');
-        this.aboutSection.classList.add('active');
-        
+        this.about.classList.remove('hidden');
+        this.about.classList.add('active');
         document.body.classList.add('about-open');
-        
         this.isVisible = true;
     }
 
     hide() {
-        if (!this.aboutSection) return;
-        
+        if (!this.about) return;
+
         this.overlay.classList.remove('active');
-        
-        this.aboutSection.classList.remove('active');
-        this.aboutSection.classList.add('hidden');
-        
+        this.about.classList.remove('active');
+        this.about.classList.add('hidden');
         document.body.classList.remove('about-open');
-        
-        this.isVisible = false; 
+        this.isVisible = false;
     }
 
     toggle() {
@@ -81,23 +73,15 @@ export class AboutSection {
             this.hide();
         }
     }
+}
 
-    destroy() {
-        document.removeEventListener('keydown', this.handleEscapeKey.bind(this));
-        if (this.overlay) {
-            this.overlay.remove();
-        }
+let aboutInstance = null;
+
+function initAbout() {
+    if (!aboutInstance) {
+        aboutInstance = new About();
     }
+    return aboutInstance;
 }
 
-export function initAbout() {
-    const aboutSection = new AboutSection();
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            aboutSection.hide();
-        }
-    });
-    
-    return aboutSection;
-}
+export { initAbout };

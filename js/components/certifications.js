@@ -1,27 +1,51 @@
-export function initCertifications() {
-    const seeMoreBtn = document.getElementById('seeMoreBtn');
-    const seeLessBtn = document.getElementById('seeLessBtn');
-    const certGrid = document.querySelector('.cert-grid');
+class Certifications {
+    constructor() {
+        if (Certifications.instance) {
+            return Certifications.instance;
+        }
+        Certifications.instance = this;
 
-    if (!seeMoreBtn || !seeLessBtn || !certGrid) return;
+        this.seeMoreBtn = null;
+        this.seeLessBtn = null;
+        this.certGrid = null;
+        this.hiddenCerts = [];
+        this.certObserver = null;
+        this.themeObserver = null;
 
-    updateCertImages();
+        return this;
+    }
 
-    const hiddenCerts = Array.from(certGrid.querySelectorAll('.cert-item.hidden'));
+    init() {
+        this.seeMoreBtn = document.getElementById('seeMoreBtn');
+        this.seeLessBtn = document.getElementById('seeLessBtn');
+        this.certGrid = document.querySelector('.cert-grid');
 
-    seeMoreBtn.addEventListener('click', () => {
-        hiddenCerts.forEach((cert, i) => {
+        if (!this.seeMoreBtn || !this.seeLessBtn || !this.certGrid) return;
+
+        this.updateCertImages();
+
+        this.hiddenCerts = Array.from(this.certGrid.querySelectorAll('.cert-item.hidden'));
+
+        this.seeMoreBtn.addEventListener('click', () => this.handleSeeMore());
+        this.seeLessBtn.addEventListener('click', () => this.handleSeeLess());
+
+        this.initCertObserver(this.certGrid.querySelectorAll('.cert-item:not(.hidden)'));
+        this.initThemeObserver();
+    }
+
+    handleSeeMore() {
+        this.hiddenCerts.forEach((cert, i) => {
             cert.classList.remove('hidden');
             cert.classList.add('show-animation');
             setTimeout(() => cert.classList.add('visible'), i * 50);
         });
 
-        seeMoreBtn.style.display = 'none';
-        seeLessBtn.style.display = 'inline-flex';
-    });
+        this.seeMoreBtn.style.display = 'none';
+        this.seeLessBtn.style.display = 'inline-flex';
+    }
 
-    seeLessBtn.addEventListener('click', () => {
-        hiddenCerts.forEach((cert, i) => {
+    handleSeeLess() {
+        this.hiddenCerts.forEach((cert, i) => {
             cert.classList.remove('visible');
             setTimeout(() => {
                 cert.classList.add('hidden');
@@ -29,63 +53,71 @@ export function initCertifications() {
             }, 300 + i * 30);
         });
 
-        seeLessBtn.style.display = 'none';
-        seeMoreBtn.style.display = 'inline-flex';
-    });
+        this.seeLessBtn.style.display = 'none';
+        this.seeMoreBtn.style.display = 'inline-flex';
+    }
 
-    initCertObserver(certGrid.querySelectorAll('.cert-item:not(.hidden)'));
-    
-    initThemeObserver();
-}
+    updateCertImages() {
+        const certImages = document.querySelectorAll('.cert-item img');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
 
-function updateCertImages() {
-    const certImages = document.querySelectorAll('.cert-item img');
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    
-    certImages.forEach(img => {
-        const lightSrc = img.getAttribute('data-light');
-        const darkSrc = img.getAttribute('data-dark');
-        
-        if (currentTheme === 'dark' && darkSrc) {
-            img.src = darkSrc;
-        } else if (lightSrc) {
-            img.src = lightSrc;
-        }
-        
-        if (!img.alt) {
-            const fileName = lightSrc?.split('/').pop() || 'certificate';
-            img.alt = `Certificate ${fileName}`;
-        }
-    });
-}
+        certImages.forEach(img => {
+            const lightSrc = img.getAttribute('data-light');
+            const darkSrc = img.getAttribute('data-dark');
 
-function initThemeObserver() {
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-                updateCertImages();
+            if (currentTheme === 'dark' && darkSrc) {
+                img.src = darkSrc;
+            } else if (lightSrc) {
+                img.src = lightSrc;
+            }
+
+            if (!img.alt) {
+                const fileName = lightSrc?.split('/').pop() || 'certificate';
+                img.alt = `Certificate ${fileName}`;
             }
         });
-    });
+    }
 
-    observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-    });
-}
-
-function initCertObserver(certItems) {
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const item = entry.target;
-                if (!item.classList.contains('show-animation')) {
-                    item.classList.add('show-animation', 'visible');
+    initThemeObserver() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    this.updateCertImages();
                 }
-                obs.unobserve(item);
-            }
+            });
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    certItems.forEach(item => observer.observe(item));
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    }
+
+    initCertObserver(certItems) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const item = entry.target;
+                    if (!item.classList.contains('show-animation')) {
+                        item.classList.add('show-animation', 'visible');
+                    }
+                    obs.unobserve(item);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        certItems.forEach(item => observer.observe(item));
+    }
 }
+
+let certificationsInstance = null;
+
+function initCertifications() {
+    if (!certificationsInstance) {
+        certificationsInstance = new Certifications();
+        certificationsInstance.init();
+    }
+    return certificationsInstance;
+}
+
+export { initCertifications };

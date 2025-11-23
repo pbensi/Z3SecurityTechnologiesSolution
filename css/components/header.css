@@ -13,9 +13,9 @@
 }
 
 .header.scrolled {
-  background: var(--bg-primary);
+  background: #1e3a75eb;
   box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
+  border: 4px solid var(--accent);
 }
 
 .navbar {
@@ -69,7 +69,7 @@
 
 .nav-link {
   position: relative;
-  color: var(--text);
+  color: var(--white);
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -108,17 +108,15 @@
 
 .theme-btn:hover {
   border-color: var(--accent);
-  background: var(--accent);
-  color: var(--dark);
   transform: scale(1.05);
 }
 
-.theme-btn i {
+.theme-btn .svg {
   font-size: 1.1rem;
   transition: transform 0.3s ease;
 }
 
-.theme-btn:hover i {
+.theme-btn:hover .svg {
   transform: rotate(15deg);
 }
 
@@ -156,10 +154,6 @@
 .menu-toggle-btn.active {
   border-color: var(--accent);
   background: var(--accent);
-}
-
-.menu-toggle-btn.active span {
-  background: var(--dark);
 }
 
 .menu-toggle-btn.active span:nth-child(1) {
@@ -261,7 +255,7 @@
     gap: 0.6rem;
   }
 
-  .theme-btn i {
+  .theme-btn .svg {
     font-size: 1rem;
   }
 
@@ -326,7 +320,7 @@
     max-width: fit-content;
   }
 
-  .theme-btn i {
+  .theme-btn .svg {
     font-size: 1rem;
   }
 
@@ -368,7 +362,7 @@
     gap: 0.4rem;
   }
 
-  .theme-btn i {
+  .theme-btn .svg {
     font-size: 0.95rem;
   }
 
@@ -406,7 +400,7 @@
     height: 36px;
   }
 
-  .theme-btn i {
+  .theme-btn .svg {
     font-size: 0.9rem;
   }
 
@@ -423,8 +417,7 @@
     left: 0;
     width: 100%;
     height: 100vh !important;
-    background: linear-gradient(135deg, var(--glass-dark) 0%, rgba(0, 0, 0, 0.95) 100%);
-    backdrop-filter: blur(30px) saturate(180%);
+    background: #1e3a75eb;
     flex-direction: column;
     padding: 0;
     gap: 0;
@@ -508,7 +501,7 @@
     display: block;
     text-align: center;
     padding: 2rem 1rem;
-    color: var(--text-light);
+    color: var(--white);
     font-size: 0.9rem;
     font-weight: 600;
     opacity: 0.7;

@@ -1,17 +1,25 @@
-class PartnersMarquee {
+class Partners {
     constructor() {
+        if (Partners.instance) {
+            return Partners.instance;
+        }
+        Partners.instance = this;
+
         this.marqueeElements = null;
         this.observer = null;
-        this.isInitialized = false;
-        
+
+        this.boundSetupObserver = this.setupObserver.bind(this);
+        this.boundHandleIntersection = this.handleIntersection.bind(this);
+
         this.init();
+        return this;
     }
 
     init() {
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.setupObserver());
+            document.addEventListener('DOMContentLoaded', this.boundSetupObserver);
         } else {
-            this.setupObserver();
+            this.boundSetupObserver();
         }
     }
 
@@ -20,16 +28,8 @@ class PartnersMarquee {
         if (!partnersSection) return;
 
         this.marqueeElements = document.querySelectorAll('.marquee-content');
-        
-        this.observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.startMarquee();
-                } else {
-                    this.pauseMarquee();
-                }
-            });
-        }, {
+
+        this.observer = new IntersectionObserver(this.boundHandleIntersection, {
             threshold: 0.3,
             rootMargin: '50px'
         });
@@ -37,43 +37,40 @@ class PartnersMarquee {
         this.observer.observe(partnersSection);
     }
 
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                this.startMarquee();
+            } else {
+                this.pauseMarquee();
+            }
+        });
+    }
+
     startMarquee() {
-        if (this.isInitialized) return;
-        
+        if (!this.marqueeElements) return;
+
         this.marqueeElements.forEach(marquee => {
             marquee.style.animationPlayState = 'running';
         });
-        
-        this.isInitialized = true;
     }
 
     pauseMarquee() {
+        if (!this.marqueeElements) return;
+
         this.marqueeElements.forEach(marquee => {
             marquee.style.animationPlayState = 'paused';
         });
-        
-        this.isInitialized = false;
-    }
-
-    destroy() {
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-        this.pauseMarquee();
     }
 }
 
 let partnersInstance = null;
 
-export function initPartners() {
+function initPartners() {
     if (!partnersInstance) {
-        partnersInstance = new PartnersMarquee();
+        partnersInstance = new Partners();
     }
+    return partnersInstance;
 }
 
-export function destroyPartners() {
-    if (partnersInstance) {
-        partnersInstance.destroy();
-        partnersInstance = null;
-    }
-}
+export { initPartners };
