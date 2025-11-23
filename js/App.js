@@ -9,7 +9,7 @@ import { initClients } from './components/clients.js';
 import { initAbout } from './components/about.js';
 import { initHero } from './components/hero.js';
 import { initHeader } from './components/header.js';
-import { initLocationTabs } from './components/LocationTabs.js';
+import { initLocationTabs } from './components/locationTabs.js';
 
 class App {
     constructor() {
