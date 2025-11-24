@@ -7,7 +7,7 @@
   min-height: 88vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, rgb(10 18 32 / 61%), rgb(20 40 70 / 63%));
+  background: linear-gradient(135deg, rgb(10 18 32 / 40%), rgb(20 40 70 / 39%));
   gap: 1rem;
   align-items: center;
   justify-content: center;
