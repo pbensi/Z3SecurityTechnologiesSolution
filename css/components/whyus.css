@@ -47,13 +47,20 @@
     margin: 0;
     text-align: left;
     width: 100%;
+
+    display: block;
+    overflow: visible;
+    text-overflow: unset;
+    -webkit-box-orient: unset;
+    max-height: none;
+    white-space: normal;
 }
 
 @media (max-width: 768px) {
     .why-card {
         transition: none !important;
     }
-    
+
     .why-card:hover {
         transform: none !important;
     }
@@ -83,11 +90,13 @@
     }
 
     .why-card p {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-height: 4.5em;
+        display: block;
+        overflow: visible;
+        text-overflow: unset;
+        -webkit-box-orient: unset;
+        max-height: none;
+        white-space: normal;
+        line-height: 1.5;
     }
 }
 
@@ -118,8 +127,14 @@
     }
 
     .why-card p {
+        display: block;
+        overflow: visible;
+        text-overflow: unset;
+        -webkit-box-orient: unset;
+        max-height: none;
+        white-space: normal;
         font-size: 0.9rem;
-        max-height: 4.5em;
+        line-height: 1.5;
     }
 }
 
@@ -145,8 +160,14 @@
     }
 
     .why-card p {
+        display: block;
+        overflow: visible;
+        text-overflow: unset;
+        -webkit-box-orient: unset;
+        max-height: none;
+        white-space: normal;
         font-size: 0.85rem;
-        max-height: 3em;
+        line-height: 1.4;
     }
 }
 
@@ -171,6 +192,9 @@
 
     .why-card p {
         font-size: 0.9rem;
+        display: block;
+        overflow: visible;
+        white-space: normal;
     }
 }
 
