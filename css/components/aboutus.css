@@ -108,23 +108,9 @@
     color: var(--text);
     min-width: 200px;
     padding: var(--space-lg);
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
     transition: var(--transition);
-}
-
-.feature::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--gradient-accent);
-    transition: width 0.3s ease;
 }
 
 .feature i {

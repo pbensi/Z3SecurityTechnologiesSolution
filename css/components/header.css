@@ -8,14 +8,12 @@
   width: 100%;
   z-index: 1000;
   background: transparent;
-  border-bottom: 1px solid transparent;
+  border: 4px solid transparent;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .header.scrolled {
-  background: #1e3a75eb;
-  box-shadow: var(--shadow);
-  border: 4px solid var(--accent);
+  background: rgba(11, 28, 61, 0.85);
 }
 
 .navbar {
@@ -94,9 +92,9 @@
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  border: 2px solid var(--glass-border);
-  background: var(--glass);
-  color: var(--text);
+  border: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -129,8 +127,8 @@
   cursor: pointer;
   width: 45px;
   height: 45px;
-  background: var(--glass);
-  border: 2px solid var(--glass-border);
+  border: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 50%;
   transition: all 0.3s ease;
   position: relative;
@@ -141,7 +139,7 @@
 .menu-toggle-btn span {
   width: 20px;
   height: 2.5px;
-  background: var(--text);
+  background: var(--white);
   transition: all 0.3s ease;
   border-radius: 2px;
 }
@@ -417,7 +415,7 @@
     left: 0;
     width: 100%;
     height: 100vh !important;
-    background: #1e3a75eb;
+    background: rgba(11, 28, 61, 0.85);
     flex-direction: column;
     padding: 0;
     gap: 0;

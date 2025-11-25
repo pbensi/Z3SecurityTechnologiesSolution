@@ -81,7 +81,7 @@ class App {
             }
         }, 500);
 
-        console.log('🎉 Content revealed to user');
+        console.log('Content revealed to user');
     }
 
     setCurrentYear() {

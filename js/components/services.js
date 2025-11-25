@@ -39,6 +39,9 @@ class Services {
 
         btn.classList.add('active');
         targetPanel.classList.add('active');
+
+        document.querySelector('.services')
+            .scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
