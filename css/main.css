@@ -32,8 +32,6 @@ body {
   font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
-
-
 .no-js body {
     opacity: 1 !important;
     visibility: visible !important;

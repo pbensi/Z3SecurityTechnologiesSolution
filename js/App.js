@@ -12,29 +12,31 @@ import { initHeader } from './components/header.js';
 import { initLocationTabs } from './components/locationTabs.js';
 
 class App {
+    static instance = null;
+
     constructor() {
+        if (App.instance) return App.instance;
+        App.instance = this;
+
         this.initialized = false;
         this.init();
     }
 
     async init() {
-        if (this.initialized) {
-            console.warn('App already initialized');
-            return;
-        }
+        if (this.initialized) return;
+        this.initialized = true;
 
         try {
             initLogoLoading();
-            await this.delay(100);
+            await this.delay(120);
+
             await this.initializeComponents();
             this.setCurrentYear();
-            this.initialized = true;
             this.revealContent();
 
-            console.log('App initialized successfully');
-
-        } catch (error) {
-            console.error('App initialization failed:', error);
+            console.log("App initialized");
+        } catch (err) {
+            this.showErrorOverlay(err, "App");
             this.revealContent();
         }
     }
@@ -55,53 +57,77 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbymCpg0NATb0ymqmPMb0Xh_UfdL5Bc1O3ABUIrZYxpUm1s91mJSbo-GRFdjBRth6F3f/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycbxyzmYTsBoR0-RaO5nKARU_4KXJcKn4nNjpZwvRWwdK090YNWTu95OXzWGgBiZqQXGp5w/exec"
                 })
             }
         ];
 
-        for (const component of components) {
+        for (const c of components) {
             try {
-                console.log(`Initializing ${component.name}...`);
-                component.init();
-                await this.delay(10);
-            } catch (error) {
-                console.warn(`Failed to initialize ${component.name}:`, error);
+                c.init();
+                await this._yield();
+                console.groupEnd();
+            } catch (e) {
+                this.showErrorOverlay(e, c.name);
             }
         }
+    }
+
+    lazyLoad(selector, fn) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+
+        const obs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                fn();
+                obs.disconnect();
+            }
+        });
+
+        obs.observe(el);
     }
 
     revealContent() {
-        document.body.classList.add('content-loaded');
+        document.body.classList.add("content-loaded");
 
         setTimeout(() => {
-            const loading = document.querySelector('.logo-loading');
-            if (loading) {
-                loading.classList.add('hidden');
-            }
+            const loading = document.querySelector(".logo-loading");
+            if (loading) loading.classList.add("hidden");
         }, 500);
-
-        console.log('Content revealed to user');
     }
 
     setCurrentYear() {
-        const yearElement = document.getElementById("year");
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-        }
+        const el = document.getElementById("year");
+        if (el) el.textContent = new Date().getFullYear();
+    }
+
+    showErrorOverlay(err, compName) {
+        const overlay = document.createElement("div");
+        overlay.style = `
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,.85);
+            color: #ffcccc;
+            font-family: monospace;
+            padding: 20px;
+            z-index: 999999;
+            overflow:auto;
+        `;
+        overlay.innerHTML = `
+            <h2>Error in ${compName}</h2>
+            <pre>${err.stack || err}</pre>
+        `;
+        document.body.appendChild(overlay);
     }
 
     delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        return new Promise(r => setTimeout(r, ms));
+    }
+
+    _yield() {
+        return new Promise(r => setTimeout(r, 0));
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new App();
-});
-
-if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    new App();
-}
+document.addEventListener("DOMContentLoaded", () => new App());
 
 export default App;
