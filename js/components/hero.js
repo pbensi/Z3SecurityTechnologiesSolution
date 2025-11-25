@@ -10,10 +10,6 @@ class Hero {
                 { image: './assets/img/hero-section.jpg', alt: 'hero' },
                 { image: './assets/img/hero-section-1.jpg', alt: 'hero-1' },
                 { image: './assets/img/hero-section-2.jpg', alt: 'hero-2' },
-                { image: './assets/img/hero-section-3.jpg', alt: 'hero-3' },
-                { image: './assets/img/hero-section-4.jpg', alt: 'hero-4' },
-                { image: './assets/img/hero-section-5.jpg', alt: 'hero-5' },
-                { image: './assets/img/hero-section-6.jpg', alt: 'hero-6' },
             ],
             settings: {
                 autoPlay: true,
