@@ -20,7 +20,6 @@
   padding: 0.5rem 0;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
-  justify-content: center;
 }
 
 .category-nav::-webkit-scrollbar {
@@ -263,10 +262,6 @@
     animation: none !important;
   }
 
-  .category-nav {
-    justify-content: flex-start;
-  }
-
   .services-cta p {
     display: block;
     overflow: visible;
@@ -285,22 +280,6 @@
 }
 
 @media (max-width: 480px) {
-  .category-btn {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 160px;
-    min-width: 0;
-    flex: 0 0 auto;
-  }
-
-  .category-btn span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    min-width: 0;
-  }
 
   .service-card h3 {
     white-space: nowrap;
@@ -424,9 +403,6 @@
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .category-nav {
-    justify-content: flex-start;
-  }
 
   .service-card {
     flex: 1 1 calc(50% - 1.2rem);
@@ -440,10 +416,6 @@
 }
 
 @media (min-width: 600px) and (max-width: 767px) {
-  .category-nav {
-    justify-content: flex-start;
-  }
-
   .service-card {
     flex: 1 1 calc(50% - 1rem);
     min-height: auto;
@@ -456,9 +428,6 @@
 }
 
 @media (min-width: 481px) and (max-width: 599px) {
-  .category-nav {
-    justify-content: flex-start;
-  }
 
   .service-card {
     flex: 1 1 100%;
@@ -476,10 +445,6 @@
 @media (max-width: 479px) {
   .services {
     padding: 1.5rem 0.8rem;
-  }
-
-  .category-nav {
-    justify-content: flex-start;
   }
 
   .service-card {

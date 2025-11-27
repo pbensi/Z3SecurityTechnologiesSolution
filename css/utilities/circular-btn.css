@@ -1,0 +1,106 @@
+.circular-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+
+.progress-circle circle:first-child {
+    fill: none;
+    stroke-width: 2;
+    stroke: var(--glass-border);
+}
+
+.progress-fill {
+    fill: none;
+    stroke-width: 2;
+    stroke: var(--accent);
+    stroke-dasharray: 126;
+    stroke-dashoffset: 126;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circular-btn:hover .progress-fill {
+    stroke-dashoffset: 0;
+}
+
+.circular-btn span {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    border-radius: 50%;
+    color: var(--text);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .circular-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .progress-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .circular-btn span {
+        height: 28px;
+        width: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circular-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .progress-circle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .circular-btn span {
+        height: 26px;
+        width: 26px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .circular-btn,
+    .circular-btn span,
+    .progress-fill {
+        transition: none;
+    }
+
+    .circular-btn:hover {
+        transform: none;
+    }
+
+    .circular-btn:hover span {
+        transform: none;
+    }
+}

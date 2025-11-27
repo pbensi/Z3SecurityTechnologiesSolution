@@ -82,7 +82,7 @@
   --space-3xl: 64px;
 
   --slide-panel-width: 100%;
-  --slide-panel-max-width: 800px;
+  --slide-panel-max-width: 900px;
 
   --gradient: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
   --gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);

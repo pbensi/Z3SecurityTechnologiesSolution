@@ -21,7 +21,7 @@ const clientData = {
   'bamboo-bay': { title: 'Bamboo Bay', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'bamboobay.png', sector: 'private' },
   'village-one': { title: 'Village One Saekyung', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'villageone.png', sector: 'private' },
   'andy-hotel': { title: 'Andy Hotel', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'andyhotel.png', sector: 'private' },
-  'ml-suites': { title: 'ML Suites', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'MLSuite.jpg', sector: 'private' },
+  'ml-suites': { title: 'ML Suites', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'MLSuite.png', sector: 'private' },
   'kalahi': { title: 'Kalahi-CIDSS/NCDDP', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'Kalahi.png', sector: 'private' },
   'dito': { title: 'Dito Telecommunity', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'Dito_Telecommunity.png', sector: 'private' },
   'autolab': { title: 'AutoLab Car Care Specialists', description: 'Supply and Install IP CCTV Camera and IP PABX.', image: 'autolab.png', sector: 'private' },
@@ -39,10 +39,10 @@ class Clients {
     }
     Clients.instances[sector] = this;
 
-    this.titleEl = container.querySelector('.current-title');
-    this.gridEl = container.querySelector('.clients-grid');
-    this.prevBtn = container.querySelector('.prev');
-    this.nextBtn = container.querySelector('.next');
+    this.titleEl = container.querySelector('.current-title-text');
+    this.gridEl = container.querySelector('.clients-body');
+    this.prevBtn = container.querySelector('.clients-prev');
+    this.nextBtn = container.querySelector('.clients-next');
     this.sector = sector;
 
     this.categories = {
@@ -57,7 +57,8 @@ class Clients {
         { title: "Restaurants & Food", clients: ['villa-tuna', 'starbucks', 'chowking'] },
         { title: "Telecom & IT", clients: ['kalahi', 'dito', 'autolab', 'lab-solutions'] },
         { title: "Automotive & Retail", clients: ['honda', 'autolab'] },
-        { title: "Real Estate", clients: ['seaside-haven', 'bamboo-bay', 'village-one'] }
+        { title: "Real Estate", clients: ['seaside-haven', 'bamboo-bay', 'village-one'] },
+        { title: "Education", clients:['sister-mary-school']}
       ]
     };
 
@@ -101,12 +102,6 @@ class Clients {
       card.appendChild(img);
       this.gridEl.appendChild(card);
     });
-
-    const cards = this.gridEl.children;
-    if (cards.length % 2 === 1) {
-      cards[cards.length - 1].style.gridColumn = '1 / -1';
-      cards[cards.length - 1].style.justifySelf = 'center';
-    }
   }
 
   openModal(client) {
@@ -127,8 +122,8 @@ function initClients() {
       private: null
     };
 
-    const publicCarousel = new Clients(document.querySelector('.public-sector .sector-carousel'), 'public');
-    const privateCarousel = new Clients(document.querySelector('.private-sector .sector-carousel'), 'private');
+    const publicCarousel = new Clients(document.querySelector('.public-sector'), 'public');
+    const privateCarousel = new Clients(document.querySelector('.private-sector'), 'private');
 
     clientsInstance.public = publicCarousel;
     clientsInstance.private = privateCarousel;

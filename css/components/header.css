@@ -169,7 +169,7 @@
   width: 20px;
 }
 
-@media (max-width: 1176px) {
+@media (max-width: 1240px) {
   .navbar-menu {
     display: none !important;
   }
@@ -289,7 +289,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 551px) {
   .header {
     padding: 0.6rem 0.8rem;
   }

@@ -8,8 +8,6 @@
   flex-wrap: wrap;
   gap: var(--space-lg);
   padding: 1rem;
-  max-width: 900px;
-  margin: 0 auto;
   overflow: hidden;
   justify-content: center;
 }

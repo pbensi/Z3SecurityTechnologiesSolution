@@ -41,38 +41,9 @@
 }
 
 .about .container {
-    height: 100%;
     padding: 10px var(--space-xl);
     display: flex;
     flex-direction: column;
-}
-
-.about-close {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--text);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid var(--glass-border);
-    background: none;
-    color: var(--text-light);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 1001;
-}
-
-.about-close:hover {
-    color: var(--accent-light);
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1) rotate(90deg);
 }
 
 .about-content {
