@@ -7,8 +7,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-lg);
-  padding: 1rem;
-  overflow: hidden;
   justify-content: center;
 }
 
@@ -50,30 +48,9 @@
 .cert-buttons .btn {
   margin: var(--space-xs) 0;
   font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-
-.cert-buttons .btn span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
 }
 
 @media (max-width: 768px) {
-  .cert-item img {
-    transition: none !important;
-  }
-  
-  .cert-item.show-animation {
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  
   .cert-item {
     flex: 1 1 calc(50% - var(--space-md));
     max-width: calc(50% - var(--space-md));
@@ -93,17 +70,12 @@
 
   .cert-grid {
     gap: var(--space-md);
-    padding: 0.5rem;
   }
 
   .cert-item {
     flex: 1 1 calc(50% - var(--space-md));
     max-width: calc(50% - var(--space-md));
     min-width: 120px;
-  }
-
-  .cert-item:last-child {
-    border-bottom: none;
   }
 
   .cert-buttons {
@@ -116,9 +88,6 @@
     width: 100%;
     max-width: 280px;
     margin: 0.25rem auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
@@ -129,7 +98,6 @@
 
   .cert-grid {
     gap: var(--space-sm);
-    padding: 0.25rem;
   }
 
   .cert-item {
@@ -167,23 +135,17 @@
   }
 }
 
-
 @media (hover: none) and (pointer: coarse) {
   .cert-item img:hover {
-    transform: none !important;
+    transform: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .cert-item,
+  .cert-item img,
   .cert-buttons .btn {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  .cert-item {
-    opacity: 1;
-    transform: none;
+    transition: none;
   }
 
   .cert-item.show-animation {

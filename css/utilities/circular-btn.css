@@ -89,18 +89,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     .circular-btn,
     .circular-btn span,
     .progress-fill {
         transition: none;
     }
 
-    .circular-btn:hover {
-        transform: none;
-    }
-
-    .circular-btn:hover span {
-        transform: none;
+    .circular-btn:hover .progress-fill {
+        stroke-dashoffset: 126;
     }
 }

@@ -15,7 +15,7 @@
 .why-card {
     background: var(--glass);
     padding: var(--space-xl);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow);
     border: 1px solid var(--glass-border);
@@ -46,22 +46,17 @@
     flex-grow: 1;
     margin: 0;
     width: 100%;
-
-    display: block;
-    overflow: visible;
-    text-overflow: unset;
-    -webkit-box-orient: unset;
-    max-height: none;
-    white-space: normal;
 }
 
-@media (max-width: 768px) {
-    .why-card {
-        transition: none !important;
+@media (max-width: 991px) {
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+        padding: 0 var(--space-sm);
     }
-
-    .why-card:hover {
-        transform: none !important;
+    
+    .why-card {
+        padding: var(--space-lg);
     }
 }
 
@@ -69,33 +64,15 @@
     .why-us {
         padding: var(--space-xl) 0;
     }
-
+    
     .why-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
         gap: var(--space-md);
     }
-
+    
     .why-card {
         padding: var(--space-lg);
-    }
-
-    .why-card h3 {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: 100%;
-        text-align: center;
-    }
-
-    .why-card p {
-        display: block;
-        overflow: visible;
-        text-overflow: unset;
-        -webkit-box-orient: unset;
-        max-height: none;
-        white-space: normal;
-        line-height: 1.5;
     }
 }
 
@@ -103,37 +80,26 @@
     .why-us {
         padding: var(--space-lg) 0;
     }
-
+    
     .why-grid {
         padding: 0 var(--space-sm);
         gap: var(--space-md);
     }
-
+    
     .why-card {
         padding: var(--space-md);
     }
-
+    
     .why-card .svg {
-        font-size: 1.8rem;
         margin-bottom: var(--space-sm);
     }
-
+    
     .why-card h3 {
         font-size: 1.1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
-
+    
     .why-card p {
-        display: block;
-        overflow: visible;
-        text-overflow: unset;
-        -webkit-box-orient: unset;
-        max-height: none;
-        white-space: normal;
         font-size: 0.9rem;
-        line-height: 1.5;
     }
 }
 
@@ -142,65 +108,30 @@
         padding: 0 var(--space-xs);
         gap: var(--space-sm);
     }
-
+    
     .why-card {
         padding: var(--space-md) var(--space-sm);
     }
-
-    .why-card .svg {
-        font-size: 1.6rem;
-    }
-
+    
     .why-card h3 {
         font-size: 1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
-
+    
     .why-card p {
-        display: block;
-        overflow: visible;
-        text-overflow: unset;
-        -webkit-box-orient: unset;
-        max-height: none;
-        white-space: normal;
         font-size: 0.85rem;
         line-height: 1.4;
     }
 }
 
-@media (max-width: 991px) and (min-width: 601px) {
-    .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-md);
-        padding: 0 var(--space-sm);
-    }
-
+@media (max-width: 768px) {
     .why-card {
-        padding: var(--space-lg);
-    }
-
-    .why-card .svg {
-        font-size: 2rem;
-    }
-
-    .why-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .why-card p {
-        font-size: 0.9rem;
-        display: block;
-        overflow: visible;
-        white-space: normal;
+        transition: none;
     }
 }
 
 @media (hover: none) and (pointer: coarse) {
     .why-card:hover {
         transform: none;
-        box-shadow: var(--shadow);
     }
 }
 

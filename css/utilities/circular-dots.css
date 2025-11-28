@@ -26,17 +26,15 @@
   left: 0;
   width: 25px;
   height: 25px;
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) scale(0);
   pointer-events: none;
   opacity: 0;
-  transform: rotate(-90deg) scale(0);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .circular-dot-progress circle {
   fill: none;
   stroke-width: 2;
-
   stroke-dasharray: 57;
 }
 
@@ -46,7 +44,6 @@
 
 .circular-dot-progress-fill {
   stroke: var(--accent-light);
-
   stroke-dashoffset: 57;
   stroke-linecap: round;
   transition: stroke-dashoffset 50ms linear;
@@ -83,6 +80,7 @@
   background: rgba(255, 255, 255, 0.7);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .circular-dots {
     gap: 0.5rem;

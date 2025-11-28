@@ -35,12 +35,12 @@ body {
 }
 
 .no-js body {
-    opacity: 1 !important;
-    visibility: visible !important;
+  opacity: 1;
+  visibility: visible;
 }
 
 .no-js .logo-loading {
-    display: none !important;
+  display: none;
 }
 
 .svg {
@@ -77,12 +77,6 @@ body {
   margin-bottom: clamp(0.8rem, 2vw, 1rem);
   position: relative;
   line-height: 1.2;
-}
-
-@keyframes lineExtend {
-  to {
-    transform: scaleX(1);
-  }
 }
 
 .section-subtitle {
@@ -242,28 +236,20 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 
   html {
     scroll-behavior: auto;
   }
 
-  .section-header,
-  .section-header h2::after {
-    animation: none !important;
-  }
-
   .section-header {
+    animation: none;
     opacity: 1;
     transform: none;
-  }
-
-  .section-header h2::after {
-    transform: scaleX(1);
   }
 
   .shiny::before {
@@ -272,11 +258,6 @@ body {
 }
 
 @media (prefers-contrast: high) {
-  .section-header h2::after {
-    height: 4px;
-    background: currentColor;
-  }
-
   .shiny::before {
     background: linear-gradient(90deg,
         transparent,

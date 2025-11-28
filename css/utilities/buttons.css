@@ -19,11 +19,6 @@
   min-height: 44px;
   min-width: 120px;
   text-align: center;
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-  flex-shrink: 1;
 }
 
 .btn-primary {
@@ -98,6 +93,7 @@
     inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
+/* Responsive Design */
 @media (min-width: 1200px) {
   .btn {
     padding: 1rem 2rem;
@@ -148,6 +144,7 @@
   }
 }
 
+/* Accessibility */
 @media (hover: none) and (pointer: coarse) {
   .btn:hover {
     transform: none;
@@ -171,15 +168,15 @@
 
 @media (prefers-contrast: high) {
   .btn {
-    border: 3px solid currentColor !important;
-    box-shadow: none !important;
+    border: 3px solid currentColor;
+    box-shadow: none;
   }
 
   .btn-primary {
-    background: var(--accent) !important;
+    background: var(--accent);
   }
 
   .btn-secondary {
-    background: var(--primary) !important;
+    background: var(--primary);
   }
 }
