@@ -1,10 +1,10 @@
 .about {
     position: fixed;
     top: 0;
+    bottom: 0;
     right: -100%;
     width: var(--slide-panel-width);
     max-width: var(--slide-panel-max-width);
-    height: 100vh;
     background: var(--bg-secondary);
     border-left: 1px solid var(--glass-border);
     box-shadow: var(--shadow);
@@ -135,7 +135,6 @@ body.about-open {
     overflow: hidden;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .about {
         width: 100%;

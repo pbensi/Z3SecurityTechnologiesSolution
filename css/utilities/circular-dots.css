@@ -80,7 +80,6 @@
   background: rgba(255, 255, 255, 0.7);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .circular-dots {
     gap: 0.5rem;
