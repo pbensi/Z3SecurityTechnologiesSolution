@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Allow: /
+
+Sitemap: https://z3techsolution.com/sitemap.xml
