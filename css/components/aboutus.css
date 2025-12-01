@@ -1,8 +1,11 @@
 .about {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 0;
     bottom: 0;
     right: -100%;
+    gap: 1rem;
     width: var(--slide-panel-width);
     max-width: var(--slide-panel-max-width);
     background: var(--bg-secondary);
@@ -12,7 +15,21 @@
     overflow-y: auto;
     overflow-x: hidden;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
+    padding: 0 0 2rem 0;
+}
+
+.about-footer {
+  position: relative;
+}
+
+.about-footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .about::-webkit-scrollbar {
@@ -49,10 +66,9 @@
     flex: 1;
 }
 
-.about-text h3 {
+.about-text h2 {
     font-size: 1.5rem;
-    margin-bottom: var(--space-lg);
-    color: var(--text);
+    color: var(--accent);
     font-weight: var(--font-weight-bold);
 }
 
@@ -67,7 +83,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: var(--space-lg);
 }
 
 .feature {
@@ -79,21 +94,6 @@
     transition: var(--transition);
 }
 
-.feature i {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: var(--space-sm);
-    display: block;
-    transition: var(--transition);
-}
-
-.feature h4 {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-sm);
-    color: var(--text);
-    font-weight: var(--font-weight-semibold);
-}
-
 .feature p {
     font-size: 0.9rem;
     color: var(--text-light);
@@ -101,16 +101,9 @@
     margin-bottom: 0;
 }
 
-.about-image {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    margin-top: auto;
-}
-
 .about-image img {
     width: 100%;
     height: auto;
-    display: block;
 }
 
 .about-overlay {
@@ -145,12 +138,8 @@ body.about-open {
         padding: var(--space-lg);
     }
 
-    .about-text h3 {
+    .about-text h2 {
         font-size: 1.4rem;
-    }
-
-    .about-features {
-        gap: var(--space-md);
     }
 
     .feature {
@@ -165,7 +154,7 @@ body.about-open {
         padding: var(--space-md);
     }
 
-    .about-text h3 {
+    .about-text h2 {
         font-size: 1.3rem;
     }
 
@@ -174,22 +163,10 @@ body.about-open {
         margin-bottom: var(--space-md);
     }
 
-    .about-features {
-        gap: var(--space-md);
-    }
-
     .feature {
         flex: 1 1 100%;
         min-width: auto;
         padding: var(--space-lg);
-    }
-
-    .feature i {
-        font-size: 1.8rem;
-    }
-
-    .feature h4 {
-        font-size: 1.1rem;
     }
 
     .feature p {
@@ -202,7 +179,7 @@ body.about-open {
         padding: var(--space-sm);
     }
 
-    .about-text h3 {
+    .about-text h2 {
         font-size: 1.25rem;
     }
 
@@ -216,20 +193,12 @@ body.about-open {
         padding: var(--space-xs);
     }
 
-    .about-text h3 {
+    .about-text h2 {
         font-size: 1.2rem;
     }
 
     .feature {
         padding: var(--space-sm);
-    }
-
-    .feature i {
-        font-size: 1.6rem;
-    }
-
-    .feature h4 {
-        font-size: 1rem;
     }
 }
 

@@ -118,10 +118,11 @@
   width: 160px;
   height: 160px;
   border-radius: 160px;
-  border: 1px solid var(--glass-border);
+  border: 4px dashed var(--accent);
   object-fit: contain;
   transition: all 0.3s ease;
   filter: grayscale(40%);
+  cursor: pointer;
 }
 
 .client-card:hover img {
@@ -199,7 +200,7 @@
   object-fit: contain;
   margin-bottom: 2rem;
   background: transparent;
-  border: 1px solid var(--glass-border);
+  border: 4px dashed var(--accent);
 }
 
 .modal-content h3 {

@@ -10,6 +10,7 @@ import { initAbout } from './components/about.js';
 import { initHero } from './components/hero.js';
 import { initHeader } from './components/header.js';
 import { initLocationTabs } from './components/locationTabs.js';
+import { initAccordion } from './utilities/accordion.js';
 
 class App {
     static instance = null;
@@ -48,6 +49,7 @@ class App {
             { name: 'Menu', init: initMenu },
             { name: 'Hero', init: initHero },
             { name: 'About', init: initAbout },
+            { name: 'Accordion', init: initAccordion },
             { name: 'Services', init: initServices },
             { name: 'Certifications', init: initCertifications },
             { name: 'Clients', init: initClients },

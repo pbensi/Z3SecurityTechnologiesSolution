@@ -1,123 +1,107 @@
 class Certifications {
-    constructor() {
-        if (Certifications.instance) {
-            return Certifications.instance;
-        }
-        Certifications.instance = this;
+  constructor() {
+    if (Certifications.instance) return Certifications.instance;
+    Certifications.instance = this;
 
-        this.seeMoreBtn = null;
-        this.seeLessBtn = null;
-        this.certGrid = null;
-        this.hiddenCerts = [];
-        this.certObserver = null;
-        this.themeObserver = null;
+    this.track = null;
+    this.slides = [];
+    this.prevBtn = null;
+    this.nextBtn = null;
+    this.index = 0;
+    this.slideWidth = 0;
+    this.maxIndex = 0;
 
-        return this;
-    }
+    this.init();
+    return this;
+  }
 
-    init() {
-        this.seeMoreBtn = document.getElementById('seeMoreBtn');
-        this.seeLessBtn = document.getElementById('seeLessBtn');
-        this.certGrid = document.querySelector('.cert-grid');
+  init() {
+    this.track = document.getElementById("certTrack");
+    this.slides = Array.from(this.track.children);
+    this.prevBtn = document.querySelector(".slider-prev");
+    this.nextBtn = document.querySelector(".slider-next");
 
-        if (!this.seeMoreBtn || !this.seeLessBtn || !this.certGrid) return;
+    this.updateSizes();
+    this.updateMaxIndex();
+    this.updateImages();
+    this.updateButtons();
 
-        this.updateCertImages();
+    this.prevBtn.addEventListener("click", () => this.goTo(this.index - 1));
+    this.nextBtn.addEventListener("click", () => this.goTo(this.index + 1));
 
-        this.hiddenCerts = Array.from(this.certGrid.querySelectorAll('.cert-item.hidden'));
+    window.addEventListener("resize", () => {
+      this.updateSizes();
+      this.updateMaxIndex();
+      this.goTo(this.index, false);
+    });
 
-        this.seeMoreBtn.addEventListener('click', () => this.handleSeeMore());
-        this.seeLessBtn.addEventListener('click', () => this.handleSeeLess());
+    new MutationObserver(() => this.updateImages())
+      .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
-        this.initCertObserver(this.certGrid.querySelectorAll('.cert-item:not(.hidden)'));
-        this.initThemeObserver();
-    }
+    let startX = 0;
+    let endX = 0;
+    this.track.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+    this.track.addEventListener("touchmove", e => endX = e.touches[0].clientX);
+    this.track.addEventListener("touchend", () => {
+      const diff = startX - endX;
+      if (diff > 50) this.goTo(this.index + 1);
+      if (diff < -50) this.goTo(this.index - 1);
+    });
+  }
 
-    handleSeeMore() {
-        this.hiddenCerts.forEach((cert, i) => {
-            cert.classList.remove('hidden');
-            cert.classList.add('show-animation');
-            setTimeout(() => cert.classList.add('visible'), i * 50);
-        });
+  updateSizes() {
+    const viewportWidth = this.track.parentElement.offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.track).gap) || 16;
 
-        this.seeMoreBtn.style.display = 'none';
-        this.seeLessBtn.style.display = 'inline-flex';
-    }
+    let visibleCount = Math.floor((viewportWidth + gap) / 220);
+    visibleCount = Math.max(1, visibleCount);
 
-    handleSeeLess() {
-        this.hiddenCerts.forEach((cert, i) => {
-            cert.classList.remove('visible');
-            setTimeout(() => {
-                cert.classList.add('hidden');
-                cert.classList.remove('show-animation');
-            }, 300 + i * 30);
-        });
+    this.slideWidth = (viewportWidth - gap * (visibleCount - 1)) / visibleCount;
 
-        this.seeLessBtn.style.display = 'none';
-        this.seeMoreBtn.style.display = 'inline-flex';
-    }
+    this.slides.forEach(slide => slide.style.width = `${this.slideWidth}px`);
+  }
 
-    updateCertImages() {
-        const certImages = document.querySelectorAll('.cert-item img');
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  updateMaxIndex() {
+    const viewportWidth = this.track.parentElement.offsetWidth;
+    const visibleCount = Math.floor(viewportWidth / this.slideWidth);
+    this.maxIndex = Math.max(0, this.slides.length - visibleCount);
+    if (this.index > this.maxIndex) this.index = this.maxIndex;
+  }
 
-        certImages.forEach(img => {
-            const lightSrc = img.getAttribute('data-light');
-            const darkSrc = img.getAttribute('data-dark');
+  updateImages() {
+    const theme = document.documentElement.getAttribute("data-theme") || "light";
+    this.slides.forEach(slide => {
+      const img = slide.querySelector("img");
+      img.src = theme === "dark" ? img.dataset.dark : img.dataset.light;
+    });
+  }
 
-            if (currentTheme === 'dark' && darkSrc) {
-                img.src = darkSrc;
-            } else if (lightSrc) {
-                img.src = lightSrc;
-            }
+  goTo(index, animate = true) {
+    index = Math.max(0, Math.min(index, this.maxIndex));
+    this.index = index;
 
-            if (!img.alt) {
-                const fileName = lightSrc?.split('/').pop() || 'certificate';
-                img.alt = `Certificate ${fileName}`;
-            }
-        });
-    }
+    this.track.style.transition = animate ? "transform 0.35s ease" : "none";
+    const x = this.index * this.slideWidth + (parseFloat(getComputedStyle(this.track).gap) || 16) * this.index;
+    this.track.style.transform = `translateX(${-x}px)`;
 
-    initThemeObserver() {
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-                    this.updateCertImages();
-                }
-            });
-        });
+    this.updateButtons();
 
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['data-theme']
-        });
-    }
+    if (!animate) setTimeout(() => this.track.style.transition = "", 50);
+  }
 
-    initCertObserver(certItems) {
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const item = entry.target;
-                    if (!item.classList.contains('show-animation')) {
-                        item.classList.add('show-animation', 'visible');
-                    }
-                    obs.unobserve(item);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        certItems.forEach(item => observer.observe(item));
-    }
+  updateButtons() {
+    this.prevBtn.classList.toggle("hidden", this.index <= 0);
+    this.nextBtn.classList.toggle("hidden", this.index >= this.maxIndex);
+  }
 }
 
 let certificationsInstance = null;
-
 function initCertifications() {
-    if (!certificationsInstance) {
-        certificationsInstance = new Certifications();
-        certificationsInstance.init();
-    }
-    return certificationsInstance;
+  if (!certificationsInstance) {
+    certificationsInstance = new Certifications();
+  }
+
+  return certificationsInstance;
 }
 
 export { initCertifications };
