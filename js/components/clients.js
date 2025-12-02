@@ -51,14 +51,15 @@ class Clients {
         { title: "City Government", clients: ['baybay-city-hall'] },
       ],
       private: [
-        { title: "Hospitality & Hotels", clients: ['dusit-thani', 'svj-hotel', 'beaver-hotel', 'andy-hotel', 'ml-suites'] },
+
+        { title: "Hospitality & Hotels", clients: ['dusit-thani', 'svj-hotel', 'beaver-hotel', 'andy-hotel', 'ml-suites', 'seaside-haven'] },
         { title: "Construction & Dev", clients: ['rn-vios', 'ht-land', 'contempo'] },
         { title: "Financial Services", clients: ['lorenzo-shipping', 'mlhuillier'] },
         { title: "Restaurants & Food", clients: ['villa-tuna', 'starbucks', 'chowking'] },
         { title: "Telecom & IT", clients: ['kalahi', 'dito', 'autolab', 'lab-solutions'] },
         { title: "Automotive & Retail", clients: ['honda', 'autolab'] },
-        { title: "Real Estate", clients: ['seaside-haven', 'bamboo-bay', 'village-one'] },
-        { title: "Education", clients:['sister-mary-school']}
+        { title: "Real Estate", clients: ['bamboo-bay', 'village-one'] },
+        { title: "Education", clients: ['sister-mary-school'] }
       ]
     };
 

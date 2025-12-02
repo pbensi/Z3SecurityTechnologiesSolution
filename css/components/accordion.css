@@ -6,12 +6,12 @@
     background: transparent;
     color: var(--text);
     cursor: pointer;
-    padding: 20px 0 20px 0;
+    padding: 20px 0 0 0;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     transition: all 0.3s ease;
     border-bottom: 1px solid transparent;

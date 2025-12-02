@@ -118,7 +118,7 @@
   width: 160px;
   height: 160px;
   border-radius: 160px;
-  border: 4px dashed var(--accent);
+  border: 1.5px dashed var(--accent);
   object-fit: contain;
   transition: all 0.3s ease;
   filter: grayscale(40%);
@@ -200,7 +200,7 @@
   object-fit: contain;
   margin-bottom: 2rem;
   background: transparent;
-  border: 4px dashed var(--accent);
+  border: 1.5px dashed var(--accent);
 }
 
 .modal-content h3 {

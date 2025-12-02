@@ -1,4 +1,3 @@
-@import url('./components/logoLoading.css');
 @import url('./utilities/variables.css');
 @import url('./utilities/circular-dots.css');
 @import url('./utilities/circular-btn.css');
@@ -33,15 +32,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   font-size: clamp(0.9rem, 1.8vw, 1rem);
-}
-
-.no-js body {
-  opacity: 1;
-  visibility: visible;
-}
-
-.no-js .logo-loading {
-  display: none;
 }
 
 .svg {

@@ -1,4 +1,3 @@
-import { initLogoLoading } from './components/logoLoading.js';
 import { initServices } from './components/services.js';
 import { initCertifications } from './components/certifications.js';
 import { initContact } from './components/contact.js';
@@ -28,7 +27,6 @@ class App {
         this.initialized = true;
 
         try {
-            initLogoLoading();
             await this.delay(120);
 
             await this.initializeComponents();
