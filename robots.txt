@@ -1,7 +1,64 @@
 User-agent: *
+Allow: /
 Disallow: /admin/
 Disallow: /cgi-bin/
 Disallow: /wp-admin/
-Allow: /
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /wp-json/
+Disallow: /xmlrpc.php
+Disallow: /readme.html
+Disallow: /license.txt
+Disallow: /search/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /backup/
+Disallow: /logs/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /error_log
 
+# Allow Googlebot to crawl CSS and JS
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/img/
+
+# Sitemaps
 Sitemap: https://z3techsolution.com/sitemap.xml
+Sitemap: https://z3techsolution.com/sitemap_index.xml
+
+# Crawl delay (optional for shared hosting)
+Crawl-delay: 3
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Crawl-delay: 3
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
