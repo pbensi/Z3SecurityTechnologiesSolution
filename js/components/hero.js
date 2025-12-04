@@ -1,4 +1,4 @@
-import { CircularDots } from "../utilities/circular-dots.js?v=1.0.4";
+import { CircularDots } from '../utilities/circular-dots.js?v=1.0.4';
 
 class Hero {
     constructor() {
@@ -9,184 +9,124 @@ class Hero {
 
         this.config = {
             slides: [
-                { image: './assets/img/hero-section.jpg', alt: 'Security Systems' },
-                { image: './assets/img/hero-section-1.jpg', alt: 'Security Installation' },
-                { image: './assets/img/hero-section-2.jpg', alt: 'Security Solutions' },
+                {
+                    image: './assets/img/hero-section.jpg',
+                    title: 'Design & Plan',
+                    subtitle: 'Strategic solutions for your security and auxiliary needs'
+                },
+                {
+                    image: './assets/img/hero-section-1.jpg',
+                    title: 'Reliable Supply',
+                    subtitle: 'High-quality products from trusted sources'
+                },
+                {
+                    image: './assets/img/hero-section-2.jpg',
+                    title: 'Install & Integrate',
+                    subtitle: 'Professional implementation with seamless integration'
+                },
+                {
+                    image: './assets/img/hero-section-3.jpg',
+                    title: 'Maintain & Support',
+                    subtitle: 'Proactive care and dedicated technical assistance'
+                }
             ],
-            settings: {
-                autoPlay: true,
-                slideDuration: 5000,
-                transitionDuration: 500
-            }
+            settings: { autoPlay: true, slideDuration: 5000, transitionDuration: 800 }
         };
 
-        this.state = {
-            currentSlide: 0,
-            isTransitioning: false,
-            isInViewport: true,
-            observer: null
-        };
-
+        this.state = { currentSlide: 0, isInViewport: true, observer: null, autoPlaying: false };
+        this.slideshow = document.querySelector('.slides-track');
+        this.heroTitle = document.getElementById('heroTitle');
+        this.heroSubtitle = document.getElementById('heroSubtitle');
         this.heroDots = null;
-        this.heroSection = null;
 
         this.init();
-        return this;
     }
 
     init() {
-        this.initializeSlideshow();
-        this.setupIntersectionObserver();
-    }
-
-    initializeSlideshow() {
-        const slideshow = document.querySelector('[data-slideshow]');
-        const dotsContainer = document.getElementById('heroDots');
-        this.heroSection = document.querySelector('.hero-section');
-
-        if (!slideshow || !dotsContainer) {
-            console.error('Hero: Slideshow or dots container not found');
-            return;
-        }
-
-        this.generateSlides(slideshow);
-        this.initializeDots(dotsContainer);
+        this.generateSlides();
+        this.initDots();
+        this.updateText(0);
+        this.observeViewport();
         this.startAutoPlay();
     }
 
-    setupIntersectionObserver() {
-        if (!this.heroSection) {
-            this.heroSection = document.querySelector('.hero-section') || document.querySelector('[data-slideshow]').closest('section');
-        }
-
-        if (!this.heroSection || !('IntersectionObserver' in window)) return;
-
-        this.state.observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    this.state.isInViewport = entry.isIntersecting;
-                    
-                    if (entry.isIntersecting) {
-                        if (this.config.settings.autoPlay) {
-                            this.startAutoPlay();
-                        }
-                    } else {
-                        this.stopAutoPlay();
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.3
-            }
-        );
-
-        this.state.observer.observe(this.heroSection);
-    }
-
-    generateSlides(container) {
-        container.innerHTML = '';
-
-        this.config.slides.forEach((slide, index) => {
-            const imgElement = document.createElement('img');
-            imgElement.src = slide.image;
-            imgElement.alt = slide.alt;
-            imgElement.className = 'background-slide';
-            imgElement.loading = 'lazy';
-            if (index === 0) {
-                imgElement.classList.add('active');
-            }
-            container.appendChild(imgElement);
+    generateSlides() {
+        this.slideshow.innerHTML = '';
+        this.slides = [];
+        this.config.slides.forEach(slide => {
+            const img = document.createElement('img');
+            img.src = slide.image;
+            img.alt = slide.title;
+            img.className = 'background-slide';
+            this.slideshow.appendChild(img);
+            this.slides.push(slide);
         });
     }
 
-    initializeDots(container) {
+    initDots() {
+        const container = document.getElementById('heroDots');
         this.heroDots = new CircularDots(container, {
-            count: this.config.slides.length,
+            count: this.slides.length,
             duration: this.config.settings.slideDuration,
             activeIndex: 0,
-            onDotClick: (index) => {
-                if (!this.state.isTransitioning && this.state.isInViewport) {
-                    this.showSlide(index);
-                }
-            },
-            onProgressComplete: (index) => {
-                if (this.config.settings.autoPlay && this.state.isInViewport) {
-                    this.nextSlide();
-                }
-            }
+            onDotClick: index => this.showSlide(index),
+            onProgressComplete: () => this.nextSlide()
         });
     }
 
     showSlide(index) {
-        if (index === this.state.currentSlide || this.state.isTransitioning || !this.state.isInViewport) return;
-
-        this.state.isTransitioning = true;
-        const slides = document.querySelectorAll('.background-slide');
-
-        this.heroDots.stopAnimation();
-
-        slides[this.state.currentSlide].classList.remove('active');
-
+        this.state.currentSlide = index;
+        const offset = -100 * index;
+        this.slideshow.style.transform = `translateX(${offset}%)`;
+        this.slideshow.setAttribute('aria-live', 'polite');
+        this.slideshow.setAttribute('aria-label', `Slide ${index + 1} of ${this.slides.length}: ${this.slides[index].title}`);
         this.heroDots.setActiveDot(index);
-        setTimeout(() => {
-            slides[index].classList.add('active');
-            this.state.currentSlide = index;
-            this.state.isTransitioning = false;
-        }, this.config.settings.transitionDuration);
+        this.updateText(index);
+    }
+
+    updateText(index) {
+        const slide = this.slides[index];
+        if (!slide) return;
+
+        this.heroTitle.classList.remove('animate-title');
+        this.heroSubtitle.classList.remove('animate-subtitle');
+
+        void this.heroTitle.offsetWidth;
+        void this.heroSubtitle.offsetWidth;
+
+        this.heroTitle.textContent = slide.title;
+        this.heroSubtitle.textContent = slide.subtitle;
+
+        this.heroTitle.classList.add('animate-title');
+        this.heroSubtitle.classList.add('animate-subtitle');
     }
 
     nextSlide() {
-        if (!this.state.isInViewport) return;
-        
-        const nextIndex = (this.state.currentSlide + 1) % this.config.slides.length;
+        const nextIndex = (this.state.currentSlide + 1) % this.slides.length;
         this.showSlide(nextIndex);
     }
 
     startAutoPlay() {
-        if (this.config.settings.autoPlay && this.state.isInViewport && this.heroDots) {
-            this.heroDots.restartAnimation();
-        }
+        if (!this.config.settings.autoPlay || this.state.autoPlaying) return;
+        this.state.autoPlaying = true;
+        this.heroDots.restartAnimation();
     }
 
     stopAutoPlay() {
-        if (this.heroDots) {
-            this.heroDots.stopAnimation();
-        }
+        this.state.autoPlaying = false;
+        if (this.heroDots) this.heroDots.stopAnimation();
     }
 
-    getViewportStatus() {
-        return {
-            isInViewport: this.state.isInViewport,
-            currentSlide: this.state.currentSlide,
-            isPlaying: this.state.isInViewport && this.config.settings.autoPlay
-        };
-    }
-
-    pause() {
-        this.stopAutoPlay();
-    }
-
-    resume() {
-        if (this.state.isInViewport) {
-            this.startAutoPlay();
-        }
-    }
-
-    destroy() {
-        this.stopAutoPlay();
-        
-        if (this.state.observer) {
-            this.state.observer.disconnect();
-            this.state.observer = null;
-        }
-        
-        if (this.heroDots) {
-            this.heroDots.destroy();
-        }
-        
-        Hero.instance = null;
+    observeViewport() {
+        if (!('IntersectionObserver' in window)) return;
+        this.state.observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                this.state.isInViewport = entry.isIntersecting;
+                if (entry.isIntersecting) this.startAutoPlay();
+                else this.stopAutoPlay();
+            });
+        }, { threshold: 0.3 });
+        this.state.observer.observe(document.querySelector('.hero'));
     }
 }
 

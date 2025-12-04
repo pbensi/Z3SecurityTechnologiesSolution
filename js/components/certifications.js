@@ -1,193 +1,114 @@
 class Certifications {
-  constructor() {
-    if (Certifications.instance) return Certifications.instance;
-    Certifications.instance = this;
+  constructor(container, name, prevBtn, nextBtn, slides) {
 
-    this.track = null;
-    this.slides = [];
-    this.prevBtn = null;
-    this.nextBtn = null;
-    
-    this.currentIndex = 0;
-    this.slideWidth = 0;
-    this.gap = 0;
-    this.isTransitioning = false;
-    this.totalRealSlides = 0;
+    if (Certifications.instances && Certifications.instances[name]) {
+      return Certifications.instances[name];
+    }
+    if (!Certifications.instances) Certifications.instances = {};
+    Certifications.instances[name] = this;
+
+    this.carouselEl = container;
+    this.prevBtn = prevBtn;
+    this.nextBtn = nextBtn;
+
+    this.slides = slides;
+
+    this.index = 0;
+    this.isAnimating = false;
 
     this.init();
-    return this;
+    window.addEventListener('resize', () => this.updateView());
   }
 
   init() {
-    this.track = document.getElementById("certTrack");
-    this.prevBtn = document.querySelector(".slider-prev");
-    this.nextBtn = document.querySelector(".slider-next");
+    this.updateView();
 
-    const originalSlides = Array.from(this.track.children);
-    this.totalRealSlides = originalSlides.length;
+    this.prevBtn.onclick = () => this.slide(-1);
+    this.nextBtn.onclick = () => this.slide(1);
 
-    for (let i = 0; i < 3; i++) {
-      originalSlides.forEach((slide, idx) => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add('slide-clone');
-        this.track.appendChild(clone);
-      });
-    }
-
-    this.slides = Array.from(this.track.children);
-    
-    this.currentIndex = this.totalRealSlides;
-
-    this.updateSizes();
-    this.updateImages();
-    this.updateTrackPosition(false);
-
-    this.prevBtn.addEventListener("click", () => this.prev());
-    this.nextBtn.addEventListener("click", () => this.next());
-
-    window.addEventListener("resize", () => {
-      this.updateSizes();
-      this.updateTrackPosition(false);
-    });
-
-    new MutationObserver(() => this.updateImages())
-      .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-
-    this.setupTouchEvents();
+    this.initThemeWatcher();
   }
 
-  setupTouchEvents() {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let isDragging = false;
-
-    const handleTouchStart = (e) => {
-      touchStartX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-      isDragging = true;
-    };
-
-    const handleTouchMove = (e) => {
-      if (!isDragging) return;
-      
-      const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      const diff = touchStartX - currentX;
-      
-      const translateX = (this.currentIndex * (this.slideWidth + this.gap)) + diff;
-      this.track.style.transition = 'none';
-      this.track.style.transform = `translateX(${-translateX}px)`;
-    };
-
-    const handleTouchEnd = (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      
-      touchEndX = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
-      const diff = touchStartX - touchEndX;
-      const threshold = 50;
-
-      if (diff > threshold) {
-        this.next();
-      } else if (diff < -threshold) {
-        this.prev();
-      } else {
-        this.updateTrackPosition(true);
-      }
-    };
-
-    this.track.addEventListener("mousedown", handleTouchStart);
-    document.addEventListener("mousemove", handleTouchMove);
-    document.addEventListener("mouseup", handleTouchEnd);
-
-    this.track.addEventListener("touchstart", handleTouchStart, { passive: true });
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
-    document.addEventListener("touchend", handleTouchEnd);
+  getVisibleCount() {
+    const width = window.innerWidth;
+    if (width <= 480) return 1;
+    if (width <= 768) return 2;
+    return 3;
   }
 
-  updateSizes() {
-    const viewport = this.track.parentElement;
-    const viewportWidth = viewport.offsetWidth;
-    this.gap = parseFloat(getComputedStyle(this.track).gap) || 16;
-
-    const minSlideWidth = 200;
-    const maxSlideWidth = 300;
-
-    let visibleCount;
-    if (viewportWidth < 576) visibleCount = 1;
-    else if (viewportWidth < 768) visibleCount = 2;
-    else if (viewportWidth < 992) visibleCount = 3;
-    else visibleCount = 4;
-
-    this.slideWidth = Math.min(
-      maxSlideWidth,
-      Math.max(minSlideWidth, (viewportWidth - this.gap * (visibleCount - 1)) / visibleCount)
-    );
-
-    this.slides.forEach(slide => {
-      slide.style.width = `${this.slideWidth}px`;
-    });
-  }
-
-  updateImages() {
+  updateView() {
+    const visibleCount = this.getVisibleCount();
     const theme = document.documentElement.getAttribute("data-theme") || "light";
-    this.slides.forEach(slide => {
-      const img = slide.querySelector("img");
-      if (img && img.dataset) {
-        img.src = theme === "dark" ? img.dataset.dark : img.dataset.light;
-      }
-    });
-  }
 
-  updateTrackPosition(animate = true) {
-    if (this.isTransitioning) return;
-    
-    const translateX = this.currentIndex * (this.slideWidth + this.gap);
-    
-    if (animate) {
-      this.isTransitioning = true;
-      this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-      this.track.style.transform = `translateX(${-translateX}px)`;
-      
-      setTimeout(() => {
-        this.track.style.transition = '';
-        this.isTransitioning = false;
-        this.checkLoopReset();
-      }, 500);
-    } else {
-      this.track.style.transition = 'none';
-      this.track.style.transform = `translateX(${-translateX}px)`;
+    this.carouselEl.innerHTML = '';
+
+    for (let i = 0; i < visibleCount + 1; i++) {
+      const slide = this.slides[(this.index + i) % this.slides.length];
+
+      const img = document.createElement('img');
+      img.src = theme === "dark" ? slide.dark : slide.light;
+      img.alt = slide.alt;
+
+      const slideWrapper = document.createElement('div');
+      slideWrapper.className = 'cert-slide';
+      slideWrapper.style.flex = `0 0 calc(${100 / visibleCount}% - ${20 * (visibleCount - 1) / visibleCount}px)`;
+      slideWrapper.appendChild(img);
+
+      this.carouselEl.appendChild(slideWrapper);
     }
+
+    this.carouselEl.style.transform = 'translateX(0)';
   }
 
-  checkLoopReset() {
-    if (this.currentIndex < this.totalRealSlides) {
-      this.currentIndex += this.totalRealSlides;
-      this.updateTrackPosition(false);
-    }
-    else if (this.currentIndex >= this.totalRealSlides * 2) {
-      this.currentIndex -= this.totalRealSlides;
-      this.updateTrackPosition(false);
-    }
+  slide(direction) {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+
+    const visibleCount = this.getVisibleCount();
+    const slideWidth = this.carouselEl.querySelector('.cert-slide').offsetWidth + 20;
+    this.carouselEl.style.transition = 'transform 0.5s ease';
+    this.carouselEl.style.transform = `translateX(${-direction * slideWidth}px)`;
+
+    this.carouselEl.addEventListener('transitionend', () => {
+      this.carouselEl.style.transition = 'none';
+      this.index = (this.index + direction + this.slides.length) % this.slides.length;
+      this.updateView();
+      this.isAnimating = false;
+    }, { once: true });
   }
 
-  prev() {
-    if (this.isTransitioning) return;
-    this.currentIndex--;
-    this.updateTrackPosition(true);
-  }
-
-  next() {
-    if (this.isTransitioning) return;
-    this.currentIndex++;
-    this.updateTrackPosition(true);
+  initThemeWatcher() {
+    new MutationObserver(() => this.updateView()).observe(
+      document.documentElement,
+      { attributes: true, attributeFilter: ["data-theme"] }
+    );
   }
 }
 
-let certificationsInstance = null;
+let certificateInstance = null;
+
 function initCertifications() {
-  if (!certificationsInstance) {
-    certificationsInstance = new Certifications();
+  if (!certificateInstance) {
+    const carouselContainer = document.querySelector('#certCarousel');
+    const prevBtn = document.querySelector('#certPrev');
+    const nextBtn = document.querySelector('#certNext');
+
+    const slidesData = [
+      { light: "assets/img/certificate/light/cisco-networking-academy.png", dark: "assets/img/certificate/dark/cisco-networking-academy.png", alt: "Cisco Networking Academy" },
+      { light: "assets/img/certificate/light/advanced-autocad-2015.png", dark: "assets/img/certificate/dark/advanced-autocad-2015.png", alt: "Advanced AutoCAD 2015" },
+      { light: "assets/img/certificate/light/ubiquiti-broad-band-wireless-admin.png", dark: "assets/img/certificate/dark/ubiquiti-broad-band-wireless-admin.png", alt: "Ubiquiti Broadband Wireless Admin" },
+      { light: "assets/img/certificate/light/ubiquiti-broad-band-wireless-specialist.png", dark: "assets/img/certificate/dark/ubiquiti-broad-band-wireless-specialist.png", alt: "Ubiquiti Wireless Specialist" },
+      { light: "assets/img/certificate/light/ubiquiti-enterprise-wireless-specialist.png", dark: "assets/img/certificate/dark/ubiquiti-enterprise-wireless-specialist.png", alt: "Ubiquiti Enterprise Wireless Specialist" },
+      { light: "assets/img/certificate/light/yeastar-certified-technician.png", dark: "assets/img/certificate/dark/yeastar-certified-technician.png", alt: "Yeastar Certified Technician" },
+      { light: "assets/img/certificate/light/hikvision-certified-security-associate.png", dark: "assets/img/certificate/dark/hikvision-certified-security-associate.png", alt: "Hikvision Certified Security Associate" },
+      { light: "assets/img/certificate/light/dahua-video-surveillance-system-certified-engineer.png", dark: "assets/img/certificate/dark/dahua-video-surveillance-system-certified-engineer.png", alt: "Dahua Video Surveillance System Certified Engineer" },
+      { light: "assets/img/certificate/light/dahua-cloud-management-system-certified-engineer.png", dark: "assets/img/certificate/dark/dahua-cloud-management-system-certified-engineer.png", alt: "Dahua Cloud Management System Certified Engineer" },
+      { light: "assets/img/certificate/light/40hrs-construction-occupational-safety-health.png", dark: "assets/img/certificate/dark/40hrs-construction-occupational-safety-health.png", alt: "40hrs Construction Occupational Safety Health" }
+    ];
+
+    certificateInstance = new Certifications(carouselContainer, 'main', prevBtn, nextBtn, slidesData);
   }
-  return certificationsInstance;
+  return certificateInstance;
 }
 
 export { initCertifications };

@@ -18,18 +18,22 @@
     padding: 0 0 2rem 0;
 }
 
+.about-close {
+    visibility: hidden;
+}
+
 .about-footer {
-  position: relative;
+    position: relative;
 }
 
 .about-footer::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .about::-webkit-scrollbar {
@@ -126,6 +130,12 @@
 
 body.about-open {
     overflow: hidden;
+}
+
+@media (max-width: 970px) {
+    .about-close {
+        visibility: visible;
+    }
 }
 
 @media (max-width: 768px) {

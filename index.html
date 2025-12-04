@@ -418,30 +418,16 @@
     <main>
         <!-- HERO SECTION -->
         <section class="hero" id="home">
-            <div class="slideshow-background" data-slideshow>
-                <img src="./assets/img/hero-section.jpg" alt="Security Systems" class="background-slide active"
-                    loading="eager" fetchpriority="high">
+            <div class="slideshow-background">
+                <div class="slides-track" id="heroSlides"></div>
             </div>
 
             <div class="hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge">
-                        <span>2019 Certified. Your Security, Our Vision.</span>
-                    </div>
-                    <h2 class="hero-title">SECURITY &amp; AUXILIARY <br />SYSTEMS PROVIDER</h2>
-                    <p class="hero-subtitle">Professional design, supply, installation, and maintenance with nationwide
-                        coverage.</p>
-
-                    <div class="hero-btns">
-                        <a href="#contact" class="btn btn-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="svg">
-                                <path
-                                    d="M568.4 37.7C578.2 34.2 589 36.7 596.4 44C603.8 51.3 606.2 62.2 602.7 72L424.7 568.9C419.7 582.8 406.6 592 391.9 592C377.7 592 364.9 583.4 359.6 570.3L295.4 412.3C290.9 401.3 292.9 388.7 300.6 379.7L395.1 267.3C400.2 261.2 399.8 252.3 394.2 246.7C388.6 241.1 379.6 240.7 373.6 245.8L261.2 340.1C252.1 347.7 239.6 349.7 228.6 345.3L70.1 280.8C57 275.5 48.4 262.7 48.4 248.5C48.4 233.8 57.6 220.7 71.5 215.7L568.4 37.7z" />
-                            </svg>
-                            <span>Get Free Consultation</span>
-                        </a>
-                    </div>
+                    <h2 class="hero-title" id="heroTitle"></h2>
+                    <p class="hero-subtitle" id="heroSubtitle"></p>
                 </div>
+
                 <div class="slideshow-nav">
                     <div class="circular-dots" id="heroDots"></div>
                 </div>
@@ -509,112 +495,55 @@
                 <div class="accordion-panel">
                     <div class="accordion-panel-content">
 
+                        <div class="certifications-section">
+                            <div class="certificate-header">
+                                <p class="certificate-subtitle">Our team holds industry-recognized certifications
+                                    ensuring quality service delivery.</p>
 
-                        <div class="cert-slider-wrapper">
-                            <div class="cert-header">
-                                <p>
-                                    Our team holds industry-recognized certifications ensuring quality service delivery.
-                                </p>
-                                <div class="cert-seemore">
-                                    <div class="cert-seemore-btn"><button style="display: none;"
-                                            class="circular-btn slider-btn slider-prev" aria-label="clients next">
-                                            <svg class="progress-circle" viewBox="0 0 44 44">
-                                                <circle cx="22" cy="22" r="20"></circle>
-                                                <circle class="progress-fill" cx="22" cy="22" r="20"></circle>
+                                <div class="certificate-btns">
+                                    <span class="certificate-seemore-text">SEE MORE</span>
+                                    <button class="circular-btn" id="certPrev" aria-label="certificate prev"
+                                        style="display: none;">
+                                        <svg class="progress-circle" viewBox="0 0 44 44">
+                                            <circle cx="22" cy="22" r="20"></circle>
+                                            <circle class="progress-fill" cx="22" cy="22" r="20"></circle>
+                                        </svg>
+                                        <span>
+                                            <svg width="8" height="16" fill="currentColor" data-direction="right"
+                                                viewBox="0 0 8 16" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.732 6.453L8 0l-4 8 4 8L0.732 9.547C0.285 9.18 0 8.623 0 8c0-.623.285-1.18.732-1.547z">
+                                                </path>
                                             </svg>
-                                            <span>
-                                                <svg width="8" height="16" fill="currentColor" data-direction="right"
-                                                    viewBox="0 0 8 16" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M0.732 6.453L8 0l-4 8 4 8L0.732 9.547C0.285 9.18 0 8.623 0 8c0-.623.285-1.18.732-1.547z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                        <button class="circular-btn slider-next" aria-label="clients next">
-                                            <svg class="progress-circle" viewBox="0 0 44 44">
-                                                <circle cx="22" cy="22" r="20"></circle>
-                                                <circle class="progress-fill" cx="22" cy="22" r="20"></circle>
+                                        </span>
+                                    </button>
+                                    <button class="circular-btn" id="certNext" aria-label="certificate next">
+                                        <svg class="progress-circle" viewBox="0 0 44 44">
+                                            <circle cx="22" cy="22" r="20"></circle>
+                                            <circle class="progress-fill" cx="22" cy="22" r="20"></circle>
+                                        </svg>
+                                        <span>
+                                            <svg width="8" height="16" fill="currentColor" data-direction="right"
+                                                viewBox="0 0 8 16" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z">
+                                                </path>
                                             </svg>
-                                            <span>
-                                                <svg width="8" height="16" fill="currentColor" data-direction="right"
-                                                    viewBox="0 0 8 16" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="cert-slider-viewport">
-                                <div class="cert-slider-track" id="certTrack">
-                                    <div class="cert-slide">
-                                        <img src="" alt="cisco-networking-academy"
-                                            data-light="assets/img/certificate/light/cisco-networking-academy.png"
-                                            data-dark="assets/img/certificate/dark/cisco-networking-academy.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="advanced-autocad-2015"
-                                            data-light="assets/img/certificate/light/advanced-autocad-2015.png"
-                                            data-dark="assets/img/certificate/dark/advanced-autocad-2015.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="ubiquiti-broad-band-wireless-admin"
-                                            data-light="assets/img/certificate/light/ubiquiti-broad-band-wireless-admin.png"
-                                            data-dark="assets/img/certificate/dark/ubiquiti-broad-band-wireless-admin.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="ubiquiti-broad-band-wireless-specialist"
-                                            data-light="assets/img/certificate/light/ubiquiti-broad-band-wireless-specialist.png"
-                                            data-dark="assets/img/certificate/dark/ubiquiti-broad-band-wireless-specialist.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="ubiquiti-enterprise-wireless-specialist"
-                                            data-light="assets/img/certificate/light/ubiquiti-enterprise-wireless-specialist.png"
-                                            data-dark="assets/img/certificate/dark/ubiquiti-enterprise-wireless-specialist.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="yeastar-certified-technician"
-                                            data-light="assets/img/certificate/light/yeastar-certified-technician.png"
-                                            data-dark="assets/img/certificate/dark/yeastar-certified-technician.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="hikvision-certified-security-associate"
-                                            data-light="assets/img/certificate/light/hikvision-certified-security-associate.png"
-                                            data-dark="assets/img/certificate/dark/hikvision-certified-security-associate.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="dahua-video-surveillance-system-certified-engineer"
-                                            data-light="assets/img/certificate/light/dahua-video-surveillance-system-certified-engineer.png"
-                                            data-dark="assets/img/certificate/dark/dahua-video-surveillance-system-certified-engineer.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="dahua-cloud-management-system-certified-engineer"
-                                            data-light="assets/img/certificate/light/dahua-cloud-management-system-certified-engineer.png"
-                                            data-dark="assets/img/certificate/dark/dahua-cloud-management-system-certified-engineer.png">
-                                    </div>
-                                    <div class="cert-slide">
-                                        <img src="" alt="40hrs-construction-occupational-safety-health"
-                                            data-light="assets/img/certificate/light/40hrs-construction-occupational-safety-health.png"
-                                            data-dark="assets/img/certificate/dark/40hrs-construction-occupational-safety-health.png">
-                                    </div>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
-
+                            <div class="cert-carousel" id="certCarousel"></div>
                         </div>
                     </div>
                 </div>
 
-                <button class="accordion-btn">Awards</button>
+                <!-- <button class="accordion-btn">Awards</button>
                 <div class="accordion-panel">
                     <div class="accordion-panel-content">
                         <span style="border:1px solid green;background:rgb(67, 240, 67);">Still working on it</span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 
