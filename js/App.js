@@ -1,15 +1,15 @@
-import { initServices } from './components/services.js?v=1.0.6';
-import { initCertifications } from './components/certifications.js?v=1.0.6';
-import { initContact } from './components/contact.js?v=1.0.6';
-import { initPartners } from './components/partner.js?v=1.0.6';
-import { initTheme } from './utilities/theme.js?v=1.0.6';
-import { initMenu } from './components/menu.js?v=1.0.6';
-import { initClients } from './components/clients.js?v=1.0.6';
-import { initAbout } from './components/about.js?v=1.0.6';
-import { initHero } from './components/hero.js?v=1.0.6';
-import { initHeader } from './components/header.js?v=1.0.6';
-import { initLocationTabs } from './components/locationTabs.js?v=1.0.6';
-import { initAccordion } from './utilities/accordion.js?v=1.0.6';
+import { initServices } from './components/services.js?v=1.0.7';
+import { initCertifications } from './components/certifications.js?v=1.0.7';
+import { initContact } from './components/contact.js?v=1.0.7';
+import { initPartners } from './components/partner.js?v=1.0.7';
+import { initTheme } from './utilities/theme.js?v=1.0.7';
+import { initMenu } from './components/menu.js?v=1.0.7';
+import { initClients } from './components/clients.js?v=1.0.7';
+import { initAbout } from './components/about.js?v=1.0.7';
+import { initHero } from './components/hero.js?v=1.0.7';
+import { initHeader } from './components/header.js?v=1.0.7';
+import { initLocationTabs } from './components/locationTabs.js?v=1.0.7';
+import { initAccordion } from './utilities/accordion.js?v=1.0.7';
 
 class App {
     static instance = null;

@@ -61,7 +61,7 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   justify-content: start;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .clients-seemore {
@@ -85,7 +85,7 @@
   overflow: auto;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
   padding: 2px;
   justify-content: center;
 }
