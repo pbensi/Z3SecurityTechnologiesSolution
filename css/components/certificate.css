@@ -24,10 +24,6 @@
   align-items: center;
 }
 
-.certificate-seemore-text {
-  color: var(--text-light);
-}
-
 .cert-carousel-container {
   overflow: hidden;
   width: 100%;
@@ -60,16 +56,5 @@
 @media (max-width: 480px) {
   .cert-slide img {
     max-height: 180px;
-  }
-}
-
-@media (max-width: 403px) {
-  .certificate-header {
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 10px;
   }
 }
