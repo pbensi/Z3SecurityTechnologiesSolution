@@ -159,11 +159,10 @@ class Contact {
 
         try {
             const response = await fetch(endpoint, {
-                redirect: "follow",
                 method: "POST",
+                mode: "cors",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Content-Type": "text/plain;charset=utf-8"
+                    "Content-Type": "application/json" 
                 },
                 body: JSON.stringify(formData)
             });
