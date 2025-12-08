@@ -1,15 +1,15 @@
-import { initServices } from './components/services.js?v=1.0.7';
-import { initCertifications } from './components/certifications.js?v=1.0.7';
-import { initContact } from './components/contact.js?v=1.0.7';
-import { initPartners } from './components/partner.js?v=1.0.7';
-import { initTheme } from './utilities/theme.js?v=1.0.7';
-import { initMenu } from './components/menu.js?v=1.0.7';
-import { initClients } from './components/clients.js?v=1.0.7';
-import { initAbout } from './components/about.js?v=1.0.7';
-import { initHero } from './components/hero.js?v=1.0.7';
-import { initHeader } from './components/header.js?v=1.0.7';
-import { initLocationTabs } from './components/locationTabs.js?v=1.0.7';
-import { initAccordion } from './utilities/accordion.js?v=1.0.7';
+import { initServices } from './components/services.js?v=1.0.8';
+import { initCertifications } from './components/certifications.js?v=1.0.8';
+import { initContact } from './components/contact.js?v=1.0.8';
+import { initPartners } from './components/partner.js?v=1.0.8';
+import { initTheme } from './utilities/theme.js?v=1.0.8';
+import { initMenu } from './components/menu.js?v=1.0.8';
+import { initClients } from './components/clients.js?v=1.0.8';
+import { initAbout } from './components/about.js?v=1.0.8';
+import { initHero } from './components/hero.js?v=1.0.8';
+import { initHeader } from './components/header.js?v=1.0.8';
+import { initLocationTabs } from './components/locationTabs.js?v=1.0.8';
+import { initAccordion } from './utilities/accordion.js?v=1.0.8';
 
 class App {
     static instance = null;
@@ -57,7 +57,7 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbxyzmYTsBoR0-RaO5nKARU_4KXJcKn4nNjpZwvRWwdK090YNWTu95OXzWGgBiZqQXGp5w/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycbx3oCLfKNoDDCC_Tct5SEVc_slNdW4qMAdHg1yFTroqcmRCsIFW9G6c6nUBByC7hq0nIA/exec"
                 })
             }
         ];
