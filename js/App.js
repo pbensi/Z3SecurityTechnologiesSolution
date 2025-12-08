@@ -57,7 +57,7 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbx3oCLfKNoDDCC_Tct5SEVc_slNdW4qMAdHg1yFTroqcmRCsIFW9G6c6nUBByC7hq0nIA/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycbw9Gc-EwpHG3xrgUkicrwZ1XpgtcPgQj5j0AVEi9RIsl9HiHKwrfaAvR1tomIKR2qhKGA/exec"
                 })
             }
         ];
