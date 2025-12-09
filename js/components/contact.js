@@ -146,7 +146,7 @@ class Contact {
             company: contactForm.company.value.trim(),
             service: contactForm.service.value.trim(),
             message: contactForm.message.value.trim(),
-            secret: "xx",
+            secret: "z3",
         };
 
         if (!formData.message) {
