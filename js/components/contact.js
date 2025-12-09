@@ -141,9 +141,6 @@ class Contact {
             if (result.success) {
                 this.showNotification(result.message, "success");
                 contactForm.reset();
-                this.googleToken = "";
-                this.googleUser = null;
-                submitBtn.disabled = true;
             } else {
                 this.showNotification(result.message, "error");
             }
