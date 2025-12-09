@@ -1,4 +1,4 @@
-import { CircularDots } from '../utilities/circular-dots.js?v=1.0.16';
+import { CircularDots } from '../utilities/circular-dots.js?v=1.0.17';
 
 class Hero {
     constructor() {

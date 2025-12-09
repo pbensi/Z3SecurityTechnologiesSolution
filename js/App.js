@@ -1,15 +1,15 @@
-import { initServices } from './components/services.js?v=1.0.16';
-import { initCertifications } from './components/certifications.js?v=1.0.16';
-import { initContact } from './components/contact.js?v=1.0.16';
-import { initPartners } from './components/partner.js?v=1.0.16';
-import { initTheme } from './utilities/theme.js?v=1.0.16';
-import { initMenu } from './components/menu.js?v=1.0.16';
-import { initClients } from './components/clients.js?v=1.0.16';
-import { initAbout } from './components/about.js?v=1.0.16';
-import { initHero } from './components/hero.js?v=1.0.16';
-import { initHeader } from './components/header.js?v=1.0.16';
-import { initLocationTabs } from './components/locationTabs.js?v=1.0.16';
-import { initAccordion } from './utilities/accordion.js?v=1.0.16';
+import { initServices } from './components/services.js?v=1.0.17';
+import { initCertifications } from './components/certifications.js?v=1.0.17';
+import { initContact } from './components/contact.js?v=1.0.17';
+import { initPartners } from './components/partner.js?v=1.0.17';
+import { initTheme } from './utilities/theme.js?v=1.0.17';
+import { initMenu } from './components/menu.js?v=1.0.17';
+import { initClients } from './components/clients.js?v=1.0.17';
+import { initAbout } from './components/about.js?v=1.0.17';
+import { initHero } from './components/hero.js?v=1.0.17';
+import { initHeader } from './components/header.js?v=1.0.17';
+import { initLocationTabs } from './components/locationTabs.js?v=1.0.17';
+import { initAccordion } from './utilities/accordion.js?v=1.0.17';
 
 class App {
     static instance = null;
@@ -57,7 +57,7 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbwRr51Ik6NhhUcylq3e2Jl1HewhqCfcqO8wYlBvVAtEJl2wjriA70WhMSY8XCkLHGVg/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycby6l9KD4LapyP0GchZY-gTYZcIqlBVdf9yr0_LfgxzTR77MK1mUkMsKALZ66FRfxY_R/exec"
                 })
             }
         ];
