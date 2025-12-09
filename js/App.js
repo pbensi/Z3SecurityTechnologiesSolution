@@ -1,15 +1,15 @@
-import { initServices } from './components/services.js?v=1.0.14';
-import { initCertifications } from './components/certifications.js?v=1.0.14';
-import { initContact } from './components/contact.js?v=1.0.14';
-import { initPartners } from './components/partner.js?v=1.0.14';
-import { initTheme } from './utilities/theme.js?v=1.0.14';
-import { initMenu } from './components/menu.js?v=1.0.14';
-import { initClients } from './components/clients.js?v=1.0.14';
-import { initAbout } from './components/about.js?v=1.0.14';
-import { initHero } from './components/hero.js?v=1.0.14';
-import { initHeader } from './components/header.js?v=1.0.14';
-import { initLocationTabs } from './components/locationTabs.js?v=1.0.14';
-import { initAccordion } from './utilities/accordion.js?v=1.0.14';
+import { initServices } from './components/services.js?v=1.0.15';
+import { initCertifications } from './components/certifications.js?v=1.0.15';
+import { initContact } from './components/contact.js?v=1.0.15';
+import { initPartners } from './components/partner.js?v=1.0.15';
+import { initTheme } from './utilities/theme.js?v=1.0.15';
+import { initMenu } from './components/menu.js?v=1.0.15';
+import { initClients } from './components/clients.js?v=1.0.15';
+import { initAbout } from './components/about.js?v=1.0.15';
+import { initHero } from './components/hero.js?v=1.0.15';
+import { initHeader } from './components/header.js?v=1.0.15';
+import { initLocationTabs } from './components/locationTabs.js?v=1.0.15';
+import { initAccordion } from './utilities/accordion.js?v=1.0.15';
 
 class App {
     static instance = null;
@@ -57,7 +57,7 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbxDD4p2VA6TsHAroywsUUQqK-qAEH8lJbJewLUI_THmElEWxqpnQD7j-8CeDiuv4Am2PA/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycbwRr51Ik6NhhUcylq3e2Jl1HewhqCfcqO8wYlBvVAtEJl2wjriA70WhMSY8XCkLHGVg/exec"
                 })
             }
         ];

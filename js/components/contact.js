@@ -1,23 +1,21 @@
 class Contact {
     constructor() {
-        if (Contact.instance) {
-            return Contact.instance;
-        }
+        if (Contact.instance) return Contact.instance;
         Contact.instance = this;
 
         this.googleToken = "";
         this.googleUser = null;
         this.googleInitialized = false;
 
-        this.boundHandleCredentialResponse = this.handleCredentialResponse.bind(this);
-        this.boundHandlePhoneInput = this.handlePhoneInput.bind(this);
+        this.handleCredentialResponse = this.handleCredentialResponse.bind(this);
+        this.handlePhoneInput = this.handlePhoneInput.bind(this);
 
         return this;
     }
 
     init({ clientId, endpoint }) {
         this.clientId = clientId;
-        this.endpoint = endpoint;
+        this.endpoint = endpoint.includes('/dev') ? endpoint.replace('/dev', '/exec') : endpoint;
         this.contactForm = document.getElementById("contactForm");
         this.phoneInput = document.getElementById("phone");
 
@@ -27,13 +25,13 @@ class Contact {
 
     setupEventListeners() {
         if (this.phoneInput) {
-            this.phoneInput.addEventListener("input", this.boundHandlePhoneInput);
+            this.phoneInput.addEventListener("input", this.handlePhoneInput);
         }
 
         if (this.contactForm) {
-            this.contactForm.addEventListener("submit", async (e) => {
+            this.contactForm.addEventListener("submit", (e) => {
                 e.preventDefault();
-                await this.submitForm(this.contactForm, this.endpoint);
+                this.submitForm(this.contactForm, this.endpoint);
             });
         }
     }
@@ -75,9 +73,7 @@ class Contact {
 
     hideGoogleOverlay() {
         const overlay = document.getElementById("googleOverlay");
-        if (!overlay) return;
-        overlay.classList.add("hidden");
-        setTimeout(() => overlay.style.display = "none", 400);
+        if (overlay) overlay.style.display = "none";
     }
 
     handleCredentialResponse(response) {
@@ -93,45 +89,21 @@ class Contact {
         if (sendBtn) sendBtn.disabled = false;
     }
 
-    async waitForGoogle() {
-        if (window.google?.accounts?.id) return true;
-        return new Promise((resolve, reject) => {
-            let attempts = 0;
-            const interval = setInterval(() => {
-                attempts++;
-                if (window.google?.accounts?.id) {
-                    clearInterval(interval);
-                    resolve(true);
-                } else if (attempts > 50) {
-                    clearInterval(interval);
-                    reject("Google Identity Services failed to load");
-                }
-            }, 100);
-        });
-    }
-
     async initGoogleSignIn(clientId) {
-        try {
-            await this.waitForGoogle();
+        if (window.google?.accounts?.id) {
+            google.accounts.id.initialize({
+                client_id: clientId,
+                callback: this.handleCredentialResponse,
+                auto_select: false,
+            });
 
-            if (!this.googleInitialized) {
-                google.accounts.id.initialize({
-                    client_id: clientId,
-                    callback: this.boundHandleCredentialResponse,
-                    auto_select: false,
+            const googleBtnContainer = document.getElementById("googleBtnContainer");
+            if (googleBtnContainer) {
+                google.accounts.id.renderButton(googleBtnContainer, {
+                    theme: "outline",
+                    size: "large"
                 });
-                this.googleInitialized = true;
             }
-
-            google.accounts.id.renderButton(
-                document.getElementById("googleBtnContainer"),
-                { theme: "outline", size: "large" }
-            );
-        } catch (error) {
-            this.hideGoogleOverlay();
-            const sendBtn = document.getElementById("sendBtn");
-            if (sendBtn) sendBtn.disabled = false;
-            this.showNotification("Form ready (Google sign-in skipped)", "info");
         }
     }
 
@@ -159,26 +131,27 @@ class Contact {
 
         try {
             const response = await fetch(endpoint, {
-                redirect: "follow",
-                method: "POST",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(formData)
             });
 
             const result = await response.json();
+
             if (result.success) {
                 this.showNotification(result.message, "success");
                 contactForm.reset();
+                this.googleToken = "";
+                this.googleUser = null;
+                submitBtn.disabled = true;
             } else {
                 this.showNotification(result.message, "error");
             }
-        } catch (err) {
+        } catch {
             this.showNotification("Failed to send message. Please try again later.", "error");
         } finally {
             submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+            if (this.googleToken) submitBtn.disabled = false;
         }
     }
 }
@@ -189,7 +162,6 @@ function initContact(config) {
     if (!contactInstance) {
         contactInstance = new Contact();
         contactInstance.init(config);
-        window.handleCredentialResponse = contactInstance.boundHandleCredentialResponse;
     }
     return contactInstance;
 }
