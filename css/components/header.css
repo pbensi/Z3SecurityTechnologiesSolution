@@ -6,7 +6,7 @@
   height: var(--header-height);
   padding: 1rem;
   width: 100%;
-  z-index: 1000;
+  z-index: 999;
   background: transparent;
   border: 4px solid transparent;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -61,7 +61,6 @@
 
 .navbar-menu {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
 }
 

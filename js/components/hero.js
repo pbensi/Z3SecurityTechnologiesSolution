@@ -1,4 +1,4 @@
-import { CircularDots } from '../utilities/circular-dots.js?v=1.0.17';
+import { CircularDots } from '../utilities/circular-dots.js?v=1.0.18';
 
 class Hero {
     constructor() {
@@ -11,22 +11,22 @@ class Hero {
             slides: [
                 {
                     image: './assets/img/hero-section.jpg',
-                    title: 'Design & Plan',
+                    title: 'DESIGN & PLAN',
                     subtitle: 'Strategic solutions for your security and auxiliary needs'
                 },
                 {
                     image: './assets/img/hero-section-1.jpg',
-                    title: 'Reliable Supply',
+                    title: 'RELIABLE SUPPLY',
                     subtitle: 'High-quality products from trusted sources'
                 },
                 {
                     image: './assets/img/hero-section-2.jpg',
-                    title: 'Install & Integrate',
+                    title: 'INSTALL & INTEGRATE',
                     subtitle: 'Professional implementation with seamless integration'
                 },
                 {
                     image: './assets/img/hero-section-3.jpg',
-                    title: 'Maintain & Support',
+                    title: 'MAINTAIN & SUPPORT',
                     subtitle: 'Proactive care and dedicated technical assistance'
                 }
             ],

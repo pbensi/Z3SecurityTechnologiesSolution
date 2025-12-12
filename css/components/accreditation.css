@@ -12,7 +12,6 @@
   max-width: min(1000px, 95vw);
   margin: 0 auto;
   position: relative;
-  z-index: 1;
 }
 
 .accreditation-card {
