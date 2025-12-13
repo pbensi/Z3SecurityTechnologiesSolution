@@ -1,4 +1,4 @@
-import { CircularDots } from '../utilities/circular-dots.js?v=1.0.18';
+import { CircularDots } from '../utilities/circular-dots.js?v=1.0.20';
 
 class Hero {
     constructor() {
@@ -11,23 +11,23 @@ class Hero {
             slides: [
                 {
                     image: './assets/img/hero-section.jpg',
-                    title: 'DESIGN & PLAN',
-                    subtitle: 'STRATEGIC SOLUTIONS FOR YOUR SECURITY AND AUXILIARY NEEDS'
+                    title: 'DESIGN & PLANNING',
+                    subtitle: 'Strategic solutions for your security and auxiliary needs'
                 },
                 {
                     image: './assets/img/hero-section-1.jpg',
-                    title: 'RELIABLE SUPPLY',
-                    subtitle: 'HIGH-QUALITY PRODUCTS FROM TRUSTED SOURCES'
+                    title: 'RESOURCE & SUPPLY',
+                    subtitle: 'High-quality products from trusted sources'
                 },
                 {
                     image: './assets/img/hero-section-2.jpg',
-                    title: 'INSTALL & INTEGRATE',
-                    subtitle: 'PROFESSIONAL IMPLEMENTATION WITH SEAMLESS INTEGRATION'
+                    title: 'INSTALLATION & INTEGRATION',
+                    subtitle: 'Professional implementation with seamless integration'
                 },
                 {
                     image: './assets/img/hero-section-3.jpg',
-                    title: 'MAINTAIN & SUPPORT',
-                    subtitle: 'PROACTIVE CARE AND DEDICATED TECHNICAL ASSISTANCE'
+                    title: 'MAINTENANCE & SUPPORT',
+                    subtitle: 'Proactive care and dedicated technical assistance'
                 }
             ],
             settings: { autoPlay: true, slideDuration: 5000, transitionDuration: 800 }

@@ -9,8 +9,6 @@
     width: var(--slide-panel-width);
     max-width: var(--slide-panel-max-width);
     background: var(--bg-secondary);
-    border-left: 1px solid var(--glass-border);
-    box-shadow: var(--shadow);
     z-index: 10001;
     overflow-y: auto;
     overflow-x: hidden;
@@ -68,18 +66,6 @@
     flex-direction: column;
     gap: var(--space-2xl);
     flex: 1;
-}
-
-.about .section-header h2::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -5px;
-    width: 400px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    border-radius: 2px;
-    transform: translateX(-50%);
 }
 
 .about-features {

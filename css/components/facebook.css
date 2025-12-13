@@ -43,19 +43,19 @@
 .fb-widget {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: -100%;
     width: 100%;
     max-width: 500px;
     height: 100vh;
     background: white;
     z-index: 10001;
-    transition: right 0.3s ease;
+    transition: left 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .fb-widget.active {
-    right: 0;
+    left: 0;
 }
 
 .fb-header {
@@ -64,7 +64,7 @@
     background: dodgerblue;
     border-bottom: 1px solid #ddd;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
 }
 
