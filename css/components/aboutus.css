@@ -74,7 +74,7 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0px;
+    bottom: -5px;
     width: 400px;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
