@@ -1,7 +1,7 @@
 .fb-icon {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     width: 44px;
     height: 44px;
     background: #1877f2;
@@ -12,10 +12,26 @@
     align-items: center;
     justify-content: center;
     z-index: 998;
+    
+    animation: fbPulse 2s infinite;
+}
+
+@keyframes fbPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(24, 119, 242, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
+    }
 }
 
 .fb-icon:hover {
     background: #166fe5;
+    
+    animation-play-state: paused;
 }
 
 .fb-icon svg {
@@ -43,38 +59,43 @@
 }
 
 .fb-header {
+    position: relative;
     padding: 20px;
-    background: white;
+    background: dodgerblue;
     border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
 }
 
 .fb-header h3 {
     margin: 0;
     font-size: 20px;
-    color: #333;
+    color: white;
     font-weight: 600;
 }
 
 .fb-close {
-    background: none;
+    display: none;
+    background: #1877f2;
     border: none;
-    font-size: 30px;
-    color: #666;
     cursor: pointer;
     width: 40px;
     height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 22px;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .fb-close:hover {
-    background: #f5f5f5;
-    border-radius: 50%;
+    background: #166fe5;
 }
+
+.fb-close:active {
+    transform: scale(0.95);
+}
+
 
 .fb-content {
     flex: 1;
@@ -103,4 +124,13 @@
 
 body.fb-widget-open {
     overflow: hidden;
+}
+
+
+@media (max-width: 526px) {
+    .fb-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

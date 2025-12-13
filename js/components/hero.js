@@ -12,22 +12,22 @@ class Hero {
                 {
                     image: './assets/img/hero-section.jpg',
                     title: 'DESIGN & PLAN',
-                    subtitle: 'Strategic solutions for your security and auxiliary needs'
+                    subtitle: 'STRATEGIC SOLUTIONS FOR YOUR SECURITY AND AUXILIARY NEEDS'
                 },
                 {
                     image: './assets/img/hero-section-1.jpg',
                     title: 'RELIABLE SUPPLY',
-                    subtitle: 'High-quality products from trusted sources'
+                    subtitle: 'HIGH-QUALITY PRODUCTS FROM TRUSTED SOURCES'
                 },
                 {
                     image: './assets/img/hero-section-2.jpg',
                     title: 'INSTALL & INTEGRATE',
-                    subtitle: 'Professional implementation with seamless integration'
+                    subtitle: 'PROFESSIONAL IMPLEMENTATION WITH SEAMLESS INTEGRATION'
                 },
                 {
                     image: './assets/img/hero-section-3.jpg',
                     title: 'MAINTAIN & SUPPORT',
-                    subtitle: 'Proactive care and dedicated technical assistance'
+                    subtitle: 'PROACTIVE CARE AND DEDICATED TECHNICAL ASSISTANCE'
                 }
             ],
             settings: { autoPlay: true, slideDuration: 5000, transitionDuration: 800 }
