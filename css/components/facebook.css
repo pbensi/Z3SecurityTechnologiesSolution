@@ -42,7 +42,7 @@
 
 .fb-widget {
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     left: -100%;
     width: 100%;
     max-width: 500px;
@@ -129,7 +129,7 @@ body.fb-widget-open {
 
 @media (max-width: 526px) {
     .fb-close {
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
     }

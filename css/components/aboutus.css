@@ -2,7 +2,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: var(--header-height);
     bottom: 0;
     right: -100%;
     gap: 1rem;
@@ -142,7 +142,7 @@ body.about-open {
 
 @media (max-width: 970px) {
     .about-close {
-        visibility: visible;
+        visibility: hidden;
     }
 }
 

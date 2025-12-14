@@ -1,16 +1,16 @@
-import { initServices } from './components/services.js?v=1.0.19';
-import { initCertifications } from './components/certifications.js?v=1.0.19';
-import { initContact } from './components/contact.js?v=1.0.19';
-import { initPartners } from './components/partner.js?v=1.0.19';
-import { initTheme } from './utilities/theme.js?v=1.0.19';
-import { initMenu } from './components/menu.js?v=1.0.19';
-import { initClients } from './components/clients.js?v=1.0.19';
-import { initAbout } from './components/about.js?v=1.0.19';
-import { initHero } from './components/hero.js?v=1.0.19';
-import { initHeader } from './components/header.js?v=1.0.19';
-import { initLocationTabs } from './components/locationTabs.js?v=1.0.19';
-import { initAccordion } from './utilities/accordion.js?v=1.0.19';
-import { initFacebook } from './components/facebook.js?v=1.0.19';
+import { initServices } from './components/services.js?v=1.0.22';
+import { initCertifications } from './components/certifications.js?v=1.0.22';
+import { initContact } from './components/contact.js?v=1.0.22';
+import { initPartners } from './components/partner.js?v=1.0.22';
+import { initTheme } from './utilities/theme.js?v=1.0.22';
+import { initMenu } from './components/menu.js?v=1.0.22';
+import { initClients } from './components/clients.js?v=1.0.22';
+import { initAbout } from './components/about.js?v=1.0.22';
+import { initHero } from './components/hero.js?v=1.0.22';
+import { initHeader } from './components/header.js?v=1.0.22';
+import { initLocationTabs } from './components/locationTabs.js?v=1.0.22';
+import { initAccordion } from './utilities/accordion.js?v=1.0.22';
+import { initFacebook } from './components/facebook.js?v=1.0.22';
 
 class App {
     static instance = null;
@@ -58,7 +58,7 @@ class App {
                 name: 'Contact',
                 init: () => initContact({
                     clientId: "1010543233965-80cp9ko0qt4vtolkeabmmf483vsgs4ll.apps.googleusercontent.com",
-                    endpoint: "https://script.google.com/macros/s/AKfycbwHsH3QjGKQRPYiNfcsjKc_cWYTYlEUfmLAI7hs2za-DJ9a3Fi5F_YYAqKNLarflXdi/exec"
+                    endpoint: "https://script.google.com/macros/s/AKfycbzBmvlsC1vEnKD6YMWSY3Un3AhYQK0ZLBlDD7OYWIO_MJa_M3bWl1uLyUZpS5obnyKTAA/exec"
                 })
             },
             { name: 'Facebook', init: initFacebook }

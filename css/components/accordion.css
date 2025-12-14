@@ -3,6 +3,7 @@
 }
 
 .accordion-btn {
+    position: relative;
     background: transparent;
     color: var(--text);
     cursor: pointer;
